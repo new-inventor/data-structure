@@ -57,7 +57,14 @@ class Loader
         return $this->baseNamespace;
     }
     
-    public function loadMetadataFor(string $class): Metadata
+    /**
+     * @param string $class
+     *
+     * @return $this|mixed
+     * @throws \RuntimeException
+     * @throws \InvalidArgumentException
+     */
+    public function loadMetadataFor(string $class)
     {
         if ($this->isReadableDir($this->path)) {
             $path = $this->getFilePath($class);
@@ -69,7 +76,11 @@ class Loader
         throw new \RuntimeException('Path is file, so use "loadMetadata" method.');
     }
     
-    public function loadMetadata(): Metadata
+    /**
+     * @return Metadata
+     * @throws \RuntimeException
+     */
+    public function loadMetadata()
     {
         if ($this->isReadableFile($this->path)) {
             return $this->getMatadataObj($this->path);
@@ -83,7 +94,7 @@ class Loader
             $key = $this->getCacheKey($path);
             $item = $this->cacheDriver->getItem($key);
             if (!$item->isHit()) {
-                $config = (new Metadata())->loadConfig($path);
+                $config = $this->constructMetadata($path);
                 $item->set($config);
                 $this->cacheDriver->save($item);
             }
@@ -91,6 +102,11 @@ class Loader
             return $item->get();
         }
         
+        return $this->constructMetadata($path);
+    }
+    
+    protected function constructMetadata($path)
+    {
         return (new Metadata())->loadConfig($path);
     }
     
