@@ -11,7 +11,6 @@ namespace NewInventor\DataStructure\Metadata;
 use NewInventor\Transformers\TransformerContainerInterface;
 use NewInventor\Transformers\TransformerInterface;
 use Symfony\Component\Config\Definition\Builder\ArrayNodeDefinition;
-use Symfony\Component\Config\Definition\Builder\BooleanNodeDefinition;
 use Symfony\Component\Config\Definition\Builder\ScalarNodeDefinition;
 use Symfony\Component\Config\Definition\Builder\TreeBuilder;
 use Symfony\Component\Config\Definition\Builder\VariableNodeDefinition;
@@ -42,35 +41,15 @@ class Configuration implements ConfigurationInterface
         return $builder;
     }
     
-    protected function getNamespaceNode()
+    /**
+     * @return ScalarNodeDefinition
+     */
+    protected function getNamespaceNode(): ScalarNodeDefinition
     {
         return (new ScalarNodeDefinition('namespace'))->defaultValue('')->example('Some\Namespace\String');
     }
     
-    protected function getParentNode()
-    {
-        return (new ScalarNodeDefinition('parent'))->defaultNull()->example('Some\Class\Name');
-    }
-    
-    protected function getAbstractNode()
-    {
-        return (new BooleanNodeDefinition('abstract'))->defaultFalse();
-    }
-    
-    protected function getMethodsNode($name)
-    {
-        return (new ArrayNodeDefinition($name))
-            ->treatTrueLike(['generate' => true])
-            ->treatNullLike(['generate' => false])
-            ->treatFalseLike(['generate' => false])
-            ->children()
-            ->booleanNode('generate')->defaultFalse()->end()
-            ->arrayNode('except')->scalarPrototype()->end()->end()
-            ->arrayNode('only')->scalarPrototype()->end()->end()
-            ->end();
-    }
-    
-    protected function getValidationNode()
+    protected function getValidationNode(): ArrayNodeDefinition
     {
         return (new ArrayNodeDefinition('validation'))
             ->children()
@@ -80,7 +59,11 @@ class Configuration implements ConfigurationInterface
             ->end();
     }
     
-    protected function getPropertiesNode()
+    /**
+     * @return ArrayNodeDefinition|\Symfony\Component\Config\Definition\Builder\NodeDefinition
+     * @throws \RuntimeException
+     */
+    protected function getPropertiesNode(): ArrayNodeDefinition
     {
         $builder = new TreeBuilder();
         $node = $builder->root('properties');

@@ -1,6 +1,4 @@
 namespace: TestsDataStructure
-parent: Some1\Some2\Some3\Parent
-abstract: true
 validation:
   constraints:
     - Callback: ['TestsDataStructure\TestStatic', 'GetTrue']
@@ -67,12 +65,3 @@ properties:
       - ToArray:
           - groups: forward
   prop9: ~
-getters:
-  generate: true
-  except:
-    - prop0
-    - prop1
-setters:
-  generate: true
-  only:
-    - prop0
