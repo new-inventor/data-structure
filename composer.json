@@ -1,0 +1,30 @@
+{
+  "name": "new-inventor/data-structure",
+  "license": "MIT",
+  "description": "Data structure transformers and validators config",
+  "minimum-stability": "dev",
+  "prefer-stable": true,
+  "require": {
+    "php": "^7.1",
+    "new-inventor/php-type-checker": "^5.0",
+    "new-inventor/transformers": "^1.0",
+    "symfony/validator": "^3.3",
+    "symfony/cache": "^3.3",
+    "symfony/yaml": "^3.3",
+    "symfony/config": "^3.3"
+  },
+  "config": {
+    "sort-packages": true
+  },
+  "autoload": {
+    "psr-4": {
+      "NewInventor\\DataStructure\\": "src/",
+      "TestsDataStructure\\": "tests/classes"
+    }
+  },
+  "require-dev": {
+    "codeception/codeception": "2.3.*",
+    "phpunit/phpunit": "^5.7",
+    "symfony/filesystem": "3.3.*"
+  }
+}

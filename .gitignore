@@ -1,0 +1,9 @@
+/.idea
+/vendor
+/node_modules
+/*.log
+/services
+core
+
+/test.*
+/test/

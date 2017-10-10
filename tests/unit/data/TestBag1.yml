@@ -1,0 +1,26 @@
+namespace: TestsDataStructure
+properties:
+  prop1:
+    transformers:
+      - CsvStringToArray: ~
+      - InnerTransformer:
+          - ToInt: ~
+          - ToInt: ~
+          - ToBool:
+              - ['true']
+              - ['false']
+          - ToFloat: ~
+  prop2:
+    transformers: ToInt
+    validation:
+      - GreaterThan:
+          value: 5
+          message: "Field 'per page' must be > {{ compared_value }}"
+      - LessThanOrEqual:
+          value: 1000
+          message: "Field 'per page' must be <= {{ compared_value }}"
+  prop3:
+    transformers:
+      - ToBool: [['TestsDataStructure\TestStatic', 'GetTrue']]
+    validation:
+      - NotNull: ~

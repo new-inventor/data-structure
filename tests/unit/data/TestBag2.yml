@@ -1,0 +1,74 @@
+namespace: TestsDataStructure
+parent: Some1\Some2\Some3\Parent
+abstract: true
+validation:
+  constraints:
+    - Callback: ['TestsDataStructure\TestStatic', 'GetTrue']
+  getters:
+    prop1:
+      - GreaterThan:
+          value: 0
+          message: "Field 'prop1' must be greater than {{ compared_value }}"
+  properties:
+    prop0:
+      - GreaterThan: 0
+properties:
+  prop1: NewInventor\Transformers\Transformer\ToInt
+  prop2:
+    transformers:
+      - ToInt: ~
+    validation:
+      - GreaterThan:
+          value: 5
+          message: "Field 'prop2' must be > {{ compared_value }}"
+      - LessThanOrEqual:
+          value: 1000
+          message: "Field 'prop2' must be <= {{ compared_value }}"
+  prop3:
+    transformers:
+      - ToBool:
+          - ['TestsDataStructure\TestStatic', 'GetTrue']
+  prop4:
+    transformers:
+      - ToBool:
+          - groups: forward
+      - BoolToMixed:
+          - static: ['TestsDataStructure\TestStatic', 'bbb']
+          - const: ['TestsDataStructure\TestStatic', 'AAA']
+          - groups: backward
+  prop5:
+    transformers:
+      - ToBool:
+          - groups: forward
+      - BoolToMixed:
+          - 1
+          - 0
+          - groups: backward
+  prop6:
+    transformers:
+      - NewInventor\Transformers\Transformer\ChainTransformer:
+          - ToString: ~
+          - CsvStringToArray: ~
+          - NewInventor\Transformers\Transformer\InnerTransformer:
+              - ToInt: ~
+          - groups: forward
+      - ArrayToCsvString:
+          - groups: backward
+  prop7:
+    default: 2222
+    transformers:
+      - ChainTransformer:
+          - ToString:
+          - StringToDateTime: 'd.m.Y'
+          - groups: forward
+  prop8:
+    transformers:
+      - ToArray:
+          - groups: forward
+  prop9: ~
+getters:
+  generate: true
+setters:
+  generate: true
+  only:
+    - prop0
