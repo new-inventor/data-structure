@@ -36,15 +36,8 @@ class MetadataTest extends Unit
         $meta = new Metadata();
         $meta->loadConfig(dirname(__DIR__) . '/data/TestBag.yml');
         $this->assertSame('TestsDataStructure', $meta->getNamespace());
-        $this->assertSame('Some1\Some2\Some3\Parent', $meta->getParent());
         $this->assertSame('TestBag', $meta->getClassName());
         $this->assertSame('TestsDataStructure\TestBag', $meta->getFullClassName());
-        $this->assertTrue($meta->isAbstract());
-        $this->assertSame(
-            ['prop2', 'prop3', 'prop4', 'prop5', 'prop6', 'prop7', 'prop8', 'prop9'],
-            $meta->getGetters()
-        );
-        $this->assertSame(['prop0'], $meta->getSetters());
         $transformers = $meta->getTransformer();
         $this->assertNull($transformers->getTransformer('prop0'));
         $this->assertSame(ToInt::class, get_class($transformers->getTransformer('prop1')));
@@ -146,15 +139,8 @@ class MetadataTest extends Unit
         $meta = new Metadata();
         $meta->loadConfig(dirname(__DIR__) . '/data/TestBag2.yml');
         $this->assertSame('TestsDataStructure', $meta->getNamespace());
-        $this->assertSame('Some1\Some2\Some3\Parent', $meta->getParent());
         $this->assertSame('TestBag2', $meta->getClassName());
         $this->assertSame('TestsDataStructure\TestBag2', $meta->getFullClassName());
-        $this->assertTrue($meta->isAbstract());
-        $this->assertSame(
-            ['prop1', 'prop0', 'prop2', 'prop3', 'prop4', 'prop5', 'prop6', 'prop7', 'prop8', 'prop9'],
-            $meta->getGetters()
-        );
-        $this->assertSame(['prop0'], $meta->getSetters());
         $transformers = $meta->getTransformer();
         $this->assertNull($transformers->getTransformer('prop0'));
         $this->assertSame(ToInt::class, get_class($transformers->getTransformer('prop1')));

@@ -35,18 +35,10 @@ class Metadata
     protected $classValidationMetadata;
     /** @var ValidatorInterface */
     protected $classValidator;
-    /** @var string */
-    protected $parent = '';
-    /** @var bool */
-    protected $abstract = false;
     /** @var string[] */
     protected $properties = [];
     /** @var StructureTransformerInterface[] */
     protected $transformers = [];
-    /** @var string[] */
-    protected $getters = [];
-    /** @var string[] */
-    protected $setters = [];
     /** @var array[] */
     protected $nested = [];
     
@@ -66,7 +58,6 @@ class Metadata
         $this->className = self::getClassNameFromFile($file);
         $processor = new Processor();
         $config = $processor->processConfiguration(new Configuration(), [$config]);
-        var_dump($config['properties']['prop2']['transformers'][0] ?? null);
         if (isset($config['namespace'])) {
             $this->namespace = $config['namespace'];
         }
@@ -311,22 +302,6 @@ class Metadata
     }
     
     /**
-     * @return string
-     */
-    public function getParent(): string
-    {
-        return $this->parent;
-    }
-    
-    /**
-     * @return bool
-     */
-    public function isAbstract(): bool
-    {
-        return $this->abstract;
-    }
-    
-    /**
      * @return string[]
      */
     public function getProperties(): array
@@ -342,22 +317,6 @@ class Metadata
     public function getTransformer(string $group = Configuration::DEFAULT_GROUP_NAME
     ): StructureTransformerInterface {
         return $this->transformers[$group];
-    }
-    
-    /**
-     * @return string[]
-     */
-    public function getGetters(): array
-    {
-        return $this->getters;
-    }
-    
-    /**
-     * @return string[]
-     */
-    public function getSetters(): array
-    {
-        return $this->setters;
     }
     
     /**

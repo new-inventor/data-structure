@@ -31,10 +31,6 @@ class Configuration implements ConfigurationInterface
         $builder
             ->root('metadata')
             ->append($this->getNamespaceNode())
-            ->append($this->getParentNode())
-            ->append($this->getAbstractNode())
-            ->append($this->getMethodsNode('getters'))
-            ->append($this->getMethodsNode('setters'))
             ->append($this->getValidationNode())
             ->append($this->getPropertiesNode());
         
