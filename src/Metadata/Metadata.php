@@ -19,6 +19,7 @@ use Symfony\Component\Translation\IdentityTranslator;
 use Symfony\Component\Validator\Constraint;
 use Symfony\Component\Validator\ConstraintValidatorFactory;
 use Symfony\Component\Validator\Context\ExecutionContextFactory;
+use Symfony\Component\Validator\Mapping\Cache\CacheInterface;
 use Symfony\Component\Validator\Mapping\ClassMetadata;
 use Symfony\Component\Validator\Mapping\Factory\LazyLoadingMetadataFactory;
 use Symfony\Component\Validator\Validator\RecursiveValidator;
@@ -41,6 +42,8 @@ class Metadata implements MetadataIntraface
     protected $transformers = [];
     /** @var array[] */
     protected $nested = [];
+    /** @var array */
+    protected $config = [];
     
     /**
      * @param string $file
@@ -67,17 +70,17 @@ class Metadata implements MetadataIntraface
      * @param string $file
      *
      * @return $this
+     * @throws \Symfony\Component\Yaml\Exception\ParseException
      */
     public function loadConfig(string $file)
     {
-        $config = self::getConfig($file);
+        $this->config = self::getConfig($file);
         $this->className = self::getClassNameFromFile($file);
         $processor = new Processor();
-        $config = $processor->processConfiguration(new Configuration(), [$config]);
+        $config = $processor->processConfiguration(new Configuration(), [$this->config]);
         if (isset($config['namespace'])) {
             $this->namespace = $config['namespace'];
         }
-        $this->initValidation($config);
         if (isset($config['parent'])) {
             $this->parent = $config['parent'];
         }
@@ -96,27 +99,7 @@ class Metadata implements MetadataIntraface
             $this->setters = $this->prepareMethods($config['setters']);
         }
         
-        $this->classValidator = $this->createValidator();
-        unset($this->classValidationMetadata);
-        
         return $this;
-    }
-    
-    protected function createValidator(): RecursiveValidator
-    {
-        $metadataFactory = new LazyLoadingMetadataFactory(new Loader($this->classValidationMetadata), null);
-        
-        $validatorFactory = new ConstraintValidatorFactory();
-        $translator = new IdentityTranslator();
-        $translator->setLocale('en');
-        
-        $contextFactory = new ExecutionContextFactory($translator, null);
-        
-        return new RecursiveValidator(
-            $contextFactory,
-            $metadataFactory,
-            $validatorFactory
-        );
     }
     
     protected function prepareMethods($config)
@@ -229,33 +212,50 @@ class Metadata implements MetadataIntraface
         return 'NewInventor\Transformers\Transformer\\' . $name;
     }
     
-    protected function initValidation($config): void
+    protected function initValidation(): void
     {
         $this->classValidationMetadata = new ClassMetadata($this->getFullClassName());
-        if (!isset($config['validation'])) {
+        if (!isset($this->config['validation'])) {
             return;
         }
-        if (isset($config['validation']['constraints']) && is_array($config['validation']['constraints'])) {
-            foreach ($config['validation']['constraints'] as $constraint) {
+        if (isset($this->config['validation']['constraints']) && is_array($this->config['validation']['constraints'])) {
+            foreach ($this->config['validation']['constraints'] as $constraint) {
                 $this->classValidationMetadata->addConstraint($this->prepareValidator($constraint));
             }
         }
-        if (isset($config['validation']['getters']) && is_array($config['validation']['getters'])) {
-            foreach ($config['validation']['getters'] as $propertyName => $validators) {
+        if (isset($this->config['validation']['getters']) && is_array($this->config['validation']['getters'])) {
+            foreach ($this->config['validation']['getters'] as $propertyName => $validators) {
                 if (!array_key_exists($propertyName, $this->properties)) {
                     $this->properties[$propertyName] = null;
                 }
                 $this->prepareGetterValidators($propertyName, $validators);
             }
         }
-        if (isset($config['validation']['properties']) && is_array($config['validation']['properties'])) {
-            foreach ($config['validation']['properties'] as $propertyName => $validators) {
+        if (isset($this->config['validation']['properties']) && is_array($this->config['validation']['properties'])) {
+            foreach ($this->config['validation']['properties'] as $propertyName => $validators) {
                 if (!array_key_exists($propertyName, $this->properties)) {
                     $this->properties[$propertyName] = null;
                 }
                 $this->preparePropertyValidators($propertyName, $validators);
             }
         }
+    }
+    
+    protected function createValidator(CacheInterface $cacheDriver = null): RecursiveValidator
+    {
+        $metadataFactory = new LazyLoadingMetadataFactory(new Loader($this->classValidationMetadata), $cacheDriver);
+        
+        $validatorFactory = new ConstraintValidatorFactory();
+        $translator = new IdentityTranslator();
+        $translator->setLocale('en');
+        
+        $contextFactory = new ExecutionContextFactory($translator, null);
+        
+        return new RecursiveValidator(
+            $contextFactory,
+            $metadataFactory,
+            $validatorFactory
+        );
     }
     
     protected function prepareGetterValidators(string $propertyName, array $validators): void
@@ -310,10 +310,17 @@ class Metadata implements MetadataIntraface
     }
     
     /**
+     * @param CacheInterface $cacheDriver
+     *
      * @return ValidatorInterface
      */
-    public function getValidator(): ValidatorInterface
+    public function getValidator(CacheInterface $cacheDriver = null): ValidatorInterface
     {
+        if($this->classValidator === null) {
+            $this->initValidation();
+            $this->classValidator = $this->createValidator($cacheDriver);
+            unset($this->classValidationMetadata);
+        }
         return $this->classValidator;
     }
     

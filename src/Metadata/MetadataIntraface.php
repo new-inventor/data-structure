@@ -9,6 +9,7 @@ namespace NewInventor\DataStructure\Metadata;
 
 
 use NewInventor\DataStructure\StructureTransformerInterface;
+use Symfony\Component\Validator\Mapping\Cache\CacheInterface;
 use Symfony\Component\Validator\Validator\ValidatorInterface;
 
 interface MetadataIntraface
@@ -51,9 +52,11 @@ interface MetadataIntraface
     public function getClassName(): string;
     
     /**
+     * @param CacheInterface $cacheDriver
+     *
      * @return ValidatorInterface
      */
-    public function getValidator(): ValidatorInterface;
+    public function getValidator(CacheInterface $cacheDriver): ValidatorInterface;
     
     /**
      * @return string[]
