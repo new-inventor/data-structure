@@ -29,7 +29,7 @@ class Loader
         } else {
             throw new \InvalidArgumentException("Path '$path' does not exists");
         }
-        $this->baseNamespace = trim($baseNamespace, '\t\n\r\0\x0B\\');
+        $this->baseNamespace = trim($baseNamespace, "\t\n\r\0\x0B\\/");
         if (
             !class_exists($metadataClass) ||
             !in_array(MetadataInterface::class, class_implements($metadataClass), true)
