@@ -62,14 +62,17 @@ class RecursiveConstructor
     /**
      * @param string $className
      * @param array  $properties
+     * @param string $group
      *
      * @return mixed
+     * @throws \RuntimeException
      * @throws \LogicException
+     * @throws \InvalidArgumentException
      */
-    public function construct(string $className, array $properties = [])
+    public function construct(string $className, array $properties = [], string $group = 'load')
     {
         $metadata = $this->metadataLoader->loadMetadataFor($className);
-        $transformedProperties = $this->transform($properties, $metadata);
+        $transformedProperties = $this->transform($properties, $metadata, $group);
         $constructedNested = $this->constructNested($metadata->getNested(), $transformedProperties);
         $transformedProperties = array_merge($transformedProperties, $constructedNested);
         if (
@@ -90,9 +93,9 @@ class RecursiveConstructor
         );
     }
     
-    protected function transform(array $properties, Metadata $metadata): array
+    protected function transform(array $properties, Metadata $metadata, $group): array
     {
-        $transformer = $metadata->getTransformer('load');
+        $transformer = $metadata->getTransformer($group);
         $transformer->setFailOnFirstError($this->failOnFirstError);
         $transformedProperties = $transformer->transform($properties);
         $this->errors = array_merge($this->errors, $transformer->getErrors());
