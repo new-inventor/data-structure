@@ -26,7 +26,7 @@ class Loader
         } else {
             throw new \InvalidArgumentException("Path '$path' does not exists");
         }
-        $this->baseNamespace = $baseNamespace;
+        $this->baseNamespace = trim($baseNamespace, '\t\n\r\0\x0B\\');
     }
     
     /**
@@ -60,7 +60,7 @@ class Loader
     /**
      * @param string $class
      *
-     * @return $this|mixed
+     * @return mixed
      * @throws \RuntimeException
      * @throws \InvalidArgumentException
      */
@@ -77,7 +77,7 @@ class Loader
     }
     
     /**
-     * @return Metadata
+     * @return mixed
      * @throws \RuntimeException
      */
     public function loadMetadata()

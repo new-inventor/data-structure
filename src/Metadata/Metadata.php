@@ -25,7 +25,7 @@ use Symfony\Component\Validator\Validator\RecursiveValidator;
 use Symfony\Component\Validator\Validator\ValidatorInterface;
 use Symfony\Component\Yaml\Yaml;
 
-class Metadata
+class Metadata implements MetadataIntraface
 {
     /** @var string */
     protected $namespace = '';
@@ -42,16 +42,32 @@ class Metadata
     /** @var array[] */
     protected $nested = [];
     
+    /**
+     * @param string $file
+     *
+     * @return mixed
+     * @throws \Symfony\Component\Yaml\Exception\ParseException
+     */
     public static function getConfig(string $file)
     {
         return Yaml::parse(file_get_contents($file));
     }
     
+    /**
+     * @param string $file
+     *
+     * @return mixed
+     */
     public static function getClassNameFromFile(string $file)
     {
         return pathinfo($file, PATHINFO_FILENAME);
     }
     
+    /**
+     * @param string $file
+     *
+     * @return $this
+     */
     public function loadConfig(string $file)
     {
         $config = self::getConfig($file);

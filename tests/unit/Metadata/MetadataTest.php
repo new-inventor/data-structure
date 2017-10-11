@@ -101,8 +101,10 @@ class MetadataTest extends Unit
         ];
     
         $loader = new Loader(dirname(__DIR__) . '/data', 'TestsDataStructure');
+        /** @var Metadata $metadata */
         $metadata = $loader->loadMetadataFor(TestBag::class);
         $transformer = $metadata->getTransformer()->setFailOnFirstError(false);
+        /** @var Metadata $metadata1 */
         $metadata1 = $loader->loadMetadataFor(TestBag1::class);
         $transformer1 = $metadata1->getTransformer()->setFailOnFirstError(false);
         $params = $transformer->transform($params);

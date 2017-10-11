@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1507648386">
-  <project timestamp="1507648386">
+<coverage generated="1507708137">
+  <project timestamp="1507708137">
     <file name="/home/george/www/data-structure/src/Arrayable.php">
       <metrics loc="17" ncloc="8" classes="0" methods="0" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="0" coveredstatements="0" elements="0" coveredelements="0"/>
     </file>
@@ -327,7 +327,7 @@
       </file>
       <file name="/home/george/www/data-structure/src/Metadata/Loader.php">
         <class name="Loader" namespace="NewInventor\DataStructure\Metadata">
-          <metrics complexity="19" methods="11" coveredmethods="10" conditionals="0" coveredconditionals="0" statements="33" coveredstatements="32" elements="44" coveredelements="42"/>
+          <metrics complexity="20" methods="12" coveredmethods="11" conditionals="0" coveredconditionals="0" statements="34" coveredstatements="33" elements="46" coveredelements="44"/>
         </class>
         <line num="22" type="method" name="__construct" visibility="public" complexity="2" crap="2.03" count="7"/>
         <line num="24" type="stmt" count="7"/>
@@ -342,184 +342,189 @@
         <line num="49" type="stmt" count="2"/>
         <line num="55" type="method" name="getBaseNamespace" visibility="public" complexity="1" crap="1" count="1"/>
         <line num="57" type="stmt" count="1"/>
-        <line num="60" type="method" name="loadMetadataFor" visibility="public" complexity="3" crap="3" count="5"/>
-        <line num="62" type="stmt" count="5"/>
-        <line num="63" type="stmt" count="4"/>
-        <line num="64" type="stmt" count="4"/>
-        <line num="65" type="stmt" count="4"/>
-        <line num="67" type="stmt" count="1"/>
-        <line num="69" type="stmt" count="1"/>
-        <line num="72" type="method" name="loadMetadata" visibility="public" complexity="2" crap="2" count="2"/>
-        <line num="74" type="stmt" count="2"/>
-        <line num="75" type="stmt" count="1"/>
-        <line num="77" type="stmt" count="1"/>
-        <line num="80" type="method" name="getMatadataObj" visibility="protected" complexity="3" crap="3" count="5"/>
-        <line num="82" type="stmt" count="5"/>
-        <line num="83" type="stmt" count="1"/>
-        <line num="84" type="stmt" count="1"/>
-        <line num="85" type="stmt" count="1"/>
+        <line num="67" type="method" name="loadMetadataFor" visibility="public" complexity="3" crap="3" count="5"/>
+        <line num="69" type="stmt" count="5"/>
+        <line num="70" type="stmt" count="4"/>
+        <line num="71" type="stmt" count="4"/>
+        <line num="72" type="stmt" count="4"/>
+        <line num="74" type="stmt" count="1"/>
+        <line num="76" type="stmt" count="1"/>
+        <line num="83" type="method" name="loadMetadata" visibility="public" complexity="2" crap="2" count="2"/>
+        <line num="85" type="stmt" count="2"/>
         <line num="86" type="stmt" count="1"/>
-        <line num="87" type="stmt" count="1"/>
         <line num="88" type="stmt" count="1"/>
-        <line num="91" type="stmt" count="1"/>
-        <line num="94" type="stmt" count="4"/>
-        <line num="97" type="method" name="getCacheKey" visibility="protected" complexity="1" crap="1" count="1"/>
+        <line num="91" type="method" name="getMatadataObj" visibility="protected" complexity="3" crap="3" count="5"/>
+        <line num="93" type="stmt" count="5"/>
+        <line num="94" type="stmt" count="1"/>
+        <line num="95" type="stmt" count="1"/>
+        <line num="96" type="stmt" count="1"/>
+        <line num="97" type="stmt" count="1"/>
+        <line num="98" type="stmt" count="1"/>
         <line num="99" type="stmt" count="1"/>
-        <line num="102" type="method" name="getFilePath" visibility="public" complexity="1" crap="1" count="4"/>
-        <line num="104" type="stmt" count="4"/>
+        <line num="102" type="stmt" count="1"/>
         <line num="105" type="stmt" count="4"/>
-        <line num="106" type="stmt" count="4"/>
-        <line num="109" type="method" name="isReadableDir" visibility="protected" complexity="2" crap="2" count="5"/>
-        <line num="111" type="stmt" count="5"/>
-        <line num="114" type="method" name="isReadableFile" visibility="protected" complexity="2" crap="2" count="6"/>
-        <line num="116" type="stmt" count="6"/>
-        <metrics loc="117" ncloc="98" classes="1" methods="11" coveredmethods="10" conditionals="0" coveredconditionals="0" statements="33" coveredstatements="32" elements="44" coveredelements="42"/>
+        <line num="108" type="method" name="constructMetadata" visibility="protected" complexity="1" crap="1" count="5"/>
+        <line num="110" type="stmt" count="5"/>
+        <line num="113" type="method" name="getCacheKey" visibility="protected" complexity="1" crap="1" count="1"/>
+        <line num="115" type="stmt" count="1"/>
+        <line num="118" type="method" name="getFilePath" visibility="public" complexity="1" crap="1" count="4"/>
+        <line num="120" type="stmt" count="4"/>
+        <line num="121" type="stmt" count="4"/>
+        <line num="122" type="stmt" count="4"/>
+        <line num="125" type="method" name="isReadableDir" visibility="protected" complexity="2" crap="2" count="5"/>
+        <line num="127" type="stmt" count="5"/>
+        <line num="130" type="method" name="isReadableFile" visibility="protected" complexity="2" crap="2" count="6"/>
+        <line num="132" type="stmt" count="6"/>
+        <metrics loc="133" ncloc="103" classes="1" methods="12" coveredmethods="11" conditionals="0" coveredconditionals="0" statements="34" coveredstatements="33" elements="46" coveredelements="44"/>
       </file>
       <file name="/home/george/www/data-structure/src/Metadata/Metadata.php">
         <class name="Metadata" namespace="NewInventor\DataStructure\Metadata">
           <metrics complexity="64" methods="23" coveredmethods="20" conditionals="0" coveredconditionals="0" statements="115" coveredstatements="105" elements="138" coveredelements="125"/>
         </class>
-        <line num="45" type="method" name="getConfig" visibility="public" complexity="1" crap="1" count="7"/>
-        <line num="47" type="stmt" count="7"/>
-        <line num="50" type="method" name="getClassNameFromFile" visibility="public" complexity="1" crap="1" count="7"/>
-        <line num="52" type="stmt" count="7"/>
-        <line num="55" type="method" name="loadConfig" visibility="public" complexity="8" crap="8.44" count="7"/>
-        <line num="57" type="stmt" count="7"/>
-        <line num="58" type="stmt" count="7"/>
-        <line num="59" type="stmt" count="7"/>
-        <line num="60" type="stmt" count="7"/>
-        <line num="61" type="stmt" count="7"/>
-        <line num="62" type="stmt" count="7"/>
-        <line num="64" type="stmt" count="7"/>
-        <line num="65" type="stmt" count="6"/>
-        <line num="66" type="stmt" count="0"/>
-        <line num="68" type="stmt" count="6"/>
-        <line num="69" type="stmt" count="0"/>
-        <line num="71" type="stmt" count="6"/>
-        <line num="72" type="stmt" count="6"/>
-        <line num="73" type="stmt" count="6"/>
-        <line num="76" type="stmt" count="6"/>
-        <line num="77" type="stmt" count="0"/>
-        <line num="79" type="stmt" count="6"/>
-        <line num="80" type="stmt" count="0"/>
-        <line num="83" type="stmt" count="6"/>
+        <line num="51" type="method" name="getConfig" visibility="public" complexity="1" crap="1" count="7"/>
+        <line num="53" type="stmt" count="7"/>
+        <line num="61" type="method" name="getClassNameFromFile" visibility="public" complexity="1" crap="1" count="7"/>
+        <line num="63" type="stmt" count="7"/>
+        <line num="71" type="method" name="loadConfig" visibility="public" complexity="8" crap="8.44" count="7"/>
+        <line num="73" type="stmt" count="7"/>
+        <line num="74" type="stmt" count="7"/>
+        <line num="75" type="stmt" count="7"/>
+        <line num="76" type="stmt" count="7"/>
+        <line num="77" type="stmt" count="7"/>
+        <line num="78" type="stmt" count="7"/>
+        <line num="80" type="stmt" count="7"/>
+        <line num="81" type="stmt" count="6"/>
+        <line num="82" type="stmt" count="0"/>
         <line num="84" type="stmt" count="6"/>
-        <line num="86" type="stmt" count="6"/>
-        <line num="89" type="method" name="createValidator" visibility="protected" complexity="1" crap="1" count="6"/>
-        <line num="91" type="stmt" count="6"/>
-        <line num="93" type="stmt" count="6"/>
-        <line num="94" type="stmt" count="6"/>
+        <line num="85" type="stmt" count="0"/>
+        <line num="87" type="stmt" count="6"/>
+        <line num="88" type="stmt" count="6"/>
+        <line num="89" type="stmt" count="6"/>
+        <line num="92" type="stmt" count="6"/>
+        <line num="93" type="stmt" count="0"/>
         <line num="95" type="stmt" count="6"/>
-        <line num="97" type="stmt" count="6"/>
+        <line num="96" type="stmt" count="0"/>
         <line num="99" type="stmt" count="6"/>
         <line num="100" type="stmt" count="6"/>
-        <line num="101" type="stmt" count="6"/>
         <line num="102" type="stmt" count="6"/>
-        <line num="106" type="method" name="prepareMethods" visibility="protected" complexity="3" crap="12" count="0"/>
-        <line num="108" type="stmt" count="0"/>
-        <line num="109" type="stmt" count="0"/>
-        <line num="111" type="stmt" count="0"/>
-        <line num="112" type="stmt" count="0"/>
-        <line num="115" type="stmt" count="0"/>
-        <line num="118" type="method" name="prepareProperty" visibility="protected" complexity="4" crap="4" count="6"/>
-        <line num="120" type="stmt" count="6"/>
-        <line num="121" type="stmt" count="6"/>
-        <line num="122" type="stmt" count="5"/>
-        <line num="125" type="stmt" count="6"/>
-        <line num="126" type="stmt" count="6"/>
-        <line num="127" type="stmt" count="6"/>
-        <line num="128" type="stmt" count="6"/>
-        <line num="129" type="stmt" count="6"/>
-        <line num="131" type="stmt" count="5"/>
-        <line num="133" type="stmt" count="6"/>
-        <line num="135" type="stmt" count="6"/>
+        <line num="105" type="method" name="createValidator" visibility="protected" complexity="1" crap="1" count="6"/>
+        <line num="107" type="stmt" count="6"/>
+        <line num="109" type="stmt" count="6"/>
+        <line num="110" type="stmt" count="6"/>
+        <line num="111" type="stmt" count="6"/>
+        <line num="113" type="stmt" count="6"/>
+        <line num="115" type="stmt" count="6"/>
+        <line num="116" type="stmt" count="6"/>
+        <line num="117" type="stmt" count="6"/>
+        <line num="118" type="stmt" count="6"/>
+        <line num="122" type="method" name="prepareMethods" visibility="protected" complexity="3" crap="12" count="0"/>
+        <line num="124" type="stmt" count="0"/>
+        <line num="125" type="stmt" count="0"/>
+        <line num="127" type="stmt" count="0"/>
+        <line num="128" type="stmt" count="0"/>
+        <line num="131" type="stmt" count="0"/>
+        <line num="134" type="method" name="prepareProperty" visibility="protected" complexity="4" crap="4" count="6"/>
         <line num="136" type="stmt" count="6"/>
-        <line num="138" type="method" name="setPropertyTransformer" visibility="protected" complexity="2" crap="2" count="6"/>
+        <line num="137" type="stmt" count="6"/>
+        <line num="138" type="stmt" count="5"/>
+        <line num="141" type="stmt" count="6"/>
+        <line num="142" type="stmt" count="6"/>
         <line num="143" type="stmt" count="6"/>
         <line num="144" type="stmt" count="6"/>
-        <line num="146" type="stmt" count="6"/>
-        <line num="147" type="stmt" count="6"/>
-        <line num="155" type="method" name="prepareTransformer" visibility="protected" complexity="3" crap="3" count="6"/>
-        <line num="157" type="stmt" count="6"/>
+        <line num="145" type="stmt" count="6"/>
+        <line num="147" type="stmt" count="5"/>
+        <line num="149" type="stmt" count="6"/>
+        <line num="151" type="stmt" count="6"/>
+        <line num="152" type="stmt" count="6"/>
+        <line num="154" type="method" name="setPropertyTransformer" visibility="protected" complexity="2" crap="2" count="6"/>
         <line num="159" type="stmt" count="6"/>
         <line num="160" type="stmt" count="6"/>
         <line num="162" type="stmt" count="6"/>
-        <line num="165" type="stmt" count="6"/>
-        <line num="168" type="method" name="prepareTransformersList" visibility="protected" complexity="4" crap="4" count="6"/>
-        <line num="170" type="stmt" count="6"/>
-        <line num="171" type="stmt" count="6"/>
-        <line num="172" type="stmt" count="6"/>
+        <line num="163" type="stmt" count="6"/>
+        <line num="171" type="method" name="prepareTransformer" visibility="protected" complexity="3" crap="3" count="6"/>
         <line num="173" type="stmt" count="6"/>
-        <line num="174" type="stmt" count="6"/>
         <line num="175" type="stmt" count="6"/>
         <line num="176" type="stmt" count="6"/>
-        <line num="177" type="stmt" count="6"/>
         <line num="178" type="stmt" count="6"/>
-        <line num="179" type="stmt" count="6"/>
-        <line num="182" type="stmt" count="6"/>
+        <line num="181" type="stmt" count="6"/>
+        <line num="184" type="method" name="prepareTransformersList" visibility="protected" complexity="4" crap="4" count="6"/>
         <line num="186" type="stmt" count="6"/>
-        <line num="189" type="method" name="normalizeGroups" visibility="protected" complexity="2" crap="2" count="6"/>
+        <line num="187" type="stmt" count="6"/>
+        <line num="188" type="stmt" count="6"/>
+        <line num="189" type="stmt" count="6"/>
+        <line num="190" type="stmt" count="6"/>
         <line num="191" type="stmt" count="6"/>
-        <line num="194" type="method" name="extractGroups" visibility="protected" complexity="5" crap="5" count="6"/>
-        <line num="196" type="stmt" count="6"/>
-        <line num="197" type="stmt" count="6"/>
+        <line num="192" type="stmt" count="6"/>
+        <line num="193" type="stmt" count="6"/>
+        <line num="194" type="stmt" count="6"/>
+        <line num="195" type="stmt" count="6"/>
         <line num="198" type="stmt" count="6"/>
-        <line num="200" type="stmt" count="6"/>
-        <line num="204" type="stmt" count="4"/>
-        <line num="207" type="method" name="getFullName" visibility="protected" complexity="3" crap="3.33" count="6"/>
-        <line num="209" type="stmt" count="6"/>
-        <line num="210" type="stmt" count="6"/>
-        <line num="213" type="stmt" count="0"/>
-        <line num="216" type="method" name="initValidation" visibility="protected" complexity="13" crap="13" count="7"/>
-        <line num="218" type="stmt" count="7"/>
-        <line num="219" type="stmt" count="7"/>
-        <line num="220" type="stmt" count="3"/>
-        <line num="222" type="stmt" count="5"/>
-        <line num="223" type="stmt" count="5"/>
-        <line num="224" type="stmt" count="5"/>
-        <line num="227" type="stmt" count="5"/>
-        <line num="228" type="stmt" count="5"/>
-        <line num="229" type="stmt" count="5"/>
-        <line num="230" type="stmt" count="5"/>
-        <line num="232" type="stmt" count="5"/>
-        <line num="235" type="stmt" count="4"/>
-        <line num="236" type="stmt" count="4"/>
-        <line num="237" type="stmt" count="4"/>
-        <line num="238" type="stmt" count="4"/>
-        <line num="240" type="stmt" count="4"/>
-        <line num="243" type="stmt" count="4"/>
-        <line num="245" type="method" name="prepareGetterValidators" visibility="protected" complexity="2" crap="2" count="7"/>
-        <line num="247" type="stmt" count="7"/>
+        <line num="202" type="stmt" count="6"/>
+        <line num="205" type="method" name="normalizeGroups" visibility="protected" complexity="2" crap="2" count="6"/>
+        <line num="207" type="stmt" count="6"/>
+        <line num="210" type="method" name="extractGroups" visibility="protected" complexity="5" crap="5" count="6"/>
+        <line num="212" type="stmt" count="6"/>
+        <line num="213" type="stmt" count="6"/>
+        <line num="214" type="stmt" count="6"/>
+        <line num="216" type="stmt" count="6"/>
+        <line num="220" type="stmt" count="4"/>
+        <line num="223" type="method" name="getFullName" visibility="protected" complexity="3" crap="3.33" count="6"/>
+        <line num="225" type="stmt" count="6"/>
+        <line num="226" type="stmt" count="6"/>
+        <line num="229" type="stmt" count="0"/>
+        <line num="232" type="method" name="initValidation" visibility="protected" complexity="13" crap="13" count="7"/>
+        <line num="234" type="stmt" count="7"/>
+        <line num="235" type="stmt" count="7"/>
+        <line num="236" type="stmt" count="3"/>
+        <line num="238" type="stmt" count="5"/>
+        <line num="239" type="stmt" count="5"/>
+        <line num="240" type="stmt" count="5"/>
+        <line num="243" type="stmt" count="5"/>
+        <line num="244" type="stmt" count="5"/>
+        <line num="245" type="stmt" count="5"/>
+        <line num="246" type="stmt" count="5"/>
         <line num="248" type="stmt" count="5"/>
-        <line num="250" type="stmt" count="6"/>
-        <line num="252" type="method" name="preparePropertyValidators" visibility="protected" complexity="2" crap="2" count="4"/>
+        <line num="251" type="stmt" count="4"/>
+        <line num="252" type="stmt" count="4"/>
+        <line num="253" type="stmt" count="4"/>
         <line num="254" type="stmt" count="4"/>
-        <line num="255" type="stmt" count="4"/>
-        <line num="257" type="stmt" count="4"/>
-        <line num="259" type="method" name="prepareValidator" visibility="protected" complexity="3" crap="3" count="5"/>
-        <line num="261" type="stmt" count="5"/>
-        <line num="262" type="stmt" count="5"/>
-        <line num="263" type="stmt" count="5"/>
-        <line num="265" type="stmt" count="5"/>
-        <line num="266" type="stmt" count="1"/>
-        <line num="269" type="stmt" count="5"/>
-        <line num="275" type="method" name="getFullClassName" visibility="public" complexity="1" crap="1" count="7"/>
-        <line num="277" type="stmt" count="7"/>
-        <line num="283" type="method" name="getNamespace" visibility="public" complexity="1" crap="1" count="2"/>
-        <line num="285" type="stmt" count="2"/>
-        <line num="291" type="method" name="getClassName" visibility="public" complexity="1" crap="1" count="2"/>
-        <line num="293" type="stmt" count="2"/>
-        <line num="299" type="method" name="getValidator" visibility="public" complexity="1" crap="1" count="2"/>
+        <line num="256" type="stmt" count="4"/>
+        <line num="259" type="stmt" count="4"/>
+        <line num="261" type="method" name="prepareGetterValidators" visibility="protected" complexity="2" crap="2" count="7"/>
+        <line num="263" type="stmt" count="7"/>
+        <line num="264" type="stmt" count="5"/>
+        <line num="266" type="stmt" count="6"/>
+        <line num="268" type="method" name="preparePropertyValidators" visibility="protected" complexity="2" crap="2" count="4"/>
+        <line num="270" type="stmt" count="4"/>
+        <line num="271" type="stmt" count="4"/>
+        <line num="273" type="stmt" count="4"/>
+        <line num="275" type="method" name="prepareValidator" visibility="protected" complexity="3" crap="3" count="5"/>
+        <line num="277" type="stmt" count="5"/>
+        <line num="278" type="stmt" count="5"/>
+        <line num="279" type="stmt" count="5"/>
+        <line num="281" type="stmt" count="5"/>
+        <line num="282" type="stmt" count="1"/>
+        <line num="285" type="stmt" count="5"/>
+        <line num="291" type="method" name="getFullClassName" visibility="public" complexity="1" crap="1" count="7"/>
+        <line num="293" type="stmt" count="7"/>
+        <line num="299" type="method" name="getNamespace" visibility="public" complexity="1" crap="1" count="2"/>
         <line num="301" type="stmt" count="2"/>
-        <line num="307" type="method" name="getProperties" visibility="public" complexity="1" crap="1" count="2"/>
+        <line num="307" type="method" name="getClassName" visibility="public" complexity="1" crap="1" count="2"/>
         <line num="309" type="stmt" count="2"/>
-        <line num="317" type="method" name="getTransformer" visibility="public" complexity="1" crap="1" count="4"/>
-        <line num="319" type="stmt" count="4"/>
-        <line num="325" type="method" name="getNested" visibility="public" complexity="1" crap="1" count="2"/>
-        <line num="327" type="stmt" count="2"/>
-        <metrics loc="328" ncloc="287" classes="1" methods="23" coveredmethods="20" conditionals="0" coveredconditionals="0" statements="115" coveredstatements="105" elements="138" coveredelements="125"/>
+        <line num="315" type="method" name="getValidator" visibility="public" complexity="1" crap="1" count="2"/>
+        <line num="317" type="stmt" count="2"/>
+        <line num="323" type="method" name="getProperties" visibility="public" complexity="1" crap="1" count="2"/>
+        <line num="325" type="stmt" count="2"/>
+        <line num="333" type="method" name="getTransformer" visibility="public" complexity="1" crap="1" count="4"/>
+        <line num="335" type="stmt" count="4"/>
+        <line num="341" type="method" name="getNested" visibility="public" complexity="1" crap="1" count="2"/>
+        <line num="343" type="stmt" count="2"/>
+        <metrics loc="344" ncloc="287" classes="1" methods="23" coveredmethods="20" conditionals="0" coveredconditionals="0" statements="115" coveredstatements="105" elements="138" coveredelements="125"/>
       </file>
     </package>
+    <file name="/home/george/www/data-structure/src/Metadata/MetadataIntraface.php">
+      <metrics loc="73" ncloc="29" classes="0" methods="0" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="0" coveredstatements="0" elements="0" coveredelements="0"/>
+    </file>
     <package name="NewInventor\DataStructure">
       <file name="/home/george/www/data-structure/src/PropertiesTransformer.php">
         <class name="PropertiesTransformer" namespace="NewInventor\DataStructure">
@@ -642,6 +647,6 @@
         <metrics loc="50" ncloc="32" classes="1" methods="2" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="12" coveredstatements="4" elements="14" coveredelements="5"/>
       </file>
     </package>
-    <metrics files="14" loc="1420" ncloc="1127" classes="10" methods="86" coveredmethods="69" conditionals="0" coveredconditionals="0" statements="475" coveredstatements="421" elements="561" coveredelements="490"/>
+    <metrics files="15" loc="1525" ncloc="1161" classes="10" methods="87" coveredmethods="70" conditionals="0" coveredconditionals="0" statements="476" coveredstatements="422" elements="563" coveredelements="492"/>
   </project>
 </coverage>
