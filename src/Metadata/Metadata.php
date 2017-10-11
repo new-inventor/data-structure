@@ -145,9 +145,12 @@ class Metadata implements MetadataIntraface
             class_exists($transformerClass) &&
             in_array(TransformerContainerInterface::class, class_implements($transformerClass), true)
         ) {
-            return new $transformerClass(...$this->prepareTransformersList($parameters));
+            $parameters = $this->prepareTransformersList($parameters);
         }
     
+        if(empty($parameters)){
+            return new $transformerClass();
+        }
         return new $transformerClass(...$parameters);
     }
     
