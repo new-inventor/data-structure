@@ -2,8 +2,9 @@
 namespace Metadata;
 
 use Codeception\Test\Unit;
-use NewInventor\DataStructure\Metadata\Metadata;
+use NewInventor\DataStructure\Metadata\Configuration;
 use NewInventor\DataStructure\Metadata\Loader;
+use NewInventor\DataStructure\Metadata\Metadata;
 use NewInventor\Transformers\Transformer\ArrayToCsvString;
 use NewInventor\Transformers\Transformer\BoolToMixed;
 use NewInventor\Transformers\Transformer\ChainTransformer;
@@ -34,8 +35,9 @@ class MetadataTest extends Unit
     
     public function test()
     {
+        $config = new Configuration();
         $meta = new Metadata();
-        $meta->loadConfig(dirname(__DIR__) . '/data/TestBag.yml');
+        $meta->loadConfig(dirname(__DIR__) . '/data/TestBag.yml', $config);
         $this->assertSame('TestsDataStructure', $meta->getNamespace());
         $this->assertSame('TestBag', $meta->getClassName());
         $this->assertSame('TestsDataStructure\TestBag', $meta->getFullClassName());
@@ -103,10 +105,10 @@ class MetadataTest extends Unit
     
         $loader = new Loader(dirname(__DIR__) . '/data', 'TestsDataStructure');
         /** @var Metadata $metadata */
-        $metadata = $loader->loadMetadataFor(TestBag::class);
+        $metadata = $loader->loadMetadataFor(TestBag::class, $config);
         $transformer = $metadata->getTransformer()->setFailOnFirstError(false);
         /** @var Metadata $metadata1 */
-        $metadata1 = $loader->loadMetadataFor(TestBag1::class);
+        $metadata1 = $loader->loadMetadataFor(TestBag1::class, $config);
         $transformer1 = $metadata1->getTransformer()->setFailOnFirstError(false);
         $params = $transformer->transform($params);
         $params['prop9'] = $transformer1->transform($params['prop9']);
@@ -134,13 +136,15 @@ class MetadataTest extends Unit
     {
         $this->expectException(InvalidConfigurationException::class);
         $meta = new Metadata();
-        $meta->loadConfig(dirname(__DIR__) . '/data/TestBag2Bad.yml');
+        $config = new Configuration();
+        $meta->loadConfig(dirname(__DIR__) . '/data/TestBag2Bad.yml', $config);
     }
     
     public function test2()
     {
+        $config = new Configuration();
         $meta = new Metadata();
-        $meta->loadConfig(dirname(__DIR__) . '/data/TestBag2.yml');
+        $meta->loadConfig(dirname(__DIR__) . '/data/TestBag2.yml', $config);
         $this->assertSame('TestsDataStructure', $meta->getNamespace());
         $this->assertSame('TestBag2', $meta->getClassName());
         $this->assertSame('TestsDataStructure\TestBag2', $meta->getFullClassName());

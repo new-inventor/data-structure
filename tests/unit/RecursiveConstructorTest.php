@@ -1,5 +1,6 @@
 <?php
 
+use NewInventor\DataStructure\Metadata\Configuration;
 use NewInventor\DataStructure\Metadata\Loader;
 use NewInventor\DataStructure\RecursiveConstructor;
 
@@ -22,7 +23,8 @@ class RecursiveConstructorTest extends \Codeception\Test\Unit
     public function testSomeFeature()
     {
         $loader = new Loader(__DIR__ . '/data', 'TestsDataStructure');
-        $constructor = new RecursiveConstructor($loader);
+        $config = new Configuration();
+        $constructor = new RecursiveConstructor($loader, $config);
         $properties = [
             'prop1' => '6545',
             'prop2' => '123',
@@ -57,7 +59,8 @@ class RecursiveConstructorTest extends \Codeception\Test\Unit
     public function test1()
     {
         $loader = new Loader(__DIR__ . '/data', 'TestsDataStructure');
-        $constructor = new RecursiveConstructor($loader);
+        $config = new Configuration();
+        $constructor = new RecursiveConstructor($loader, $config);
         $constructor->setFailOnFirstError(false);
         $properties = [
             'prop1' => '6545',

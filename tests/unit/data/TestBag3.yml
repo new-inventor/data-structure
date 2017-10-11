@@ -1,14 +1,15 @@
 namespace: TestsDataStructure
 properties:
-  prop1: NewInventor\Transformers\Transformer\ToInt
+  prop1:
+    transformers:
+      - NewInventor\Transformers\Transformer\ToInt:
+          - groups: some
   prop2:
     transformers:
-      - ToInt:
-          - groups: load
+      - ToInt: ~
   prop3:
     transformers:
       - ToBool:
-          - groups: load
           - ['TestsDataStructure\TestStatic', 'GetTrue']
   prop4:
     nested:

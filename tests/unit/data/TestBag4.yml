@@ -2,10 +2,8 @@ namespace: TestsDataStructure
 properties:
   prop1:
     transformers:
-      - CsvStringToArray:
-          - groups: load
+      - CsvStringToArray: ~
       - InnerTransformer:
-          - groups: load
           - ToInt: ~
           - ToInt: ~
           - ToBool:
@@ -14,9 +12,7 @@ properties:
           - ToFloat: ~
   prop2:
     transformers:
-      - ToInt:
-          - groups: load
+      - ToInt: ~
   prop3:
     transformers:
-      - ToBool:
-          - groups: load
+      - ToBool: ~

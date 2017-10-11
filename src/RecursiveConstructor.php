@@ -8,10 +8,11 @@
 namespace NewInventor\DataStructure;
 
 
+use NewInventor\DataStructure\Metadata\Configuration;
 use NewInventor\DataStructure\Metadata\Loader;
 use NewInventor\DataStructure\Metadata\Metadata;
+use Symfony\Component\Config\Definition\ConfigurationInterface;
 
-//TODO mapping
 class RecursiveConstructor
 {
     /** @var Loader */
@@ -20,15 +21,19 @@ class RecursiveConstructor
     protected $errors = [];
     /** @var bool */
     protected $failOnFirstError = true;
+    /** @var ConfigurationInterface */
+    protected $configuration;
     
     /**
      * DataStructureRecursiveConstructor constructor.
      *
-     * @param Loader $metadataLoader
+     * @param Loader                 $metadataLoader
+     * @param ConfigurationInterface $configuration
      */
-    public function __construct(Loader $metadataLoader)
+    public function __construct(Loader $metadataLoader, ConfigurationInterface $configuration)
     {
         $this->metadataLoader = $metadataLoader;
+        $this->configuration = $configuration;
     }
     
     /**
@@ -60,18 +65,23 @@ class RecursiveConstructor
     }
     
     /**
-     * @param string $className
-     * @param array  $properties
-     * @param string $group
+     * @param string                      $className
+     * @param array                       $properties
+     * @param ConfigurationInterface|null $configuration
+     * @param string                      $group
      *
      * @return mixed
-     * @throws \RuntimeException
      * @throws \LogicException
+     * @throws \RuntimeException
      * @throws \InvalidArgumentException
+     * @internal param ConfigurationInterface $config
      */
-    public function construct(string $className, array $properties = [], string $group = 'load')
-    {
-        $metadata = $this->metadataLoader->loadMetadataFor($className);
+    public function construct(
+        string $className,
+        array $properties = [],
+        string $group = Configuration::DEFAULT_GROUP_NAME
+    ) {
+        $metadata = $this->metadataLoader->loadMetadataFor($className, $this->configuration);
         $transformedProperties = $this->transform($properties, $metadata, $group);
         $constructedNested = $this->constructNested($metadata->getNested(), $transformedProperties);
         $transformedProperties = array_merge($transformedProperties, $constructedNested);
@@ -108,6 +118,8 @@ class RecursiveConstructor
      * @param array $properties
      *
      * @return array
+     * @throws \InvalidArgumentException
+     * @throws \RuntimeException
      * @throws \LogicException
      */
     protected function constructNested(array $nestedConfigs, array $properties): array
@@ -132,21 +144,28 @@ class RecursiveConstructor
      * @param $config
      *
      * @return mixed
+     * @throws \InvalidArgumentException
+     * @throws \RuntimeException
      * @throws \LogicException
      */
     protected function constructConcreteNested($propertyValue, $propertyName, $config)
     {
         if (isset($nestedConfig['metadata'])) {
             $metadataLoader = new Loader($config['metadata']['path'], $config['metadata']['baseNamespace']);
-            $nestedConstructor = new self($metadataLoader);
+            $configuration = $this->configuration;
+            if ($config['metadata']['configuration'] !== null) {
+                $class = $config['metadata']['configuration'];
+                $configuration = new $class();
+            }
+            $nestedConstructor = new self($metadataLoader, $configuration);
         } else {
-            $nestedConstructor = new self($this->metadataLoader);
+            $nestedConstructor = new self($this->metadataLoader, $this->configuration);
         }
         $nestedConstructor->setFailOnFirstError($this->failOnFirstError);
-    
+        
         $result = $nestedConstructor->construct($config['class'], $propertyValue);
         $this->errors = array_merge($this->errors, [$propertyName => $nestedConstructor->getErrors()]);
-    
+        
         return $result;
     }
 }

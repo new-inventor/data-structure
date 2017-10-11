@@ -14,6 +14,7 @@ use NewInventor\DataStructure\Validation\Loader;
 use NewInventor\Transformers\Transformer\ChainTransformer;
 use NewInventor\Transformers\TransformerContainerInterface;
 use NewInventor\Transformers\TransformerInterface;
+use Symfony\Component\Config\Definition\ConfigurationInterface;
 use Symfony\Component\Config\Definition\Processor;
 use Symfony\Component\Translation\IdentityTranslator;
 use Symfony\Component\Validator\Constraint;
@@ -26,7 +27,7 @@ use Symfony\Component\Validator\Validator\RecursiveValidator;
 use Symfony\Component\Validator\Validator\ValidatorInterface;
 use Symfony\Component\Yaml\Yaml;
 
-class Metadata implements MetadataIntraface
+class Metadata implements MetadataInterface
 {
     /** @var string */
     protected $namespace = '';
@@ -44,6 +45,22 @@ class Metadata implements MetadataIntraface
     protected $nested = [];
     /** @var array */
     protected $configArray = [];
+    protected $metaInfo = [];
+    
+    /**
+     * @param string $metaName
+     *
+     * @return mixed
+     * @throws \InvalidArgumentException
+     */
+    public function get(string $metaName)
+    {
+        if (!array_key_exists($metaName, $this->metaInfo)) {
+            throw new \InvalidArgumentException("Metadata information for name $metaName does not exist.");
+        }
+        
+        return $this->metaInfo[$metaName];
+    }
     
     /**
      * @param string $file
@@ -67,17 +84,18 @@ class Metadata implements MetadataIntraface
     }
     
     /**
-     * @param string $file
+     * @param string                 $file
+     * @param ConfigurationInterface $configuration
      *
      * @return $this
      * @throws \Symfony\Component\Yaml\Exception\ParseException
      */
-    public function loadConfig(string $file)
+    public function loadConfig(string $file, ConfigurationInterface $configuration)
     {
         $config = self::getConfig($file);
         $this->className = self::getClassNameFromFile($file);
         $processor = new Processor();
-        $this->configArray = $processor->processConfiguration(new Configuration(), [$config]);
+        $this->configArray = $processor->processConfiguration($configuration, [$config]);
         if (isset($this->configArray['namespace'])) {
             $this->namespace = $this->configArray['namespace'];
         }

@@ -8,6 +8,7 @@
 namespace NewInventor\DataStructure;
 
 
+//TODO mapping
 interface DataStructureInterface extends Loadable, Arrayable
 {
     /**
