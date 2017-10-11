@@ -80,7 +80,6 @@ class Configuration implements ConfigurationInterface
             ->append($this->getTransformersNode())
             ->append($this->getPropertyValidationNode())
             ->end();
-        
         return $node;
     }
     
@@ -299,7 +298,7 @@ class Configuration implements ConfigurationInterface
             ->end()
             ->validate()
             ->ifTrue(\Closure::fromCallable([$this, 'isTransformer']))
-            ->then(\Closure::fromCallable([$this, 'getTransformerNode']))
+            ->then(\Closure::fromCallable([$this, 'getInnerTransformerNode']))
             ->end()
             ->end()
             ->end();
@@ -307,7 +306,49 @@ class Configuration implements ConfigurationInterface
         return $node;
     }
     
-    protected function evaluateTransformer($name)
+    protected function makeTransformer($name)
+    {
+        $builder = new TreeBuilder();
+        $node = $builder->root($name);
+        
+        $node
+            ->validate()
+            ->ifTrue(
+                function ($v) {
+                    return array_values($v)[0] === null;
+                }
+            )
+            ->then(
+                Function ($v) {
+                    return [array_keys($v)[0] => [['groups' => ['default']]]];
+                }
+            )
+            ->end()
+            ->validate()
+            ->ifTrue(
+                function ($v) {
+                    return is_scalar(array_values($v)[0]);
+                }
+            )
+            ->then(
+                Function ($v) {
+                    $transformerName = array_keys($v)[0];
+                    return [$transformerName => [$v[$transformerName]]];
+                }
+            )
+            ->end()
+            ->variablePrototype()
+            ->beforeNormalization()
+            ->ifTrue(\Closure::fromCallable([$this, 'checkCustomParameters']))
+            ->then(\Closure::fromCallable([$this, 'normalizeCustomParameters']))
+            ->end()
+            ->end()
+            ->end();
+        
+        return $node;
+    }
+    
+    protected function makeInnerTransformer($name)
     {
         $builder = new TreeBuilder();
         $node = $builder->root($name);
@@ -419,6 +460,11 @@ class Configuration implements ConfigurationInterface
     
     public function getTransformerNode($v)
     {
-        return $this->evaluateTransformer(array_keys($v)[0])->getNode(true)->finalize($v);
+        return $this->makeTransformer(array_keys($v)[0])->getNode(true)->finalize($v);
+    }
+    
+    public function getInnerTransformerNode($v)
+    {
+        return $this->makeInnerTransformer(array_keys($v)[0])->getNode(true)->finalize($v);
     }
 }

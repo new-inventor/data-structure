@@ -43,7 +43,7 @@ class Metadata implements MetadataIntraface
     /** @var array[] */
     protected $nested = [];
     /** @var array */
-    protected $config = [];
+    protected $configArray = [];
     
     /**
      * @param string $file
@@ -74,29 +74,17 @@ class Metadata implements MetadataIntraface
      */
     public function loadConfig(string $file)
     {
-        $this->config = self::getConfig($file);
+        $config = self::getConfig($file);
         $this->className = self::getClassNameFromFile($file);
         $processor = new Processor();
-        $config = $processor->processConfiguration(new Configuration(), [$this->config]);
-        if (isset($config['namespace'])) {
-            $this->namespace = $config['namespace'];
+        $this->configArray = $processor->processConfiguration(new Configuration(), [$config]);
+        if (isset($this->configArray['namespace'])) {
+            $this->namespace = $this->configArray['namespace'];
         }
-        if (isset($config['parent'])) {
-            $this->parent = $config['parent'];
-        }
-        if (isset($config['abstract'])) {
-            $this->abstract = $config['abstract'];
-        }
-        if (isset($config['properties'])) {
-            foreach ($config['properties'] as $propertyName => $metadata) {
+        if (isset($this->configArray['properties'])) {
+            foreach ($this->configArray['properties'] as $propertyName => $metadata) {
                 $this->prepareProperty($propertyName, $metadata);
             }
-        }
-        if (isset($config['getters'])) {
-            $this->getters = $this->prepareMethods($config['getters']);
-        }
-        if (isset($config['setters'])) {
-            $this->setters = $this->prepareMethods($config['setters']);
         }
         
         return $this;
@@ -131,7 +119,6 @@ class Metadata implements MetadataIntraface
             }
             $this->setPropertyTransformer($group, $propertyName, $transformer);
         }
-        $this->prepareGetterValidators($propertyName, $metadata['validation']);
     }
     
     protected function setPropertyTransformer(
@@ -215,24 +202,24 @@ class Metadata implements MetadataIntraface
     protected function initValidation(): void
     {
         $this->classValidationMetadata = new ClassMetadata($this->getFullClassName());
-        if (!isset($this->config['validation'])) {
+        if (!isset($this->configArray['validation'])) {
             return;
         }
-        if (isset($this->config['validation']['constraints']) && is_array($this->config['validation']['constraints'])) {
-            foreach ($this->config['validation']['constraints'] as $constraint) {
+        if (isset($this->configArray['validation']['constraints']) && is_array($this->configArray['validation']['constraints'])) {
+            foreach ($this->configArray['validation']['constraints'] as $constraint) {
                 $this->classValidationMetadata->addConstraint($this->prepareValidator($constraint));
             }
         }
-        if (isset($this->config['validation']['getters']) && is_array($this->config['validation']['getters'])) {
-            foreach ($this->config['validation']['getters'] as $propertyName => $validators) {
+        if (isset($this->configArray['validation']['getters']) && is_array($this->configArray['validation']['getters'])) {
+            foreach ($this->configArray['validation']['getters'] as $propertyName => $validators) {
                 if (!array_key_exists($propertyName, $this->properties)) {
                     $this->properties[$propertyName] = null;
                 }
                 $this->prepareGetterValidators($propertyName, $validators);
             }
         }
-        if (isset($this->config['validation']['properties']) && is_array($this->config['validation']['properties'])) {
-            foreach ($this->config['validation']['properties'] as $propertyName => $validators) {
+        if (isset($this->configArray['validation']['properties']) && is_array($this->configArray['validation']['properties'])) {
+            foreach ($this->configArray['validation']['properties'] as $propertyName => $validators) {
                 if (!array_key_exists($propertyName, $this->properties)) {
                     $this->properties[$propertyName] = null;
                 }
@@ -318,6 +305,9 @@ class Metadata implements MetadataIntraface
     {
         if($this->classValidator === null) {
             $this->initValidation();
+            foreach ($this->configArray['properties'] as $propertyName => $metadata) {
+                $this->prepareGetterValidators($propertyName, $metadata['validation']);
+            }
             $this->classValidator = $this->createValidator($cacheDriver);
             unset($this->classValidationMetadata);
         }

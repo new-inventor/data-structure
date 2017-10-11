@@ -12,6 +12,7 @@ use NewInventor\Transformers\Transformer\ToArray;
 use NewInventor\Transformers\Transformer\ToBool;
 use NewInventor\Transformers\Transformer\ToInt;
 use NewInventor\Transformers\Transformer\ToString;
+use Symfony\Component\Config\Definition\Exception\InvalidConfigurationException;
 use Symfony\Component\Validator\Validator\RecursiveValidator;
 use TestsDataStructure\TestBag;
 use TestsDataStructure\TestBag1;
@@ -76,7 +77,6 @@ class MetadataTest extends Unit
         $this->assertSame(
             [
                 'prop1' => null,
-                'prop0' => null,
                 'prop2' => null,
                 'prop3' => null,
                 'prop4' => null,
@@ -85,6 +85,7 @@ class MetadataTest extends Unit
                 'prop7' => 2222,
                 'prop8' => null,
                 'prop9' => null,
+                'prop0' => null,
             ],
             $meta->getProperties()
         );
@@ -131,7 +132,7 @@ class MetadataTest extends Unit
     
     public function test1()
     {
-        $this->expectException(\InvalidArgumentException::class);
+        $this->expectException(InvalidConfigurationException::class);
         $meta = new Metadata();
         $meta->loadConfig(dirname(__DIR__) . '/data/TestBag2Bad.yml');
     }
@@ -181,7 +182,6 @@ class MetadataTest extends Unit
         $this->assertSame(
             [
                 'prop1' => null,
-                'prop0' => null,
                 'prop2' => null,
                 'prop3' => null,
                 'prop4' => null,
@@ -190,6 +190,7 @@ class MetadataTest extends Unit
                 'prop7' => 2222,
                 'prop8' => null,
                 'prop9' => null,
+                'prop0' => null,
             ],
             $meta->getProperties()
         );
