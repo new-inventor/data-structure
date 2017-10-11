@@ -1,0 +1,18 @@
+namespace: TestsDataStructure
+properties:
+  prop1:
+    transformers:
+      - CsvStringToArray: ~
+      - InnerTransformer:
+          - ToInt: ~
+          - ToInt: ~
+          - ToBool:
+              - ['true']
+              - ['false']
+          - ToFloat: ~
+  prop2:
+    transformers:
+      - ToInt: ~
+  prop3:
+    transformers:
+      - ToBool: ~

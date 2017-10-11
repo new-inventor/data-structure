@@ -86,4 +86,31 @@ class RecursiveConstructorTest extends \Codeception\Test\Unit
             $errors
         );
     }
+    
+    public function test2()
+    {
+        $loader = new Loader(__DIR__ . '/data', 'TestsDataStructure');
+        $config = new Configuration();
+        $constructor = new RecursiveConstructor($loader, $config);
+        $properties = [
+            'prop1' => '6545',
+            'prop2' => '123',
+            'prop3' => true,
+            'prop4' => [
+                [
+                    'prop1' => '123,456,true,123.3423',
+                    'prop2' => '3',
+                    'prop3' => '1',
+                ],
+                [
+                    'prop1' => '123,456,true,123.3423',
+                    'prop2' => '3',
+                    'prop3' => '1',
+                ],
+            ],
+        ];
+        /** @var \TestsDataStructure\TestBag5 $bag */
+        $bag = $constructor->construct('TestsDataStructure\TestBag5', $properties);
+        $this->assertCount(2, $bag->getProp4());
+    }
 }

@@ -1,0 +1,17 @@
+namespace: TestsDataStructure
+properties:
+  prop1:
+    transformers:
+      - NewInventor\Transformers\Transformer\ToInt:
+          - groups: some
+  prop2:
+    transformers:
+      - ToInt: ~
+  prop3:
+    transformers:
+      - ToBool:
+          - ['TestsDataStructure\TestStatic', 'GetTrue']
+  prop4:
+    nested:
+      class: TestsDataStructure\TestBag6
+      array: true

@@ -114,6 +114,7 @@ class Configuration implements ConfigurationInterface
             ->end()
             ->end()
             ->scalarNode('class')->isRequired()->end()
+            ->booleanNode('array')->defaultFalse()->end()
             ->end();
     }
     

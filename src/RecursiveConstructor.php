@@ -127,6 +127,16 @@ class RecursiveConstructor
         $res = [];
         if (count($nestedConfigs) > 0) {
             foreach ($nestedConfigs as $propertyName => $config) {
+                if ($config['array']) {
+                    foreach ($properties[$propertyName] as $oneNestedProperties) {
+                        $res[$propertyName][] = $this->constructConcreteNested(
+                            $oneNestedProperties,
+                            $propertyName,
+                            $config
+                        );
+                    }
+                    continue;
+                }
                 $res[$propertyName] = $this->constructConcreteNested(
                     $properties[$propertyName],
                     $propertyName,
