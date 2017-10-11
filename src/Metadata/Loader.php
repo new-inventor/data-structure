@@ -18,8 +18,10 @@ class Loader
     protected $baseNamespace;
     /** @var CacheItemPoolInterface */
     protected $cacheDriver;
+    /** @var string */
+    private $metadataClass;
     
-    public function __construct(string $path, string $baseNamespace = '')
+    public function __construct(string $path, string $baseNamespace = '', string $metadataClass = Metadata::class)
     {
         if (file_exists($path)) {
             $this->path = $path;
@@ -27,6 +29,10 @@ class Loader
             throw new \InvalidArgumentException("Path '$path' does not exists");
         }
         $this->baseNamespace = trim($baseNamespace, '\t\n\r\0\x0B\\');
+        if(!class_exists($metadataClass) || !in_array(MetadataIntraface::class, class_implements($metadataClass), true)){
+            throw new \InvalidArgumentException('Metadata class must implement ' . MetadataIntraface::class);
+        }
+        $this->metadataClass = $metadataClass;
     }
     
     /**
@@ -107,7 +113,10 @@ class Loader
     
     protected function constructMetadata($path)
     {
-        return (new Metadata())->loadConfig($path);
+        $class = $this->metadataClass;
+    
+        /** @noinspection PhpUndefinedMethodInspection */
+        return (new $class())->loadConfig($path);
     }
     
     protected function getCacheKey(string $class)

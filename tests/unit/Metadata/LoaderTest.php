@@ -58,4 +58,16 @@ class LoaderTest extends \Codeception\Test\Unit
         $loader->loadMetadata();
         $this->assertSame(dirname(__DIR__) . '/data/TestBag.yml', $loader->getPath());
     }
+    
+    public function test4()
+    {
+        $this->expectException(\InvalidArgumentException::class);
+        new Loader(dirname(__DIR__) . '/data/TestBag.yml', '', 'Not\existing\class');
+    }
+    
+    public function test5()
+    {
+        $this->expectException(\InvalidArgumentException::class);
+        new Loader(dirname(__DIR__) . '/data/not/exist');
+    }
 }
