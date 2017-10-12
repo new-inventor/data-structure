@@ -127,6 +127,9 @@ class RecursiveConstructor
         $res = [];
         if (count($nestedConfigs) > 0) {
             foreach ($nestedConfigs as $propertyName => $config) {
+                if (!isset($properties[$propertyName])) {
+                    continue;
+                }
                 if ($config['array']) {
                     foreach ($properties[$propertyName] as $oneNestedProperties) {
                         $res[$propertyName][] = $this->constructConcreteNested(
@@ -160,6 +163,12 @@ class RecursiveConstructor
      */
     protected function constructConcreteNested($propertyValue, $propertyName, $config)
     {
+        if ($propertyValue === null) {
+            return null;
+        }
+        if (!is_array($propertyValue)) {
+            return $propertyValue;
+        }
         if (isset($nestedConfig['metadata'])) {
             $metadataLoader = new Loader($config['metadata']['path'], $config['metadata']['baseNamespace']);
             $configuration = $this->configuration;
