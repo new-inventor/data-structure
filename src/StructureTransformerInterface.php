@@ -22,27 +22,17 @@ interface StructureTransformerInterface
     
     /**
      * @param array $properties
+     * @param bool  $mute
      *
      * @return array
      * @throws PropertyTransformationException
      * @throws PropertyInvalidTypeException
      */
-    public function transform(array $properties = []): array;
+    public function transform(array $properties, bool $mute = false): array;
     
     /**
      * @return array
      */
     public function getErrors(): array;
     
-    /**
-     * @return bool
-     */
-    public function isFailOnFirstError(): bool;
-    
-    /**
-     * @param bool $failOnFirstError
-     *
-     * @return $this
-     */
-    public function setFailOnFirstError(bool $failOnFirstError);
 }

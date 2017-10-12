@@ -8,47 +8,24 @@
 namespace NewInventor\DataStructure\Metadata;
 
 
-use Psr\Cache\CacheItemPoolInterface;
-use Symfony\Component\Config\Definition\ConfigurationInterface;
-
 class Loader
 {
     /** @var string */
     protected $path;
     /** @var string */
     protected $baseNamespace;
-    /** @var CacheItemPoolInterface */
-    protected $cacheDriver;
-    /** @var string */
-    private $metadataClass;
+    /** @var ParserInterface */
+    protected $parser;
     
-    public function __construct(string $path, string $baseNamespace = '', string $metadataClass = Metadata::class)
+    public function __construct(string $path, ParserInterface $parser, string $baseNamespace = '')
     {
         if (file_exists($path)) {
             $this->path = $path;
         } else {
             throw new \InvalidArgumentException("Path '$path' does not exists");
         }
+        $this->parser = $parser;
         $this->baseNamespace = trim($baseNamespace, "\t\n\r\0\x0B\\/");
-        if (
-            !class_exists($metadataClass) ||
-            !in_array(MetadataInterface::class, class_implements($metadataClass), true)
-        ) {
-            throw new \InvalidArgumentException('Metadata class must implement ' . MetadataInterface::class);
-        }
-        $this->metadataClass = $metadataClass;
-    }
-    
-    /**
-     * @param CacheItemPoolInterface $cacheDriver
-     *
-     * @return $this
-     */
-    public function setCacheDriver(CacheItemPoolInterface $cacheDriver)
-    {
-        $this->cacheDriver = $cacheDriver;
-        
-        return $this;
     }
     
     /**
@@ -68,73 +45,31 @@ class Loader
     }
     
     /**
-     * @param string $class
-     * @param ConfigurationInterface $configuration
+     * @param MetadataInterface $metadata
      *
-     * @return mixed
-     * @throws \RuntimeException
      * @throws \InvalidArgumentException
+     * @throws \Symfony\Component\Yaml\Exception\ParseException
      */
-    public function loadMetadataFor(string $class, ConfigurationInterface $configuration)
+    public function loadMetadata(MetadataInterface $metadata): void
     {
         if ($this->isReadableDir($this->path)) {
-            $path = $this->getFilePath($class);
+            $path = $this->getFilePath($metadata);
             if ($this->isReadableFile($path)) {
-                return $this->getMetadataObj($path, $configuration);
+                $this->parser->parse($path, $metadata);
+            } else {
+                throw new \InvalidArgumentException(
+                    "Path '$path' for class '{$metadata->getFullClassName()}' does not exists."
+                );
             }
-            throw new \InvalidArgumentException("Path for class '$class' does not exists.");
+        } else if ($this->isReadableFile($this->path)) {
+            $this->parser->parse($this->path, $metadata);
         }
-        throw new \RuntimeException('Path is file, so use "loadMetadata" method.');
     }
     
-    /**
-     * @param ConfigurationInterface $configuration
-     *
-     * @return mixed
-     * @throws \RuntimeException
-     */
-    public function loadMetadata(ConfigurationInterface $configuration)
+    public function getFilePath(MetadataInterface $metadata): string
     {
-        if ($this->isReadableFile($this->path)) {
-            return $this->getMetadataObj($this->path, $configuration);
-        }
-        throw new \RuntimeException('Path is directory, so use "loadMetadataFor" method.');
-    }
-    
-    protected function getMetadataObj(string $path, ConfigurationInterface $configuration)
-    {
-        if ($this->cacheDriver !== null) {
-            $key = $this->getCacheKey($path);
-            $item = $this->cacheDriver->getItem($key);
-            if (!$item->isHit()) {
-                $config = $this->constructMetadata($path, $configuration);
-                $item->set($config);
-                $this->cacheDriver->save($item);
-            }
-            
-            return $item->get();
-        }
-    
-        return $this->constructMetadata($path, $configuration);
-    }
-    
-    protected function constructMetadata($path, ConfigurationInterface $configuration)
-    {
-        $class = $this->metadataClass;
-    
-        /** @noinspection PhpUndefinedMethodInspection */
-        return (new $class())->loadConfig($path, $configuration);
-    }
-    
-    protected function getCacheKey(string $class)
-    {
-        return preg_replace('/[\\\\{}()\\/@]+/', '_', $class);
-    }
-    
-    public function getFilePath(string $class): string
-    {
-        return $this->path .
-               str_replace([$this->baseNamespace, '\\'], ['', DIRECTORY_SEPARATOR], $class) .
+        return $this->path . DIRECTORY_SEPARATOR .
+               str_replace([$this->baseNamespace, '\\'], ['', DIRECTORY_SEPARATOR], $metadata->getFullClassName()) .
                '.yml';
     }
     

@@ -1,10 +1,12 @@
 <?php
 
 use NewInventor\DataStructure\Metadata\Configuration;
-use NewInventor\DataStructure\Metadata\Loader;
-use NewInventor\DataStructure\RecursiveConstructor;
+use NewInventor\DataStructure\Metadata\Factory;
+use NewInventor\DataStructure\RecursiveLoader;
+use TestsDataStructure\TestBag3;
+use TestsDataStructure\TestBag5;
 
-class RecursiveConstructorTest extends \Codeception\Test\Unit
+class RecursiveLoaderTest extends \Codeception\Test\Unit
 {
     /**
      * @var \UnitTester
@@ -22,9 +24,6 @@ class RecursiveConstructorTest extends \Codeception\Test\Unit
     // tests
     public function testSomeFeature()
     {
-        $loader = new Loader(__DIR__ . '/data', 'TestsDataStructure');
-        $config = new Configuration();
-        $constructor = new RecursiveConstructor($loader, $config);
         $properties = [
             'prop1' => '6545',
             'prop2' => '123',
@@ -35,8 +34,10 @@ class RecursiveConstructorTest extends \Codeception\Test\Unit
                 'prop3' => '1',
             ],
         ];
-        /** @var \TestsDataStructure\TestBag3 $bag */
-        $bag = $constructor->construct('TestsDataStructure\TestBag3', $properties);
+        $factory = new Factory(__DIR__ . '/data', 'TestsDataStructure');
+        $loader = new RecursiveLoader($factory, Configuration::DEFAULT_GROUP_NAME, false);
+        $bag = new TestBag3();
+        $loader->load($bag, $properties);
         $this->assertSame('6545', $bag->getProp1());
         $this->assertSame(123, $bag->getProp2());
         $this->assertTrue($bag->getProp3());
@@ -58,10 +59,6 @@ class RecursiveConstructorTest extends \Codeception\Test\Unit
     
     public function test1()
     {
-        $loader = new Loader(__DIR__ . '/data', 'TestsDataStructure');
-        $config = new Configuration();
-        $constructor = new RecursiveConstructor($loader, $config);
-        $constructor->setFailOnFirstError(false);
         $properties = [
             'prop1' => '6545',
             'prop2' => 'asd',
@@ -72,8 +69,10 @@ class RecursiveConstructorTest extends \Codeception\Test\Unit
                 'prop3' => '1',
             ],
         ];
-        $constructor->construct('TestsDataStructure\TestBag3', $properties);
-        $errors = $constructor->getErrors();
+        $factory = new Factory(__DIR__ . '/data', 'TestsDataStructure');
+        $loader = new RecursiveLoader($factory, Configuration::DEFAULT_GROUP_NAME, true);
+        $obj = new TestBag3();
+        $errors = $loader->load($obj, $properties);
         
         $this->assertSame(
             [
@@ -89,9 +88,6 @@ class RecursiveConstructorTest extends \Codeception\Test\Unit
     
     public function test2()
     {
-        $loader = new Loader(__DIR__ . '/data', 'TestsDataStructure');
-        $config = new Configuration();
-        $constructor = new RecursiveConstructor($loader, $config);
         $properties = [
             'prop1' => '6545',
             'prop2' => '123',
@@ -109,16 +105,16 @@ class RecursiveConstructorTest extends \Codeception\Test\Unit
                 ],
             ],
         ];
-        /** @var \TestsDataStructure\TestBag5 $bag */
-        $bag = $constructor->construct('TestsDataStructure\TestBag5', $properties);
-        $this->assertCount(2, $bag->getProp4());
+    
+        $factory = new Factory(__DIR__ . '/data', 'TestsDataStructure');
+        $loader = new RecursiveLoader($factory, Configuration::DEFAULT_GROUP_NAME, false);
+        $obj = new TestBag5();
+        $loader->load($obj, $properties);
+        $this->assertCount(2, $obj->getProp4());
     }
     
     public function test3()
     {
-        $loader = new Loader(__DIR__ . '/data', 'TestsDataStructure');
-        $config = new Configuration();
-        $constructor = new RecursiveConstructor($loader, $config);
         $properties = [
             'prop1' => '6545',
             'prop2' => '123',
@@ -132,23 +128,34 @@ class RecursiveConstructorTest extends \Codeception\Test\Unit
                 'asdasd',
             ],
         ];
-        /** @var \TestsDataStructure\TestBag5 $bag */
-        $bag = $constructor->construct('TestsDataStructure\TestBag5', $properties);
-        $this->assertSame('asdasd', $bag->getProp4()[1]);
+    
+        $factory = new Factory(__DIR__ . '/data', 'TestsDataStructure');
+        $loader = new RecursiveLoader($factory, Configuration::DEFAULT_GROUP_NAME, true);
+        $obj = new TestBag5();
+        $errors = $loader->load($obj, $properties);
+        $this->assertSame(
+            [
+                'prop4' => [
+                    1 => [
+                        'TYPE_EXCEPTION' => "The type of the variable in the method NewInventor\DataStructure\RecursiveLoader->getNestedException is incorrect.\nRequired types are: null, array \nType received: string",
+                    ],
+                ],
+            ],
+            $errors
+        );
     }
     
     public function test4()
     {
-        $loader = new Loader(__DIR__ . '/data', 'TestsDataStructure');
-        $config = new Configuration();
-        $constructor = new RecursiveConstructor($loader, $config);
         $properties = [
             'prop1' => '6545',
             'prop2' => '123',
             'prop3' => true,
         ];
-        /** @var \TestsDataStructure\TestBag5 $bag */
-        $bag = $constructor->construct('TestsDataStructure\TestBag5', $properties);
-        $this->assertNull($bag->getProp4());
+        $factory = new Factory(__DIR__ . '/data', 'TestsDataStructure');
+        $loader = new RecursiveLoader($factory, Configuration::DEFAULT_GROUP_NAME, false);
+        $obj = new TestBag5();
+        $loader->load($obj, $properties);
+        $this->assertNull($obj->getProp4());
     }
 }

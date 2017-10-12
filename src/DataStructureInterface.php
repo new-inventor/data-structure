@@ -8,8 +8,7 @@
 namespace NewInventor\DataStructure;
 
 
-//TODO mapping
-interface DataStructureInterface extends Loadable, Arrayable
+interface DataStructureInterface
 {
     /**
      * @param string $name

@@ -110,7 +110,7 @@ class Configuration implements ConfigurationInterface
             ->children()
             ->scalarNode('path')->isRequired()->end()
             ->scalarNode('baseNamespace')->defaultValue('')->end()
-            ->scalarNode('configuration')->defaultNull()->end()
+            ->scalarNode('factory')->defaultNull()->end()
             ->end()
             ->end()
             ->scalarNode('class')->isRequired()->end()

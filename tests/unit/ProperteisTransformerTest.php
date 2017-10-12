@@ -132,9 +132,7 @@ class ProperteisTransformerTest extends \Codeception\Test\Unit
         ];
         
         $transformer = new PropertiesTransformer($propertiesTransformers);
-        $transformer->setFailOnFirstError(false);
-        $this->assertFalse($transformer->isFailOnFirstError());
-        $res = $transformer->transform($props);
+        $res = $transformer->transform($props, true);
         $this->assertSame(
             [
                 'prop1' => 'qwe',

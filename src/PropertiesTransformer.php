@@ -20,8 +20,6 @@ class PropertiesTransformer implements StructureTransformerInterface
     public $transformers = [];
     /** @var array */
     protected $errors = [];
-    /** @var bool */
-    protected $failOnFirstError = true;
     
     /**
      * DataStructureTransformer constructor.
@@ -63,34 +61,16 @@ class PropertiesTransformer implements StructureTransformerInterface
     }
     
     /**
-     * @return bool
-     */
-    public function isFailOnFirstError(): bool
-    {
-        return $this->failOnFirstError;
-    }
-    
-    /**
-     * @param bool $failOnFirstError
-     *
-     * @return $this
-     */
-    public function setFailOnFirstError(bool $failOnFirstError)
-    {
-        $this->failOnFirstError = $failOnFirstError;
-        
-        return $this;
-    }
-    
-    /**
      * @param array $properties
+     * @param bool  $mute
      *
      * @return array
      * @throws PropertyTransformationException
      * @throws PropertyInvalidTypeException
      */
-    public function transform(array $properties = []): array
+    public function transform(array $properties, bool $mute = false): array
     {
+        $this->errors = [];
         $res = [];
         foreach ($properties as $name => $value) {
             try {
@@ -103,13 +83,13 @@ class PropertiesTransformer implements StructureTransformerInterface
                     $res[$name] = $value;
                 }
             } catch (TypeException $e) {
-                if ($this->failOnFirstError) {
+                if (!$mute) {
                     throw new PropertyInvalidTypeException($name, $e);
                 }
                 $this->errors[$name]['TYPE_EXCEPTION'] = $e->getMessage();
                 $res[$name] = $value;
             } catch (TransformationException $e) {
-                if ($this->failOnFirstError) {
+                if (!$mute) {
                     throw new PropertyTransformationException($name, $e);
                 }
                 $this->errors[$name]['TRANSFORMATION_EXCEPTION'] = $e->getPrevious()->getMessage();

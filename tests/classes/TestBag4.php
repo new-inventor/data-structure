@@ -8,10 +8,9 @@
 namespace TestsDataStructure;
 
 
+use NewInventor\DataStructure\DataStructureInterface;
 
-use NewInventor\DataStructure\Loadable;
-
-class TestBag4 implements Loadable
+class TestBag4 implements DataStructureInterface
 {
     protected $properties = [
         'prop1' => null,
@@ -35,19 +34,25 @@ class TestBag4 implements Loadable
     }
     
     /**
-     * Load object properties from array
-     *
-     * @param array $properties
-     * @param int   $strategy
+     * @param string $name
+     * @param mixed  $value
      *
      * @return $this
      */
-    public function load(array $properties = [], int $strategy = self::STRATEGY_STRICT)
+    public function set(string $name, $value)
     {
-        foreach($properties as $property => $value){
-            $this->properties[$property] = $value;
-        }
+        $this->properties[$name] = $value;
         
         return $this;
+    }
+    
+    /**
+     * @param string $name
+     *
+     * @return mixed
+     */
+    public function get(string $name)
+    {
+        return $this->properties[$name];
     }
 }

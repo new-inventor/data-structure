@@ -8,8 +8,9 @@
 namespace TestsDataStructure;
 
 
+use NewInventor\DataStructure\DataStructureInterface;
 
-class TestBag1
+class TestBag1 implements DataStructureInterface
 {
     protected $properties = [
         'prop1' => null,
@@ -30,5 +31,28 @@ class TestBag1
     public function getProp3()
     {
         return $this->properties['prop3'];
+    }
+    
+    /**
+     * @param string $name
+     * @param mixed  $value
+     *
+     * @return $this
+     */
+    public function set(string $name, $value)
+    {
+        $this->properties[$name] = $value;
+        
+        return $this;
+    }
+    
+    /**
+     * @param string $name
+     *
+     * @return mixed
+     */
+    public function get(string $name)
+    {
+        return $this->properties[$name];
     }
 }

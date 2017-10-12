@@ -5,6 +5,7 @@ use Codeception\Test\Unit;
 use NewInventor\DataStructure\Metadata\Configuration;
 use NewInventor\DataStructure\Metadata\Loader;
 use NewInventor\DataStructure\Metadata\Metadata;
+use NewInventor\DataStructure\Metadata\Parser;
 use NewInventor\Transformers\Transformer\ArrayToCsvString;
 use NewInventor\Transformers\Transformer\BoolToMixed;
 use NewInventor\Transformers\Transformer\ChainTransformer;
@@ -17,6 +18,8 @@ use Symfony\Component\Config\Definition\Exception\InvalidConfigurationException;
 use Symfony\Component\Validator\Validator\RecursiveValidator;
 use TestsDataStructure\TestBag;
 use TestsDataStructure\TestBag1;
+use TestsDataStructure\TestBag2;
+use TestsDataStructure\TestBag2Bad;
 
 class MetadataTest extends Unit
 {
@@ -35,9 +38,10 @@ class MetadataTest extends Unit
     
     public function test()
     {
-        $config = new Configuration();
-        $meta = new Metadata();
-        $meta->loadConfig(dirname(__DIR__) . '/data/TestBag.yml', $config);
+        $meta = new Metadata(TestBag::class);
+        $parser = new Parser(new Configuration());
+        $loader = new Loader(dirname(__DIR__) . '/data', $parser, 'TestsDataStructure');
+        $loader->loadMetadata($meta);
         $this->assertSame('TestsDataStructure', $meta->getNamespace());
         $this->assertSame('TestBag', $meta->getClassName());
         $this->assertSame('TestsDataStructure\TestBag', $meta->getFullClassName());
@@ -79,6 +83,7 @@ class MetadataTest extends Unit
         $this->assertSame(
             [
                 'prop1' => null,
+                'prop0' => null,
                 'prop2' => null,
                 'prop3' => null,
                 'prop4' => null,
@@ -87,9 +92,8 @@ class MetadataTest extends Unit
                 'prop7' => 2222,
                 'prop8' => null,
                 'prop9' => null,
-                'prop0' => null,
             ],
-            $meta->getProperties()
+            $meta->properties
         );
         
         $params = [
@@ -103,15 +107,14 @@ class MetadataTest extends Unit
             ],
         ];
     
-        $loader = new Loader(dirname(__DIR__) . '/data', 'TestsDataStructure');
-        /** @var Metadata $metadata */
-        $metadata = $loader->loadMetadataFor(TestBag::class, $config);
-        $transformer = $metadata->getTransformer()->setFailOnFirstError(false);
-        /** @var Metadata $metadata1 */
-        $metadata1 = $loader->loadMetadataFor(TestBag1::class, $config);
-        $transformer1 = $metadata1->getTransformer()->setFailOnFirstError(false);
-        $params = $transformer->transform($params);
-        $params['prop9'] = $transformer1->transform($params['prop9']);
+        $metadata = new Metadata(TestBag::class);
+        $loader->loadMetadata($metadata);
+        $transformer = $metadata->getTransformer();
+        $metadata1 = new Metadata(TestBag1::class);
+        $loader->loadMetadata($metadata1);
+        $transformer1 = $metadata1->getTransformer();
+        $params = $transformer->transform($params, true);
+        $params['prop9'] = $transformer1->transform($params['prop9'], true);
         $this->assertSame(
             [
                 'prop1' => 6545,
@@ -135,16 +138,18 @@ class MetadataTest extends Unit
     public function test1()
     {
         $this->expectException(InvalidConfigurationException::class);
-        $meta = new Metadata();
-        $config = new Configuration();
-        $meta->loadConfig(dirname(__DIR__) . '/data/TestBag2Bad.yml', $config);
+        $meta = new Metadata(TestBag2Bad::class);
+        $parser = new Parser(new Configuration());
+        $loader = new Loader(dirname(__DIR__) . '/data', $parser, 'TestsDataStructure');
+        $loader->loadMetadata($meta);
     }
     
     public function test2()
     {
-        $config = new Configuration();
-        $meta = new Metadata();
-        $meta->loadConfig(dirname(__DIR__) . '/data/TestBag2.yml', $config);
+        $meta = new Metadata(TestBag2::class);
+        $parser = new Parser(new Configuration());
+        $loader = new Loader(dirname(__DIR__) . '/data', $parser, 'TestsDataStructure');
+        $loader->loadMetadata($meta);
         $this->assertSame('TestsDataStructure', $meta->getNamespace());
         $this->assertSame('TestBag2', $meta->getClassName());
         $this->assertSame('TestsDataStructure\TestBag2', $meta->getFullClassName());
@@ -186,6 +191,7 @@ class MetadataTest extends Unit
         $this->assertSame(
             [
                 'prop1' => null,
+                'prop0' => null,
                 'prop2' => null,
                 'prop3' => null,
                 'prop4' => null,
@@ -194,9 +200,8 @@ class MetadataTest extends Unit
                 'prop7' => 2222,
                 'prop8' => null,
                 'prop9' => null,
-                'prop0' => null,
             ],
-            $meta->getProperties()
+            $meta->properties
         );
     }
 }
