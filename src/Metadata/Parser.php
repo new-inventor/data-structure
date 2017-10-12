@@ -10,6 +10,7 @@ namespace NewInventor\DataStructure\Metadata;
 
 use NewInventor\DataStructure\PropertiesTransformer;
 use NewInventor\Transformers\Transformer\ChainTransformer;
+use NewInventor\Transformers\Transformer\StringToCamelCase;
 use NewInventor\Transformers\Transformer\ToInt;
 use NewInventor\Transformers\TransformerContainerInterface;
 use NewInventor\Transformers\TransformerInterface;
@@ -218,6 +219,7 @@ class Parser implements ParserInterface
     
     protected function prepareGetterValidators(string $propertyName, array $validators): void
     {
+        $propertyName = StringToCamelCase::make()->transform($propertyName);
         foreach ($validators as $validator) {
             $this->metadata->classValidationMetadata->addGetterConstraint(
                 $propertyName,
