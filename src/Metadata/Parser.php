@@ -10,15 +10,11 @@ namespace NewInventor\DataStructure\Metadata;
 
 use NewInventor\DataStructure\PropertiesTransformer;
 use NewInventor\Transformers\Transformer\ChainTransformer;
-use NewInventor\Transformers\Transformer\StringToCamelCase;
 use NewInventor\Transformers\Transformer\ToInt;
 use NewInventor\Transformers\TransformerContainerInterface;
 use NewInventor\Transformers\TransformerInterface;
 use Symfony\Component\Config\Definition\ConfigurationInterface;
 use Symfony\Component\Config\Definition\Processor;
-use Symfony\Component\Validator\Constraint;
-use Symfony\Component\Validator\Constraints\All;
-use Symfony\Component\Validator\Mapping\ClassMetadata;
 use Symfony\Component\Yaml\Yaml;
 
 class Parser implements ParserInterface
@@ -29,8 +25,6 @@ class Parser implements ParserInterface
     protected $configuration;
     /** @var string */
     protected $innerTransformerNamespace;
-    /** @var string */
-    private $symfonyValidatorsNamespace;
     
     /**
      * Parser constructor.
@@ -41,7 +35,6 @@ class Parser implements ParserInterface
     {
         $this->configuration = $configuration;
         $this->innerTransformerNamespace = substr(ToInt::class, 0, -5);
-        $this->symfonyValidatorsNamespace = substr(All::class, 0, -3);
     }
     
     /**
@@ -56,11 +49,9 @@ class Parser implements ParserInterface
         $config = $this->readConfigFileToArray($file);
         $processor = new Processor();
         $this->metadata->configArray = $processor->processConfiguration($this->configuration, [$config]);
-        $this->initValidation();
         if (isset($this->metadata->configArray['properties'])) {
             foreach ($this->metadata->configArray['properties'] as $propertyName => $propertyMetadata) {
                 $this->prepareProperty($propertyName, $propertyMetadata);
-                $this->prepareGetterValidators($propertyName, $propertyMetadata['validation']);
             }
         }
     }
@@ -185,69 +176,5 @@ class Parser implements ParserInterface
         }
         
         return $this->innerTransformerNamespace . $name;
-    }
-    
-    protected function initValidation(): void
-    {
-        $this->metadata->classValidationMetadata = new ClassMetadata($this->metadata->getFullClassName());
-        if (!isset($this->metadata->configArray['validation'])) {
-            return;
-        }
-        $classValidation = $this->metadata->configArray['validation'];
-        if (isset($classValidation['constraints']) && is_array($classValidation['constraints'])) {
-            foreach ($classValidation['constraints'] as $constraint) {
-                $this->metadata->classValidationMetadata->addConstraint($this->prepareValidator($constraint));
-            }
-        }
-        if (isset($classValidation['getters']) && is_array($classValidation['getters'])) {
-            foreach ($classValidation['getters'] as $propertyName => $validators) {
-                if (!array_key_exists($propertyName, $this->metadata->properties)) {
-                    $this->metadata->properties[$propertyName] = null;
-                }
-                $this->prepareGetterValidators($propertyName, $validators);
-            }
-        }
-        if (isset($classValidation['properties']) && is_array($classValidation['properties'])) {
-            foreach ($classValidation['properties'] as $propertyName => $validators) {
-                if (!array_key_exists($propertyName, $this->metadata->properties)) {
-                    $this->metadata->properties[$propertyName] = null;
-                }
-                $this->preparePropertyValidators($propertyName, $validators);
-            }
-        }
-    }
-    
-    protected function prepareGetterValidators(string $propertyName, array $validators): void
-    {
-        $propertyName = StringToCamelCase::make()->transform($propertyName);
-        foreach ($validators as $validator) {
-            $this->metadata->classValidationMetadata->addGetterConstraint(
-                $propertyName,
-                $this->prepareValidator($validator)
-            );
-        }
-    }
-    
-    protected function preparePropertyValidators(string $propertyName, array $validators): void
-    {
-        foreach ($validators as $validator) {
-            $this->metadata->classValidationMetadata->addPropertyConstraint(
-                $propertyName,
-                $this->prepareValidator($validator)
-            );
-        }
-    }
-    
-    protected function prepareValidator($validator)
-    {
-        $validatorClass = $validatorName = array_keys($validator)[0];
-        if (!class_exists($validatorName)) {
-            $validatorClass = $this->symfonyValidatorsNamespace . $validatorName;
-        }
-        if (!in_array(Constraint::class, class_parents($validatorClass), true)) {
-            throw new \InvalidArgumentException('Validator must extend ' . Constraint::class);
-        }
-        
-        return new $validatorClass($validator[$validatorName]);
     }
 }
