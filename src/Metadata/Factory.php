@@ -8,6 +8,9 @@
 namespace NewInventor\DataStructure\Metadata;
 
 
+use NewInventor\DataStructure\DataStructureInterface;
+use NewInventor\TypeChecker\Exception\TypeException;
+use NewInventor\TypeChecker\TypeChecker;
 use Psr\Cache\CacheItemPoolInterface;
 use Psr\Cache\InvalidArgumentException;
 use Symfony\Component\Validator\Mapping\Cache\CacheInterface;
@@ -60,14 +63,20 @@ class Factory
     }
     
     /**
-     * @param string $class
+     * @param $obj
      *
      * @return MetadataInterface
+     * @throws TypeException
      * @throws InvalidArgumentException
      * @throws \InvalidArgumentException
      */
-    public function getMetadata(string $class = ''): MetadataInterface
+    public function getMetadata($obj): MetadataInterface
     {
+        TypeChecker::check($obj)->tstring()->types(DataStructureInterface::class)->fail();
+        $class = $obj;
+        if (is_object($obj)) {
+            $class = get_class($obj);
+        }
         if ($this->metadataCache !== null) {
             $key = $this->getCacheKey($class);
             $item = $this->metadataCache->getItem($key);

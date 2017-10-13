@@ -83,7 +83,6 @@ class MetadataTest extends Unit
         $this->assertSame(
             [
                 'prop1' => null,
-                'prop0' => null,
                 'prop2' => null,
                 'prop3' => null,
                 'prop4' => null,
@@ -92,6 +91,7 @@ class MetadataTest extends Unit
                 'prop7' => 2222,
                 'prop8' => null,
                 'prop9' => null,
+                'prop0' => null,
             ],
             $meta->properties
         );
@@ -191,7 +191,6 @@ class MetadataTest extends Unit
         $this->assertSame(
             [
                 'prop1' => null,
-                'prop0' => null,
                 'prop2' => null,
                 'prop3' => null,
                 'prop4' => null,
@@ -200,6 +199,7 @@ class MetadataTest extends Unit
                 'prop7' => 2222,
                 'prop8' => null,
                 'prop9' => null,
+                'prop0' => null,
             ],
             $meta->properties
         );

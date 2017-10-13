@@ -3,73 +3,31 @@ $coverage = new SebastianBergmann\CodeCoverage\CodeCoverage;
 $coverage->setData(array (
   '/home/george/www/data-structure/src/Metadata/Metadata.php' => 
   array (
-    53 => 
-    array (
-      0 => 'LoaderTest::testSomeFeature',
-      1 => 'LoaderTest::test1',
-      2 => 'Metadata\\MetadataTest::test',
-      3 => 'Metadata\\MetadataTest::test1',
-      4 => 'Metadata\\MetadataTest::test2',
-      5 => 'RecursiveLoaderTest::testSomeFeature',
-      6 => 'RecursiveLoaderTest::test1',
-      7 => 'RecursiveLoaderTest::test2',
-      8 => 'RecursiveLoaderTest::test3',
-      9 => 'RecursiveLoaderTest::test4',
-    ),
-    54 => 
-    array (
-      0 => 'LoaderTest::testSomeFeature',
-      1 => 'LoaderTest::test1',
-      2 => 'Metadata\\MetadataTest::test',
-      3 => 'Metadata\\MetadataTest::test1',
-      4 => 'Metadata\\MetadataTest::test2',
-      5 => 'RecursiveLoaderTest::testSomeFeature',
-      6 => 'RecursiveLoaderTest::test1',
-      7 => 'RecursiveLoaderTest::test2',
-      8 => 'RecursiveLoaderTest::test3',
-      9 => 'RecursiveLoaderTest::test4',
-    ),
-    55 => 
-    array (
-      0 => 'LoaderTest::testSomeFeature',
-      1 => 'LoaderTest::test1',
-      2 => 'Metadata\\MetadataTest::test',
-      3 => 'Metadata\\MetadataTest::test1',
-      4 => 'Metadata\\MetadataTest::test2',
-      5 => 'RecursiveLoaderTest::testSomeFeature',
-      6 => 'RecursiveLoaderTest::test1',
-      7 => 'RecursiveLoaderTest::test2',
-      8 => 'RecursiveLoaderTest::test3',
-      9 => 'RecursiveLoaderTest::test4',
-    ),
-    56 => 
-    array (
-      0 => 'LoaderTest::testSomeFeature',
-      1 => 'LoaderTest::test1',
-      2 => 'Metadata\\MetadataTest::test',
-      3 => 'Metadata\\MetadataTest::test1',
-      4 => 'Metadata\\MetadataTest::test2',
-      5 => 'RecursiveLoaderTest::testSomeFeature',
-      6 => 'RecursiveLoaderTest::test1',
-      7 => 'RecursiveLoaderTest::test2',
-      8 => 'RecursiveLoaderTest::test3',
-      9 => 'RecursiveLoaderTest::test4',
-    ),
-    57 => 
-    array (
-      0 => 'LoaderTest::testSomeFeature',
-      1 => 'LoaderTest::test1',
-      2 => 'Metadata\\MetadataTest::test',
-      3 => 'Metadata\\MetadataTest::test1',
-      4 => 'Metadata\\MetadataTest::test2',
-      5 => 'RecursiveLoaderTest::testSomeFeature',
-      6 => 'RecursiveLoaderTest::test1',
-      7 => 'RecursiveLoaderTest::test2',
-      8 => 'RecursiveLoaderTest::test3',
-      9 => 'RecursiveLoaderTest::test4',
-    ),
     58 => 
     array (
+      0 => 'LoaderTest::testSomeFeature',
+      1 => 'LoaderTest::test1',
+      2 => 'Metadata\\MetadataTest::test',
+      3 => 'Metadata\\MetadataTest::test1',
+      4 => 'Metadata\\MetadataTest::test2',
+      5 => 'RecursiveLoaderTest::testSomeFeature',
+      6 => 'RecursiveLoaderTest::test1',
+      7 => 'RecursiveLoaderTest::test2',
+      8 => 'RecursiveLoaderTest::test3',
+      9 => 'RecursiveLoaderTest::test4',
+    ),
+    59 => 
+    array (
+      0 => 'LoaderTest::testSomeFeature',
+      1 => 'LoaderTest::test1',
+      2 => 'Metadata\\MetadataTest::test',
+      3 => 'Metadata\\MetadataTest::test1',
+      4 => 'Metadata\\MetadataTest::test2',
+      5 => 'RecursiveLoaderTest::testSomeFeature',
+      6 => 'RecursiveLoaderTest::test1',
+      7 => 'RecursiveLoaderTest::test2',
+      8 => 'RecursiveLoaderTest::test3',
+      9 => 'RecursiveLoaderTest::test4',
     ),
     60 => 
     array (
@@ -85,6 +43,19 @@ $coverage->setData(array (
       9 => 'RecursiveLoaderTest::test4',
     ),
     61 => 
+    array (
+      0 => 'LoaderTest::testSomeFeature',
+      1 => 'LoaderTest::test1',
+      2 => 'Metadata\\MetadataTest::test',
+      3 => 'Metadata\\MetadataTest::test1',
+      4 => 'Metadata\\MetadataTest::test2',
+      5 => 'RecursiveLoaderTest::testSomeFeature',
+      6 => 'RecursiveLoaderTest::test1',
+      7 => 'RecursiveLoaderTest::test2',
+      8 => 'RecursiveLoaderTest::test3',
+      9 => 'RecursiveLoaderTest::test4',
+    ),
+    62 => 
     array (
       0 => 'LoaderTest::testSomeFeature',
       1 => 'LoaderTest::test1',
@@ -99,6 +70,9 @@ $coverage->setData(array (
     ),
     63 => 
     array (
+    ),
+    65 => 
+    array (
       0 => 'LoaderTest::testSomeFeature',
       1 => 'LoaderTest::test1',
       2 => 'Metadata\\MetadataTest::test',
@@ -110,40 +84,64 @@ $coverage->setData(array (
       8 => 'RecursiveLoaderTest::test3',
       9 => 'RecursiveLoaderTest::test4',
     ),
-    67 => 
+    66 => 
     array (
-      0 => 'Metadata\\MetadataTest::test',
-      1 => 'Metadata\\MetadataTest::test2',
+      0 => 'LoaderTest::testSomeFeature',
+      1 => 'LoaderTest::test1',
+      2 => 'Metadata\\MetadataTest::test',
+      3 => 'Metadata\\MetadataTest::test1',
+      4 => 'Metadata\\MetadataTest::test2',
+      5 => 'RecursiveLoaderTest::testSomeFeature',
+      6 => 'RecursiveLoaderTest::test1',
+      7 => 'RecursiveLoaderTest::test2',
+      8 => 'RecursiveLoaderTest::test3',
+      9 => 'RecursiveLoaderTest::test4',
     ),
     68 => 
     array (
+      0 => 'LoaderTest::testSomeFeature',
+      1 => 'LoaderTest::test1',
+      2 => 'Metadata\\MetadataTest::test',
+      3 => 'Metadata\\MetadataTest::test1',
+      4 => 'Metadata\\MetadataTest::test2',
+      5 => 'RecursiveLoaderTest::testSomeFeature',
+      6 => 'RecursiveLoaderTest::test1',
+      7 => 'RecursiveLoaderTest::test2',
+      8 => 'RecursiveLoaderTest::test3',
+      9 => 'RecursiveLoaderTest::test4',
     ),
-    70 => 
+    69 => 
+    array (
+      0 => 'LoaderTest::testSomeFeature',
+      1 => 'LoaderTest::test1',
+      2 => 'Metadata\\MetadataTest::test',
+      3 => 'Metadata\\MetadataTest::test1',
+      4 => 'Metadata\\MetadataTest::test2',
+      5 => 'RecursiveLoaderTest::testSomeFeature',
+      6 => 'RecursiveLoaderTest::test1',
+      7 => 'RecursiveLoaderTest::test2',
+      8 => 'RecursiveLoaderTest::test3',
+      9 => 'RecursiveLoaderTest::test4',
+    ),
+    73 => 
     array (
       0 => 'Metadata\\MetadataTest::test',
       1 => 'Metadata\\MetadataTest::test2',
     ),
-    71 => 
-    array (
-      0 => 'Metadata\\MetadataTest::test',
-      1 => 'Metadata\\MetadataTest::test2',
-    ),
-    72 => 
+    74 => 
     array (
       0 => 'Metadata\\MetadataTest::test',
       1 => 'Metadata\\MetadataTest::test2',
     ),
     75 => 
     array (
-      0 => 'Metadata\\MetadataTest::test',
-      1 => 'Metadata\\MetadataTest::test2',
     ),
-    76 => 
+    77 => 
     array (
       0 => 'Metadata\\MetadataTest::test',
       1 => 'Metadata\\MetadataTest::test2',
     ),
-    77 => 
+    78 => 
     array (
       0 => 'Metadata\\MetadataTest::test',
       1 => 'Metadata\\MetadataTest::test2',
@@ -153,12 +151,7 @@ $coverage->setData(array (
       0 => 'Metadata\\MetadataTest::test',
       1 => 'Metadata\\MetadataTest::test2',
     ),
-    81 => 
-    array (
-      0 => 'Metadata\\MetadataTest::test',
-      1 => 'Metadata\\MetadataTest::test2',
-    ),
-    82 => 
+    80 => 
     array (
       0 => 'Metadata\\MetadataTest::test',
       1 => 'Metadata\\MetadataTest::test2',
@@ -173,37 +166,109 @@ $coverage->setData(array (
       0 => 'Metadata\\MetadataTest::test',
       1 => 'Metadata\\MetadataTest::test2',
     ),
-    86 => NULL,
+    85 => 
+    array (
+      0 => 'Metadata\\MetadataTest::test',
+      1 => 'Metadata\\MetadataTest::test2',
+    ),
+    86 => 
+    array (
+    ),
+    88 => 
+    array (
+      0 => 'Metadata\\MetadataTest::test',
+      1 => 'Metadata\\MetadataTest::test2',
+    ),
+    91 => 
+    array (
+      0 => 'Metadata\\MetadataTest::test',
+      1 => 'Metadata\\MetadataTest::test2',
+    ),
+    92 => 
+    array (
+      0 => 'Metadata\\MetadataTest::test',
+      1 => 'Metadata\\MetadataTest::test2',
+    ),
     93 => 
     array (
-      0 => 'LoaderTest::testSomeFeature',
-      1 => 'LoaderTest::test1',
-      2 => 'Metadata\\MetadataTest::test',
-      3 => 'Metadata\\MetadataTest::test1',
-      4 => 'Metadata\\MetadataTest::test2',
-      5 => 'RecursiveLoaderTest::testSomeFeature',
-      6 => 'RecursiveLoaderTest::test1',
-      7 => 'RecursiveLoaderTest::test2',
-      8 => 'RecursiveLoaderTest::test3',
-      9 => 'RecursiveLoaderTest::test4',
+      0 => 'Metadata\\MetadataTest::test',
+      1 => 'Metadata\\MetadataTest::test2',
     ),
-    94 => NULL,
-    101 => 
+    94 => 
     array (
       0 => 'Metadata\\MetadataTest::test',
       1 => 'Metadata\\MetadataTest::test2',
     ),
-    102 => NULL,
-    109 => 
+    96 => 
     array (
       0 => 'Metadata\\MetadataTest::test',
       1 => 'Metadata\\MetadataTest::test2',
     ),
-    110 => NULL,
+    99 => 
+    array (
+      0 => 'Metadata\\MetadataTest::test',
+      1 => 'Metadata\\MetadataTest::test2',
+    ),
+    103 => 
+    array (
+      0 => 'Metadata\\MetadataTest::test',
+      1 => 'Metadata\\MetadataTest::test2',
+    ),
+    104 => 
+    array (
+      0 => 'Metadata\\MetadataTest::test',
+      1 => 'Metadata\\MetadataTest::test2',
+    ),
+    105 => 
+    array (
+      0 => 'Metadata\\MetadataTest::test',
+      1 => 'Metadata\\MetadataTest::test2',
+    ),
+    106 => 
+    array (
+      0 => 'Metadata\\MetadataTest::test',
+      1 => 'Metadata\\MetadataTest::test2',
+    ),
+    107 => 
+    array (
+      0 => 'Metadata\\MetadataTest::test',
+      1 => 'Metadata\\MetadataTest::test2',
+    ),
+    110 => 
+    array (
+      0 => 'Metadata\\MetadataTest::test',
+      1 => 'Metadata\\MetadataTest::test2',
+    ),
+    114 => 
+    array (
+      0 => 'Metadata\\MetadataTest::test',
+      1 => 'Metadata\\MetadataTest::test2',
+    ),
+    115 => 
+    array (
+      0 => 'Metadata\\MetadataTest::test',
+      1 => 'Metadata\\MetadataTest::test2',
+    ),
+    116 => 
+    array (
+      0 => 'Metadata\\MetadataTest::test',
+      1 => 'Metadata\\MetadataTest::test2',
+    ),
     117 => 
     array (
+      0 => 'Metadata\\MetadataTest::test',
+      1 => 'Metadata\\MetadataTest::test2',
     ),
-    118 => NULL,
+    120 => 
+    array (
+      0 => 'Metadata\\MetadataTest::test',
+      1 => 'Metadata\\MetadataTest::test2',
+    ),
+    124 => 
+    array (
+      0 => 'Metadata\\MetadataTest::test',
+      1 => 'Metadata\\MetadataTest::test2',
+    ),
     125 => 
     array (
       0 => 'Metadata\\MetadataTest::test',
@@ -214,18 +279,148 @@ $coverage->setData(array (
       0 => 'Metadata\\MetadataTest::test',
       1 => 'Metadata\\MetadataTest::test2',
     ),
-    127 => 
+    128 => 
     array (
       0 => 'Metadata\\MetadataTest::test',
       1 => 'Metadata\\MetadataTest::test2',
     ),
     129 => 
     array (
+    ),
+    132 => 
+    array (
       0 => 'Metadata\\MetadataTest::test',
       1 => 'Metadata\\MetadataTest::test2',
     ),
-    130 => NULL,
+    133 => NULL,
+    137 => 
+    array (
+      0 => 'Metadata\\MetadataTest::test',
+      1 => 'Metadata\\MetadataTest::test2',
+    ),
     138 => 
+    array (
+      0 => 'Metadata\\MetadataTest::test',
+      1 => 'Metadata\\MetadataTest::test2',
+    ),
+    139 => 
+    array (
+      0 => 'Metadata\\MetadataTest::test',
+      1 => 'Metadata\\MetadataTest::test2',
+    ),
+    140 => 
+    array (
+      0 => 'Metadata\\MetadataTest::test',
+      1 => 'Metadata\\MetadataTest::test2',
+    ),
+    143 => 
+    array (
+      0 => 'Metadata\\MetadataTest::test',
+      1 => 'Metadata\\MetadataTest::test2',
+    ),
+    144 => 
+    array (
+      0 => 'Metadata\\MetadataTest::test',
+      1 => 'Metadata\\MetadataTest::test2',
+    ),
+    145 => 
+    array (
+      0 => 'Metadata\\MetadataTest::test',
+      1 => 'Metadata\\MetadataTest::test2',
+    ),
+    148 => 
+    array (
+      0 => 'Metadata\\MetadataTest::test',
+      1 => 'Metadata\\MetadataTest::test2',
+    ),
+    149 => 
+    array (
+      0 => 'Metadata\\MetadataTest::test',
+      1 => 'Metadata\\MetadataTest::test2',
+    ),
+    150 => 
+    array (
+      0 => 'Metadata\\MetadataTest::test',
+      1 => 'Metadata\\MetadataTest::test2',
+    ),
+    152 => 
+    array (
+      0 => 'Metadata\\MetadataTest::test',
+      1 => 'Metadata\\MetadataTest::test2',
+    ),
+    154 => 
+    array (
+      0 => 'Metadata\\MetadataTest::test',
+      1 => 'Metadata\\MetadataTest::test2',
+    ),
+    155 => 
+    array (
+      0 => 'Metadata\\MetadataTest::test',
+      1 => 'Metadata\\MetadataTest::test2',
+    ),
+    156 => 
+    array (
+      0 => 'Metadata\\MetadataTest::test',
+      1 => 'Metadata\\MetadataTest::test2',
+    ),
+    157 => 
+    array (
+      0 => 'Metadata\\MetadataTest::test',
+      1 => 'Metadata\\MetadataTest::test2',
+    ),
+    159 => NULL,
+    166 => 
+    array (
+      0 => 'LoaderTest::testSomeFeature',
+      1 => 'LoaderTest::test1',
+      2 => 'Metadata\\MetadataTest::test',
+      3 => 'Metadata\\MetadataTest::test1',
+      4 => 'Metadata\\MetadataTest::test2',
+      5 => 'RecursiveLoaderTest::testSomeFeature',
+      6 => 'RecursiveLoaderTest::test1',
+      7 => 'RecursiveLoaderTest::test2',
+      8 => 'RecursiveLoaderTest::test3',
+      9 => 'RecursiveLoaderTest::test4',
+    ),
+    167 => NULL,
+    174 => 
+    array (
+      0 => 'Metadata\\MetadataTest::test',
+      1 => 'Metadata\\MetadataTest::test2',
+    ),
+    175 => NULL,
+    182 => 
+    array (
+      0 => 'Metadata\\MetadataTest::test',
+      1 => 'Metadata\\MetadataTest::test2',
+    ),
+    183 => NULL,
+    190 => 
+    array (
+    ),
+    191 => NULL,
+    198 => 
+    array (
+      0 => 'Metadata\\MetadataTest::test',
+      1 => 'Metadata\\MetadataTest::test2',
+    ),
+    199 => 
+    array (
+      0 => 'Metadata\\MetadataTest::test',
+      1 => 'Metadata\\MetadataTest::test2',
+    ),
+    200 => 
+    array (
+      0 => 'Metadata\\MetadataTest::test',
+      1 => 'Metadata\\MetadataTest::test2',
+    ),
+    202 => 
+    array (
+      0 => 'Metadata\\MetadataTest::test',
+      1 => 'Metadata\\MetadataTest::test2',
+    ),
+    203 => NULL,
+    212 => 
     array (
       0 => 'LoaderTest::testSomeFeature',
       1 => 'LoaderTest::test1',
@@ -237,7 +432,7 @@ $coverage->setData(array (
       7 => 'RecursiveLoaderTest::test3',
       8 => 'RecursiveLoaderTest::test4',
     ),
-    139 => NULL,
+    213 => NULL,
   ),
   '/home/george/www/data-structure/src/Metadata/MetadataInterface.php' => 
   array (
@@ -247,7 +442,7 @@ $coverage->setData(array (
   ),
   '/home/george/www/data-structure/src/Metadata/Parser.php' => 
   array (
-    41 => 
+    36 => 
     array (
       0 => 'LoaderTest::testSomeFeature',
       1 => 'LoaderTest::test1',
@@ -260,7 +455,7 @@ $coverage->setData(array (
       8 => 'RecursiveLoaderTest::test3',
       9 => 'RecursiveLoaderTest::test4',
     ),
-    42 => 
+    37 => 
     array (
       0 => 'LoaderTest::testSomeFeature',
       1 => 'LoaderTest::test1',
@@ -273,7 +468,7 @@ $coverage->setData(array (
       8 => 'RecursiveLoaderTest::test3',
       9 => 'RecursiveLoaderTest::test4',
     ),
-    43 => 
+    38 => 
     array (
       0 => 'LoaderTest::testSomeFeature',
       1 => 'LoaderTest::test1',
@@ -286,7 +481,7 @@ $coverage->setData(array (
       8 => 'RecursiveLoaderTest::test3',
       9 => 'RecursiveLoaderTest::test4',
     ),
-    44 => 
+    48 => 
     array (
       0 => 'LoaderTest::testSomeFeature',
       1 => 'LoaderTest::test1',
@@ -298,64 +493,87 @@ $coverage->setData(array (
       7 => 'RecursiveLoaderTest::test2',
       8 => 'RecursiveLoaderTest::test3',
       9 => 'RecursiveLoaderTest::test4',
+    ),
+    49 => 
+    array (
+      0 => 'LoaderTest::testSomeFeature',
+      1 => 'LoaderTest::test1',
+      2 => 'Metadata\\MetadataTest::test',
+      3 => 'Metadata\\MetadataTest::test1',
+      4 => 'Metadata\\MetadataTest::test2',
+      5 => 'RecursiveLoaderTest::testSomeFeature',
+      6 => 'RecursiveLoaderTest::test1',
+      7 => 'RecursiveLoaderTest::test2',
+      8 => 'RecursiveLoaderTest::test3',
+      9 => 'RecursiveLoaderTest::test4',
+    ),
+    50 => 
+    array (
+      0 => 'LoaderTest::testSomeFeature',
+      1 => 'LoaderTest::test1',
+      2 => 'Metadata\\MetadataTest::test',
+      3 => 'Metadata\\MetadataTest::test1',
+      4 => 'Metadata\\MetadataTest::test2',
+      5 => 'RecursiveLoaderTest::testSomeFeature',
+      6 => 'RecursiveLoaderTest::test1',
+      7 => 'RecursiveLoaderTest::test2',
+      8 => 'RecursiveLoaderTest::test3',
+      9 => 'RecursiveLoaderTest::test4',
+    ),
+    51 => 
+    array (
+      0 => 'LoaderTest::testSomeFeature',
+      1 => 'LoaderTest::test1',
+      2 => 'Metadata\\MetadataTest::test',
+      3 => 'Metadata\\MetadataTest::test1',
+      4 => 'Metadata\\MetadataTest::test2',
+      5 => 'RecursiveLoaderTest::testSomeFeature',
+      6 => 'RecursiveLoaderTest::test1',
+      7 => 'RecursiveLoaderTest::test2',
+      8 => 'RecursiveLoaderTest::test3',
+      9 => 'RecursiveLoaderTest::test4',
+    ),
+    52 => 
+    array (
+      0 => 'LoaderTest::testSomeFeature',
+      1 => 'LoaderTest::test1',
+      2 => 'Metadata\\MetadataTest::test',
+      3 => 'Metadata\\MetadataTest::test2',
+      4 => 'RecursiveLoaderTest::testSomeFeature',
+      5 => 'RecursiveLoaderTest::test1',
+      6 => 'RecursiveLoaderTest::test2',
+      7 => 'RecursiveLoaderTest::test3',
+      8 => 'RecursiveLoaderTest::test4',
+    ),
+    53 => 
+    array (
+      0 => 'LoaderTest::testSomeFeature',
+      1 => 'LoaderTest::test1',
+      2 => 'Metadata\\MetadataTest::test',
+      3 => 'Metadata\\MetadataTest::test2',
+      4 => 'RecursiveLoaderTest::testSomeFeature',
+      5 => 'RecursiveLoaderTest::test1',
+      6 => 'RecursiveLoaderTest::test2',
+      7 => 'RecursiveLoaderTest::test3',
+      8 => 'RecursiveLoaderTest::test4',
     ),
     54 => 
     array (
       0 => 'LoaderTest::testSomeFeature',
       1 => 'LoaderTest::test1',
       2 => 'Metadata\\MetadataTest::test',
-      3 => 'Metadata\\MetadataTest::test1',
-      4 => 'Metadata\\MetadataTest::test2',
-      5 => 'RecursiveLoaderTest::testSomeFeature',
-      6 => 'RecursiveLoaderTest::test1',
-      7 => 'RecursiveLoaderTest::test2',
-      8 => 'RecursiveLoaderTest::test3',
-      9 => 'RecursiveLoaderTest::test4',
-    ),
-    55 => 
-    array (
-      0 => 'LoaderTest::testSomeFeature',
-      1 => 'LoaderTest::test1',
-      2 => 'Metadata\\MetadataTest::test',
-      3 => 'Metadata\\MetadataTest::test1',
-      4 => 'Metadata\\MetadataTest::test2',
-      5 => 'RecursiveLoaderTest::testSomeFeature',
-      6 => 'RecursiveLoaderTest::test1',
-      7 => 'RecursiveLoaderTest::test2',
-      8 => 'RecursiveLoaderTest::test3',
-      9 => 'RecursiveLoaderTest::test4',
-    ),
-    56 => 
-    array (
-      0 => 'LoaderTest::testSomeFeature',
-      1 => 'LoaderTest::test1',
-      2 => 'Metadata\\MetadataTest::test',
-      3 => 'Metadata\\MetadataTest::test1',
-      4 => 'Metadata\\MetadataTest::test2',
-      5 => 'RecursiveLoaderTest::testSomeFeature',
-      6 => 'RecursiveLoaderTest::test1',
-      7 => 'RecursiveLoaderTest::test2',
-      8 => 'RecursiveLoaderTest::test3',
-      9 => 'RecursiveLoaderTest::test4',
+      3 => 'Metadata\\MetadataTest::test2',
+      4 => 'RecursiveLoaderTest::testSomeFeature',
+      5 => 'RecursiveLoaderTest::test1',
+      6 => 'RecursiveLoaderTest::test2',
+      7 => 'RecursiveLoaderTest::test3',
+      8 => 'RecursiveLoaderTest::test4',
     ),
     57 => 
     array (
       0 => 'LoaderTest::testSomeFeature',
       1 => 'LoaderTest::test1',
       2 => 'Metadata\\MetadataTest::test',
-      3 => 'Metadata\\MetadataTest::test1',
-      4 => 'Metadata\\MetadataTest::test2',
-      5 => 'RecursiveLoaderTest::testSomeFeature',
-      6 => 'RecursiveLoaderTest::test1',
-      7 => 'RecursiveLoaderTest::test2',
-      8 => 'RecursiveLoaderTest::test3',
-      9 => 'RecursiveLoaderTest::test4',
-    ),
-    58 => 
-    array (
-      0 => 'LoaderTest::testSomeFeature',
-      1 => 'LoaderTest::test1',
-      2 => 'Metadata\\MetadataTest::test',
       3 => 'Metadata\\MetadataTest::test2',
       4 => 'RecursiveLoaderTest::testSomeFeature',
       5 => 'RecursiveLoaderTest::test1',
@@ -363,67 +581,7 @@ $coverage->setData(array (
       7 => 'RecursiveLoaderTest::test3',
       8 => 'RecursiveLoaderTest::test4',
     ),
-    59 => 
-    array (
-      0 => 'LoaderTest::testSomeFeature',
-      1 => 'LoaderTest::test1',
-      2 => 'Metadata\\MetadataTest::test',
-      3 => 'Metadata\\MetadataTest::test2',
-      4 => 'RecursiveLoaderTest::testSomeFeature',
-      5 => 'RecursiveLoaderTest::test1',
-      6 => 'RecursiveLoaderTest::test2',
-      7 => 'RecursiveLoaderTest::test3',
-      8 => 'RecursiveLoaderTest::test4',
-    ),
-    60 => 
-    array (
-      0 => 'LoaderTest::testSomeFeature',
-      1 => 'LoaderTest::test1',
-      2 => 'Metadata\\MetadataTest::test',
-      3 => 'Metadata\\MetadataTest::test2',
-      4 => 'RecursiveLoaderTest::testSomeFeature',
-      5 => 'RecursiveLoaderTest::test1',
-      6 => 'RecursiveLoaderTest::test2',
-      7 => 'RecursiveLoaderTest::test3',
-      8 => 'RecursiveLoaderTest::test4',
-    ),
-    61 => 
-    array (
-      0 => 'LoaderTest::testSomeFeature',
-      1 => 'LoaderTest::test1',
-      2 => 'Metadata\\MetadataTest::test',
-      3 => 'Metadata\\MetadataTest::test2',
-      4 => 'RecursiveLoaderTest::testSomeFeature',
-      5 => 'RecursiveLoaderTest::test1',
-      6 => 'RecursiveLoaderTest::test2',
-      7 => 'RecursiveLoaderTest::test3',
-      8 => 'RecursiveLoaderTest::test4',
-    ),
-    62 => 
-    array (
-      0 => 'LoaderTest::testSomeFeature',
-      1 => 'LoaderTest::test1',
-      2 => 'Metadata\\MetadataTest::test',
-      3 => 'Metadata\\MetadataTest::test2',
-      4 => 'RecursiveLoaderTest::testSomeFeature',
-      5 => 'RecursiveLoaderTest::test1',
-      6 => 'RecursiveLoaderTest::test2',
-      7 => 'RecursiveLoaderTest::test3',
-      8 => 'RecursiveLoaderTest::test4',
-    ),
-    65 => 
-    array (
-      0 => 'LoaderTest::testSomeFeature',
-      1 => 'LoaderTest::test1',
-      2 => 'Metadata\\MetadataTest::test',
-      3 => 'Metadata\\MetadataTest::test2',
-      4 => 'RecursiveLoaderTest::testSomeFeature',
-      5 => 'RecursiveLoaderTest::test1',
-      6 => 'RecursiveLoaderTest::test2',
-      7 => 'RecursiveLoaderTest::test3',
-      8 => 'RecursiveLoaderTest::test4',
-    ),
-    75 => 
+    67 => 
     array (
       0 => 'LoaderTest::testSomeFeature',
       1 => 'LoaderTest::test1',
@@ -436,11 +594,80 @@ $coverage->setData(array (
       8 => 'RecursiveLoaderTest::test3',
       9 => 'RecursiveLoaderTest::test4',
     ),
-    76 => NULL,
-    85 => 
+    68 => NULL,
+    77 => 
     array (
     ),
-    86 => NULL,
+    78 => NULL,
+    82 => 
+    array (
+      0 => 'LoaderTest::testSomeFeature',
+      1 => 'LoaderTest::test1',
+      2 => 'Metadata\\MetadataTest::test',
+      3 => 'Metadata\\MetadataTest::test2',
+      4 => 'RecursiveLoaderTest::testSomeFeature',
+      5 => 'RecursiveLoaderTest::test1',
+      6 => 'RecursiveLoaderTest::test2',
+      7 => 'RecursiveLoaderTest::test3',
+      8 => 'RecursiveLoaderTest::test4',
+    ),
+    83 => 
+    array (
+      0 => 'LoaderTest::testSomeFeature',
+      1 => 'LoaderTest::test1',
+      2 => 'Metadata\\MetadataTest::test',
+      3 => 'Metadata\\MetadataTest::test2',
+      4 => 'RecursiveLoaderTest::testSomeFeature',
+      5 => 'RecursiveLoaderTest::test1',
+      6 => 'RecursiveLoaderTest::test2',
+      7 => 'RecursiveLoaderTest::test3',
+      8 => 'RecursiveLoaderTest::test4',
+    ),
+    84 => 
+    array (
+      0 => 'Metadata\\MetadataTest::test',
+      1 => 'RecursiveLoaderTest::testSomeFeature',
+      2 => 'RecursiveLoaderTest::test1',
+      3 => 'RecursiveLoaderTest::test2',
+      4 => 'RecursiveLoaderTest::test3',
+      5 => 'RecursiveLoaderTest::test4',
+    ),
+    87 => 
+    array (
+      0 => 'LoaderTest::testSomeFeature',
+      1 => 'LoaderTest::test1',
+      2 => 'Metadata\\MetadataTest::test',
+      3 => 'Metadata\\MetadataTest::test2',
+      4 => 'RecursiveLoaderTest::testSomeFeature',
+      5 => 'RecursiveLoaderTest::test1',
+      6 => 'RecursiveLoaderTest::test2',
+      7 => 'RecursiveLoaderTest::test3',
+      8 => 'RecursiveLoaderTest::test4',
+    ),
+    88 => 
+    array (
+      0 => 'LoaderTest::testSomeFeature',
+      1 => 'LoaderTest::test1',
+      2 => 'Metadata\\MetadataTest::test',
+      3 => 'Metadata\\MetadataTest::test2',
+      4 => 'RecursiveLoaderTest::testSomeFeature',
+      5 => 'RecursiveLoaderTest::test1',
+      6 => 'RecursiveLoaderTest::test2',
+      7 => 'RecursiveLoaderTest::test3',
+      8 => 'RecursiveLoaderTest::test4',
+    ),
+    89 => 
+    array (
+      0 => 'LoaderTest::testSomeFeature',
+      1 => 'LoaderTest::test1',
+      2 => 'Metadata\\MetadataTest::test',
+      3 => 'Metadata\\MetadataTest::test2',
+      4 => 'RecursiveLoaderTest::testSomeFeature',
+      5 => 'RecursiveLoaderTest::test1',
+      6 => 'RecursiveLoaderTest::test2',
+      7 => 'RecursiveLoaderTest::test3',
+      8 => 'RecursiveLoaderTest::test4',
+    ),
     90 => 
     array (
       0 => 'LoaderTest::testSomeFeature',
@@ -465,28 +692,17 @@ $coverage->setData(array (
       7 => 'RecursiveLoaderTest::test3',
       8 => 'RecursiveLoaderTest::test4',
     ),
-    92 => 
-    array (
-      0 => 'Metadata\\MetadataTest::test',
-      1 => 'RecursiveLoaderTest::testSomeFeature',
-      2 => 'RecursiveLoaderTest::test1',
-      3 => 'RecursiveLoaderTest::test2',
-      4 => 'RecursiveLoaderTest::test3',
-      5 => 'RecursiveLoaderTest::test4',
-    ),
-    95 => 
+    93 => 
     array (
       0 => 'LoaderTest::testSomeFeature',
       1 => 'LoaderTest::test1',
       2 => 'Metadata\\MetadataTest::test',
-      3 => 'Metadata\\MetadataTest::test2',
-      4 => 'RecursiveLoaderTest::testSomeFeature',
-      5 => 'RecursiveLoaderTest::test1',
-      6 => 'RecursiveLoaderTest::test2',
-      7 => 'RecursiveLoaderTest::test3',
-      8 => 'RecursiveLoaderTest::test4',
+      3 => 'RecursiveLoaderTest::testSomeFeature',
+      4 => 'RecursiveLoaderTest::test1',
+      5 => 'RecursiveLoaderTest::test2',
+      6 => 'RecursiveLoaderTest::test3',
     ),
-    96 => 
+    95 => 
     array (
       0 => 'LoaderTest::testSomeFeature',
       1 => 'LoaderTest::test1',
@@ -510,41 +726,7 @@ $coverage->setData(array (
       7 => 'RecursiveLoaderTest::test3',
       8 => 'RecursiveLoaderTest::test4',
     ),
-    98 => 
-    array (
-      0 => 'LoaderTest::testSomeFeature',
-      1 => 'LoaderTest::test1',
-      2 => 'Metadata\\MetadataTest::test',
-      3 => 'Metadata\\MetadataTest::test2',
-      4 => 'RecursiveLoaderTest::testSomeFeature',
-      5 => 'RecursiveLoaderTest::test1',
-      6 => 'RecursiveLoaderTest::test2',
-      7 => 'RecursiveLoaderTest::test3',
-      8 => 'RecursiveLoaderTest::test4',
-    ),
-    99 => 
-    array (
-      0 => 'LoaderTest::testSomeFeature',
-      1 => 'LoaderTest::test1',
-      2 => 'Metadata\\MetadataTest::test',
-      3 => 'Metadata\\MetadataTest::test2',
-      4 => 'RecursiveLoaderTest::testSomeFeature',
-      5 => 'RecursiveLoaderTest::test1',
-      6 => 'RecursiveLoaderTest::test2',
-      7 => 'RecursiveLoaderTest::test3',
-      8 => 'RecursiveLoaderTest::test4',
-    ),
-    101 => 
-    array (
-      0 => 'LoaderTest::testSomeFeature',
-      1 => 'LoaderTest::test1',
-      2 => 'Metadata\\MetadataTest::test',
-      3 => 'RecursiveLoaderTest::testSomeFeature',
-      4 => 'RecursiveLoaderTest::test1',
-      5 => 'RecursiveLoaderTest::test2',
-      6 => 'RecursiveLoaderTest::test3',
-    ),
-    103 => 
+    104 => 
     array (
       0 => 'LoaderTest::testSomeFeature',
       1 => 'LoaderTest::test1',
@@ -568,7 +750,7 @@ $coverage->setData(array (
       7 => 'RecursiveLoaderTest::test3',
       8 => 'RecursiveLoaderTest::test4',
     ),
-    112 => 
+    107 => 
     array (
       0 => 'LoaderTest::testSomeFeature',
       1 => 'LoaderTest::test1',
@@ -580,7 +762,7 @@ $coverage->setData(array (
       7 => 'RecursiveLoaderTest::test3',
       8 => 'RecursiveLoaderTest::test4',
     ),
-    113 => 
+    108 => 
     array (
       0 => 'LoaderTest::testSomeFeature',
       1 => 'LoaderTest::test1',
@@ -592,7 +774,7 @@ $coverage->setData(array (
       7 => 'RecursiveLoaderTest::test3',
       8 => 'RecursiveLoaderTest::test4',
     ),
-    115 => 
+    118 => 
     array (
       0 => 'LoaderTest::testSomeFeature',
       1 => 'LoaderTest::test1',
@@ -604,7 +786,7 @@ $coverage->setData(array (
       7 => 'RecursiveLoaderTest::test3',
       8 => 'RecursiveLoaderTest::test4',
     ),
-    116 => 
+    120 => 
     array (
       0 => 'LoaderTest::testSomeFeature',
       1 => 'LoaderTest::test1',
@@ -615,6 +797,29 @@ $coverage->setData(array (
       6 => 'RecursiveLoaderTest::test2',
       7 => 'RecursiveLoaderTest::test3',
       8 => 'RecursiveLoaderTest::test4',
+    ),
+    121 => 
+    array (
+      0 => 'LoaderTest::testSomeFeature',
+      1 => 'LoaderTest::test1',
+      2 => 'Metadata\\MetadataTest::test',
+      3 => 'Metadata\\MetadataTest::test2',
+      4 => 'RecursiveLoaderTest::testSomeFeature',
+      5 => 'RecursiveLoaderTest::test1',
+      6 => 'RecursiveLoaderTest::test2',
+      7 => 'RecursiveLoaderTest::test3',
+      8 => 'RecursiveLoaderTest::test4',
+    ),
+    123 => 
+    array (
+      0 => 'LoaderTest::testSomeFeature',
+      1 => 'LoaderTest::test1',
+      2 => 'Metadata\\MetadataTest::test',
+      3 => 'Metadata\\MetadataTest::test2',
+      4 => 'RecursiveLoaderTest::testSomeFeature',
+      5 => 'RecursiveLoaderTest::test1',
+      6 => 'RecursiveLoaderTest::test2',
+      7 => 'RecursiveLoaderTest::test3',
     ),
     126 => 
     array (
@@ -628,7 +833,7 @@ $coverage->setData(array (
       7 => 'RecursiveLoaderTest::test3',
       8 => 'RecursiveLoaderTest::test4',
     ),
-    128 => 
+    127 => 
     array (
       0 => 'LoaderTest::testSomeFeature',
       1 => 'LoaderTest::test1',
@@ -640,7 +845,7 @@ $coverage->setData(array (
       7 => 'RecursiveLoaderTest::test3',
       8 => 'RecursiveLoaderTest::test4',
     ),
-    129 => 
+    130 => 
     array (
       0 => 'LoaderTest::testSomeFeature',
       1 => 'LoaderTest::test1',
@@ -652,30 +857,32 @@ $coverage->setData(array (
       7 => 'RecursiveLoaderTest::test3',
       8 => 'RecursiveLoaderTest::test4',
     ),
-    131 => 
-    array (
-      0 => 'LoaderTest::testSomeFeature',
-      1 => 'LoaderTest::test1',
-      2 => 'Metadata\\MetadataTest::test',
-      3 => 'Metadata\\MetadataTest::test2',
-      4 => 'RecursiveLoaderTest::testSomeFeature',
-      5 => 'RecursiveLoaderTest::test1',
-      6 => 'RecursiveLoaderTest::test2',
-      7 => 'RecursiveLoaderTest::test3',
-    ),
-    134 => 
-    array (
-      0 => 'LoaderTest::testSomeFeature',
-      1 => 'LoaderTest::test1',
-      2 => 'Metadata\\MetadataTest::test',
-      3 => 'Metadata\\MetadataTest::test2',
-      4 => 'RecursiveLoaderTest::testSomeFeature',
-      5 => 'RecursiveLoaderTest::test1',
-      6 => 'RecursiveLoaderTest::test2',
-      7 => 'RecursiveLoaderTest::test3',
-      8 => 'RecursiveLoaderTest::test4',
-    ),
+    131 => NULL,
     135 => 
+    array (
+      0 => 'LoaderTest::testSomeFeature',
+      1 => 'LoaderTest::test1',
+      2 => 'Metadata\\MetadataTest::test',
+      3 => 'Metadata\\MetadataTest::test2',
+      4 => 'RecursiveLoaderTest::testSomeFeature',
+      5 => 'RecursiveLoaderTest::test1',
+      6 => 'RecursiveLoaderTest::test2',
+      7 => 'RecursiveLoaderTest::test3',
+      8 => 'RecursiveLoaderTest::test4',
+    ),
+    136 => 
+    array (
+      0 => 'LoaderTest::testSomeFeature',
+      1 => 'LoaderTest::test1',
+      2 => 'Metadata\\MetadataTest::test',
+      3 => 'Metadata\\MetadataTest::test2',
+      4 => 'RecursiveLoaderTest::testSomeFeature',
+      5 => 'RecursiveLoaderTest::test1',
+      6 => 'RecursiveLoaderTest::test2',
+      7 => 'RecursiveLoaderTest::test3',
+      8 => 'RecursiveLoaderTest::test4',
+    ),
+    137 => 
     array (
       0 => 'LoaderTest::testSomeFeature',
       1 => 'LoaderTest::test1',
@@ -699,7 +906,54 @@ $coverage->setData(array (
       7 => 'RecursiveLoaderTest::test3',
       8 => 'RecursiveLoaderTest::test4',
     ),
-    139 => NULL,
+    139 => 
+    array (
+      0 => 'LoaderTest::testSomeFeature',
+      1 => 'LoaderTest::test1',
+      2 => 'Metadata\\MetadataTest::test',
+      3 => 'Metadata\\MetadataTest::test2',
+      4 => 'RecursiveLoaderTest::testSomeFeature',
+      5 => 'RecursiveLoaderTest::test1',
+      6 => 'RecursiveLoaderTest::test2',
+      7 => 'RecursiveLoaderTest::test3',
+      8 => 'RecursiveLoaderTest::test4',
+    ),
+    140 => 
+    array (
+      0 => 'LoaderTest::testSomeFeature',
+      1 => 'LoaderTest::test1',
+      2 => 'Metadata\\MetadataTest::test',
+      3 => 'Metadata\\MetadataTest::test2',
+      4 => 'RecursiveLoaderTest::testSomeFeature',
+      5 => 'RecursiveLoaderTest::test1',
+      6 => 'RecursiveLoaderTest::test2',
+      7 => 'RecursiveLoaderTest::test3',
+      8 => 'RecursiveLoaderTest::test4',
+    ),
+    141 => 
+    array (
+      0 => 'LoaderTest::testSomeFeature',
+      1 => 'LoaderTest::test1',
+      2 => 'Metadata\\MetadataTest::test',
+      3 => 'Metadata\\MetadataTest::test2',
+      4 => 'RecursiveLoaderTest::testSomeFeature',
+      5 => 'RecursiveLoaderTest::test1',
+      6 => 'RecursiveLoaderTest::test2',
+      7 => 'RecursiveLoaderTest::test3',
+      8 => 'RecursiveLoaderTest::test4',
+    ),
+    142 => 
+    array (
+      0 => 'LoaderTest::testSomeFeature',
+      1 => 'LoaderTest::test1',
+      2 => 'Metadata\\MetadataTest::test',
+      3 => 'Metadata\\MetadataTest::test2',
+      4 => 'RecursiveLoaderTest::testSomeFeature',
+      5 => 'RecursiveLoaderTest::test1',
+      6 => 'RecursiveLoaderTest::test2',
+      7 => 'RecursiveLoaderTest::test3',
+      8 => 'RecursiveLoaderTest::test4',
+    ),
     143 => 
     array (
       0 => 'LoaderTest::testSomeFeature',
@@ -724,67 +978,7 @@ $coverage->setData(array (
       7 => 'RecursiveLoaderTest::test3',
       8 => 'RecursiveLoaderTest::test4',
     ),
-    145 => 
-    array (
-      0 => 'LoaderTest::testSomeFeature',
-      1 => 'LoaderTest::test1',
-      2 => 'Metadata\\MetadataTest::test',
-      3 => 'Metadata\\MetadataTest::test2',
-      4 => 'RecursiveLoaderTest::testSomeFeature',
-      5 => 'RecursiveLoaderTest::test1',
-      6 => 'RecursiveLoaderTest::test2',
-      7 => 'RecursiveLoaderTest::test3',
-      8 => 'RecursiveLoaderTest::test4',
-    ),
-    146 => 
-    array (
-      0 => 'LoaderTest::testSomeFeature',
-      1 => 'LoaderTest::test1',
-      2 => 'Metadata\\MetadataTest::test',
-      3 => 'Metadata\\MetadataTest::test2',
-      4 => 'RecursiveLoaderTest::testSomeFeature',
-      5 => 'RecursiveLoaderTest::test1',
-      6 => 'RecursiveLoaderTest::test2',
-      7 => 'RecursiveLoaderTest::test3',
-      8 => 'RecursiveLoaderTest::test4',
-    ),
     147 => 
-    array (
-      0 => 'LoaderTest::testSomeFeature',
-      1 => 'LoaderTest::test1',
-      2 => 'Metadata\\MetadataTest::test',
-      3 => 'Metadata\\MetadataTest::test2',
-      4 => 'RecursiveLoaderTest::testSomeFeature',
-      5 => 'RecursiveLoaderTest::test1',
-      6 => 'RecursiveLoaderTest::test2',
-      7 => 'RecursiveLoaderTest::test3',
-      8 => 'RecursiveLoaderTest::test4',
-    ),
-    148 => 
-    array (
-      0 => 'LoaderTest::testSomeFeature',
-      1 => 'LoaderTest::test1',
-      2 => 'Metadata\\MetadataTest::test',
-      3 => 'Metadata\\MetadataTest::test2',
-      4 => 'RecursiveLoaderTest::testSomeFeature',
-      5 => 'RecursiveLoaderTest::test1',
-      6 => 'RecursiveLoaderTest::test2',
-      7 => 'RecursiveLoaderTest::test3',
-      8 => 'RecursiveLoaderTest::test4',
-    ),
-    149 => 
-    array (
-      0 => 'LoaderTest::testSomeFeature',
-      1 => 'LoaderTest::test1',
-      2 => 'Metadata\\MetadataTest::test',
-      3 => 'Metadata\\MetadataTest::test2',
-      4 => 'RecursiveLoaderTest::testSomeFeature',
-      5 => 'RecursiveLoaderTest::test1',
-      6 => 'RecursiveLoaderTest::test2',
-      7 => 'RecursiveLoaderTest::test3',
-      8 => 'RecursiveLoaderTest::test4',
-    ),
-    150 => 
     array (
       0 => 'LoaderTest::testSomeFeature',
       1 => 'LoaderTest::test1',
@@ -808,7 +1002,8 @@ $coverage->setData(array (
       7 => 'RecursiveLoaderTest::test3',
       8 => 'RecursiveLoaderTest::test4',
     ),
-    152 => 
+    152 => NULL,
+    156 => 
     array (
       0 => 'LoaderTest::testSomeFeature',
       1 => 'LoaderTest::test1',
@@ -820,7 +1015,8 @@ $coverage->setData(array (
       7 => 'RecursiveLoaderTest::test3',
       8 => 'RecursiveLoaderTest::test4',
     ),
-    155 => 
+    157 => NULL,
+    161 => 
     array (
       0 => 'LoaderTest::testSomeFeature',
       1 => 'LoaderTest::test1',
@@ -832,7 +1028,7 @@ $coverage->setData(array (
       7 => 'RecursiveLoaderTest::test3',
       8 => 'RecursiveLoaderTest::test4',
     ),
-    159 => 
+    162 => 
     array (
       0 => 'LoaderTest::testSomeFeature',
       1 => 'LoaderTest::test1',
@@ -844,8 +1040,17 @@ $coverage->setData(array (
       7 => 'RecursiveLoaderTest::test3',
       8 => 'RecursiveLoaderTest::test4',
     ),
-    160 => NULL,
-    164 => 
+    163 => 
+    array (
+      0 => 'Metadata\\MetadataTest::test',
+      1 => 'Metadata\\MetadataTest::test2',
+      2 => 'RecursiveLoaderTest::testSomeFeature',
+      3 => 'RecursiveLoaderTest::test1',
+      4 => 'RecursiveLoaderTest::test2',
+      5 => 'RecursiveLoaderTest::test3',
+      6 => 'RecursiveLoaderTest::test4',
+    ),
+    165 => 
     array (
       0 => 'LoaderTest::testSomeFeature',
       1 => 'LoaderTest::test1',
@@ -857,7 +1062,6 @@ $coverage->setData(array (
       7 => 'RecursiveLoaderTest::test3',
       8 => 'RecursiveLoaderTest::test4',
     ),
-    165 => NULL,
     169 => 
     array (
       0 => 'LoaderTest::testSomeFeature',
@@ -870,7 +1074,8 @@ $coverage->setData(array (
       7 => 'RecursiveLoaderTest::test3',
       8 => 'RecursiveLoaderTest::test4',
     ),
-    170 => 
+    170 => NULL,
+    174 => 
     array (
       0 => 'LoaderTest::testSomeFeature',
       1 => 'LoaderTest::test1',
@@ -882,17 +1087,7 @@ $coverage->setData(array (
       7 => 'RecursiveLoaderTest::test3',
       8 => 'RecursiveLoaderTest::test4',
     ),
-    171 => 
-    array (
-      0 => 'Metadata\\MetadataTest::test',
-      1 => 'Metadata\\MetadataTest::test2',
-      2 => 'RecursiveLoaderTest::testSomeFeature',
-      3 => 'RecursiveLoaderTest::test1',
-      4 => 'RecursiveLoaderTest::test2',
-      5 => 'RecursiveLoaderTest::test3',
-      6 => 'RecursiveLoaderTest::test4',
-    ),
-    173 => 
+    175 => 
     array (
       0 => 'LoaderTest::testSomeFeature',
       1 => 'LoaderTest::test1',
@@ -904,250 +1099,10 @@ $coverage->setData(array (
       7 => 'RecursiveLoaderTest::test3',
       8 => 'RecursiveLoaderTest::test4',
     ),
-    177 => 
-    array (
-      0 => 'LoaderTest::testSomeFeature',
-      1 => 'LoaderTest::test1',
-      2 => 'Metadata\\MetadataTest::test',
-      3 => 'Metadata\\MetadataTest::test2',
-      4 => 'RecursiveLoaderTest::testSomeFeature',
-      5 => 'RecursiveLoaderTest::test1',
-      6 => 'RecursiveLoaderTest::test2',
-      7 => 'RecursiveLoaderTest::test3',
-      8 => 'RecursiveLoaderTest::test4',
-    ),
-    178 => NULL,
-    182 => 
-    array (
-      0 => 'LoaderTest::testSomeFeature',
-      1 => 'LoaderTest::test1',
-      2 => 'Metadata\\MetadataTest::test',
-      3 => 'Metadata\\MetadataTest::test2',
-      4 => 'RecursiveLoaderTest::testSomeFeature',
-      5 => 'RecursiveLoaderTest::test1',
-      6 => 'RecursiveLoaderTest::test2',
-      7 => 'RecursiveLoaderTest::test3',
-      8 => 'RecursiveLoaderTest::test4',
-    ),
-    183 => 
-    array (
-      0 => 'LoaderTest::testSomeFeature',
-      1 => 'LoaderTest::test1',
-      2 => 'Metadata\\MetadataTest::test',
-      3 => 'Metadata\\MetadataTest::test2',
-      4 => 'RecursiveLoaderTest::testSomeFeature',
-      5 => 'RecursiveLoaderTest::test1',
-      6 => 'RecursiveLoaderTest::test2',
-      7 => 'RecursiveLoaderTest::test3',
-      8 => 'RecursiveLoaderTest::test4',
-    ),
-    186 => 
+    178 => 
     array (
     ),
-    187 => NULL,
-    191 => 
-    array (
-      0 => 'LoaderTest::testSomeFeature',
-      1 => 'LoaderTest::test1',
-      2 => 'Metadata\\MetadataTest::test',
-      3 => 'Metadata\\MetadataTest::test2',
-      4 => 'RecursiveLoaderTest::testSomeFeature',
-      5 => 'RecursiveLoaderTest::test1',
-      6 => 'RecursiveLoaderTest::test2',
-      7 => 'RecursiveLoaderTest::test3',
-      8 => 'RecursiveLoaderTest::test4',
-    ),
-    192 => 
-    array (
-      0 => 'LoaderTest::testSomeFeature',
-      1 => 'LoaderTest::test1',
-      2 => 'Metadata\\MetadataTest::test',
-      3 => 'Metadata\\MetadataTest::test2',
-      4 => 'RecursiveLoaderTest::testSomeFeature',
-      5 => 'RecursiveLoaderTest::test1',
-      6 => 'RecursiveLoaderTest::test2',
-      7 => 'RecursiveLoaderTest::test3',
-      8 => 'RecursiveLoaderTest::test4',
-    ),
-    193 => 
-    array (
-      0 => 'LoaderTest::testSomeFeature',
-      1 => 'LoaderTest::test1',
-      2 => 'Metadata\\MetadataTest::test',
-      3 => 'RecursiveLoaderTest::testSomeFeature',
-      4 => 'RecursiveLoaderTest::test1',
-      5 => 'RecursiveLoaderTest::test2',
-      6 => 'RecursiveLoaderTest::test3',
-      7 => 'RecursiveLoaderTest::test4',
-    ),
-    195 => 
-    array (
-      0 => 'Metadata\\MetadataTest::test',
-      1 => 'Metadata\\MetadataTest::test2',
-    ),
-    196 => 
-    array (
-      0 => 'Metadata\\MetadataTest::test',
-      1 => 'Metadata\\MetadataTest::test2',
-    ),
-    197 => 
-    array (
-      0 => 'Metadata\\MetadataTest::test',
-      1 => 'Metadata\\MetadataTest::test2',
-    ),
-    198 => 
-    array (
-      0 => 'Metadata\\MetadataTest::test',
-      1 => 'Metadata\\MetadataTest::test2',
-    ),
-    201 => 
-    array (
-      0 => 'Metadata\\MetadataTest::test',
-      1 => 'Metadata\\MetadataTest::test2',
-    ),
-    202 => 
-    array (
-      0 => 'Metadata\\MetadataTest::test',
-      1 => 'Metadata\\MetadataTest::test2',
-    ),
-    203 => 
-    array (
-      0 => 'Metadata\\MetadataTest::test',
-      1 => 'Metadata\\MetadataTest::test2',
-    ),
-    204 => 
-    array (
-      0 => 'Metadata\\MetadataTest::test',
-      1 => 'Metadata\\MetadataTest::test2',
-    ),
-    206 => 
-    array (
-      0 => 'Metadata\\MetadataTest::test',
-      1 => 'Metadata\\MetadataTest::test2',
-    ),
-    209 => 
-    array (
-      0 => 'Metadata\\MetadataTest::test',
-      1 => 'Metadata\\MetadataTest::test2',
-    ),
-    210 => 
-    array (
-      0 => 'Metadata\\MetadataTest::test',
-      1 => 'Metadata\\MetadataTest::test2',
-    ),
-    211 => 
-    array (
-      0 => 'Metadata\\MetadataTest::test',
-      1 => 'Metadata\\MetadataTest::test2',
-    ),
-    212 => 
-    array (
-      0 => 'Metadata\\MetadataTest::test',
-      1 => 'Metadata\\MetadataTest::test2',
-    ),
-    214 => 
-    array (
-      0 => 'Metadata\\MetadataTest::test',
-      1 => 'Metadata\\MetadataTest::test2',
-    ),
-    217 => 
-    array (
-      0 => 'Metadata\\MetadataTest::test',
-      1 => 'Metadata\\MetadataTest::test2',
-    ),
-    221 => 
-    array (
-      0 => 'LoaderTest::testSomeFeature',
-      1 => 'LoaderTest::test1',
-      2 => 'Metadata\\MetadataTest::test',
-      3 => 'Metadata\\MetadataTest::test2',
-      4 => 'RecursiveLoaderTest::testSomeFeature',
-      5 => 'RecursiveLoaderTest::test1',
-      6 => 'RecursiveLoaderTest::test2',
-      7 => 'RecursiveLoaderTest::test3',
-      8 => 'RecursiveLoaderTest::test4',
-    ),
-    222 => 
-    array (
-      0 => 'Metadata\\MetadataTest::test',
-      1 => 'Metadata\\MetadataTest::test2',
-    ),
-    223 => 
-    array (
-      0 => 'Metadata\\MetadataTest::test',
-      1 => 'Metadata\\MetadataTest::test2',
-    ),
-    224 => 
-    array (
-      0 => 'Metadata\\MetadataTest::test',
-      1 => 'Metadata\\MetadataTest::test2',
-    ),
-    227 => 
-    array (
-      0 => 'LoaderTest::testSomeFeature',
-      1 => 'LoaderTest::test1',
-      2 => 'Metadata\\MetadataTest::test',
-      3 => 'Metadata\\MetadataTest::test2',
-      4 => 'RecursiveLoaderTest::testSomeFeature',
-      5 => 'RecursiveLoaderTest::test1',
-      6 => 'RecursiveLoaderTest::test2',
-      7 => 'RecursiveLoaderTest::test3',
-      8 => 'RecursiveLoaderTest::test4',
-    ),
-    231 => 
-    array (
-      0 => 'Metadata\\MetadataTest::test',
-      1 => 'Metadata\\MetadataTest::test2',
-    ),
-    232 => 
-    array (
-      0 => 'Metadata\\MetadataTest::test',
-      1 => 'Metadata\\MetadataTest::test2',
-    ),
-    233 => 
-    array (
-      0 => 'Metadata\\MetadataTest::test',
-      1 => 'Metadata\\MetadataTest::test2',
-    ),
-    234 => 
-    array (
-      0 => 'Metadata\\MetadataTest::test',
-      1 => 'Metadata\\MetadataTest::test2',
-    ),
-    237 => 
-    array (
-      0 => 'Metadata\\MetadataTest::test',
-      1 => 'Metadata\\MetadataTest::test2',
-    ),
-    241 => 
-    array (
-      0 => 'Metadata\\MetadataTest::test',
-      1 => 'Metadata\\MetadataTest::test2',
-    ),
-    242 => 
-    array (
-      0 => 'Metadata\\MetadataTest::test',
-      1 => 'Metadata\\MetadataTest::test2',
-    ),
-    243 => 
-    array (
-      0 => 'Metadata\\MetadataTest::test',
-      1 => 'Metadata\\MetadataTest::test2',
-    ),
-    245 => 
-    array (
-      0 => 'Metadata\\MetadataTest::test',
-      1 => 'Metadata\\MetadataTest::test2',
-    ),
-    246 => 
-    array (
-    ),
-    249 => 
-    array (
-      0 => 'Metadata\\MetadataTest::test',
-      1 => 'Metadata\\MetadataTest::test2',
-    ),
-    250 => NULL,
+    179 => NULL,
   ),
   '/home/george/www/data-structure/src/DataStructureInterface.php' => 
   array (
@@ -1432,36 +1387,6 @@ $coverage->setData(array (
   ),
   '/home/george/www/data-structure/src/Metadata/Factory.php' => 
   array (
-    40 => 
-    array (
-      0 => 'LoaderTest::testSomeFeature',
-      1 => 'LoaderTest::test1',
-      2 => 'RecursiveLoaderTest::testSomeFeature',
-      3 => 'RecursiveLoaderTest::test1',
-      4 => 'RecursiveLoaderTest::test2',
-      5 => 'RecursiveLoaderTest::test3',
-      6 => 'RecursiveLoaderTest::test4',
-    ),
-    41 => 
-    array (
-      0 => 'LoaderTest::testSomeFeature',
-      1 => 'LoaderTest::test1',
-      2 => 'RecursiveLoaderTest::testSomeFeature',
-      3 => 'RecursiveLoaderTest::test1',
-      4 => 'RecursiveLoaderTest::test2',
-      5 => 'RecursiveLoaderTest::test3',
-      6 => 'RecursiveLoaderTest::test4',
-    ),
-    42 => 
-    array (
-      0 => 'LoaderTest::testSomeFeature',
-      1 => 'LoaderTest::test1',
-      2 => 'RecursiveLoaderTest::testSomeFeature',
-      3 => 'RecursiveLoaderTest::test1',
-      4 => 'RecursiveLoaderTest::test2',
-      5 => 'RecursiveLoaderTest::test3',
-      6 => 'RecursiveLoaderTest::test4',
-    ),
     43 => 
     array (
       0 => 'LoaderTest::testSomeFeature',
@@ -1482,15 +1407,7 @@ $coverage->setData(array (
       5 => 'RecursiveLoaderTest::test3',
       6 => 'RecursiveLoaderTest::test4',
     ),
-    51 => 
-    array (
-    ),
-    52 => NULL,
-    59 => 
-    array (
-    ),
-    60 => NULL,
-    71 => 
+    45 => 
     array (
       0 => 'LoaderTest::testSomeFeature',
       1 => 'LoaderTest::test1',
@@ -1500,39 +1417,99 @@ $coverage->setData(array (
       5 => 'RecursiveLoaderTest::test3',
       6 => 'RecursiveLoaderTest::test4',
     ),
-    72 => 
+    46 => 
+    array (
+      0 => 'LoaderTest::testSomeFeature',
+      1 => 'LoaderTest::test1',
+      2 => 'RecursiveLoaderTest::testSomeFeature',
+      3 => 'RecursiveLoaderTest::test1',
+      4 => 'RecursiveLoaderTest::test2',
+      5 => 'RecursiveLoaderTest::test3',
+      6 => 'RecursiveLoaderTest::test4',
+    ),
+    47 => 
+    array (
+      0 => 'LoaderTest::testSomeFeature',
+      1 => 'LoaderTest::test1',
+      2 => 'RecursiveLoaderTest::testSomeFeature',
+      3 => 'RecursiveLoaderTest::test1',
+      4 => 'RecursiveLoaderTest::test2',
+      5 => 'RecursiveLoaderTest::test3',
+      6 => 'RecursiveLoaderTest::test4',
+    ),
+    54 => 
     array (
     ),
-    73 => 
+    55 => NULL,
+    62 => 
     array (
     ),
-    74 => 
-    array (
-    ),
+    63 => NULL,
     75 => 
     array (
+      0 => 'LoaderTest::testSomeFeature',
+      1 => 'LoaderTest::test1',
+      2 => 'RecursiveLoaderTest::testSomeFeature',
+      3 => 'RecursiveLoaderTest::test1',
+      4 => 'RecursiveLoaderTest::test2',
+      5 => 'RecursiveLoaderTest::test3',
+      6 => 'RecursiveLoaderTest::test4',
     ),
     76 => 
     array (
+      0 => 'LoaderTest::testSomeFeature',
+      1 => 'LoaderTest::test1',
+      2 => 'RecursiveLoaderTest::testSomeFeature',
+      3 => 'RecursiveLoaderTest::test1',
+      4 => 'RecursiveLoaderTest::test2',
+      5 => 'RecursiveLoaderTest::test3',
+      6 => 'RecursiveLoaderTest::test4',
     ),
     77 => 
+    array (
+      0 => 'LoaderTest::testSomeFeature',
+      1 => 'LoaderTest::test1',
+      2 => 'RecursiveLoaderTest::testSomeFeature',
+      3 => 'RecursiveLoaderTest::test1',
+      4 => 'RecursiveLoaderTest::test2',
+      5 => 'RecursiveLoaderTest::test3',
+      6 => 'RecursiveLoaderTest::test4',
+    ),
+    78 => 
     array (
     ),
     80 => 
     array (
+      0 => 'LoaderTest::testSomeFeature',
+      1 => 'LoaderTest::test1',
+      2 => 'RecursiveLoaderTest::testSomeFeature',
+      3 => 'RecursiveLoaderTest::test1',
+      4 => 'RecursiveLoaderTest::test2',
+      5 => 'RecursiveLoaderTest::test3',
+      6 => 'RecursiveLoaderTest::test4',
+    ),
+    81 => 
+    array (
+    ),
+    82 => 
+    array (
     ),
     83 => 
     array (
-      0 => 'LoaderTest::testSomeFeature',
-      1 => 'LoaderTest::test1',
-      2 => 'RecursiveLoaderTest::testSomeFeature',
-      3 => 'RecursiveLoaderTest::test1',
-      4 => 'RecursiveLoaderTest::test2',
-      5 => 'RecursiveLoaderTest::test3',
-      6 => 'RecursiveLoaderTest::test4',
     ),
-    84 => NULL,
-    95 => 
+    84 => 
+    array (
+    ),
+    85 => 
+    array (
+    ),
+    86 => 
+    array (
+    ),
+    89 => 
+    array (
+    ),
+    92 => 
     array (
       0 => 'LoaderTest::testSomeFeature',
       1 => 'LoaderTest::test1',
@@ -1542,7 +1519,8 @@ $coverage->setData(array (
       5 => 'RecursiveLoaderTest::test3',
       6 => 'RecursiveLoaderTest::test4',
     ),
-    96 => 
+    93 => NULL,
+    104 => 
     array (
       0 => 'LoaderTest::testSomeFeature',
       1 => 'LoaderTest::test1',
@@ -1552,7 +1530,7 @@ $coverage->setData(array (
       5 => 'RecursiveLoaderTest::test3',
       6 => 'RecursiveLoaderTest::test4',
     ),
-    97 => 
+    105 => 
     array (
       0 => 'LoaderTest::testSomeFeature',
       1 => 'LoaderTest::test1',
@@ -1562,41 +1540,51 @@ $coverage->setData(array (
       5 => 'RecursiveLoaderTest::test3',
       6 => 'RecursiveLoaderTest::test4',
     ),
-    98 => 
-    array (
-      0 => 'LoaderTest::testSomeFeature',
-      1 => 'LoaderTest::test1',
-      2 => 'RecursiveLoaderTest::testSomeFeature',
-      3 => 'RecursiveLoaderTest::test1',
-      4 => 'RecursiveLoaderTest::test2',
-      5 => 'RecursiveLoaderTest::test3',
-      6 => 'RecursiveLoaderTest::test4',
-    ),
-    99 => 
-    array (
-      0 => 'LoaderTest::testSomeFeature',
-      1 => 'LoaderTest::test1',
-      2 => 'RecursiveLoaderTest::testSomeFeature',
-      3 => 'RecursiveLoaderTest::test1',
-      4 => 'RecursiveLoaderTest::test2',
-      5 => 'RecursiveLoaderTest::test3',
-      6 => 'RecursiveLoaderTest::test4',
-    ),
-    101 => 
-    array (
-      0 => 'LoaderTest::testSomeFeature',
-      1 => 'LoaderTest::test1',
-      2 => 'RecursiveLoaderTest::testSomeFeature',
-      3 => 'RecursiveLoaderTest::test1',
-      4 => 'RecursiveLoaderTest::test2',
-      5 => 'RecursiveLoaderTest::test3',
-      6 => 'RecursiveLoaderTest::test4',
-    ),
-    102 => NULL,
     106 => 
     array (
+      0 => 'LoaderTest::testSomeFeature',
+      1 => 'LoaderTest::test1',
+      2 => 'RecursiveLoaderTest::testSomeFeature',
+      3 => 'RecursiveLoaderTest::test1',
+      4 => 'RecursiveLoaderTest::test2',
+      5 => 'RecursiveLoaderTest::test3',
+      6 => 'RecursiveLoaderTest::test4',
     ),
-    107 => NULL,
+    107 => 
+    array (
+      0 => 'LoaderTest::testSomeFeature',
+      1 => 'LoaderTest::test1',
+      2 => 'RecursiveLoaderTest::testSomeFeature',
+      3 => 'RecursiveLoaderTest::test1',
+      4 => 'RecursiveLoaderTest::test2',
+      5 => 'RecursiveLoaderTest::test3',
+      6 => 'RecursiveLoaderTest::test4',
+    ),
+    108 => 
+    array (
+      0 => 'LoaderTest::testSomeFeature',
+      1 => 'LoaderTest::test1',
+      2 => 'RecursiveLoaderTest::testSomeFeature',
+      3 => 'RecursiveLoaderTest::test1',
+      4 => 'RecursiveLoaderTest::test2',
+      5 => 'RecursiveLoaderTest::test3',
+      6 => 'RecursiveLoaderTest::test4',
+    ),
+    110 => 
+    array (
+      0 => 'LoaderTest::testSomeFeature',
+      1 => 'LoaderTest::test1',
+      2 => 'RecursiveLoaderTest::testSomeFeature',
+      3 => 'RecursiveLoaderTest::test1',
+      4 => 'RecursiveLoaderTest::test2',
+      5 => 'RecursiveLoaderTest::test3',
+      6 => 'RecursiveLoaderTest::test4',
+    ),
+    111 => NULL,
+    115 => 
+    array (
+    ),
+    116 => NULL,
   ),
   '/home/george/www/data-structure/src/Loader.php' => 
   array (
@@ -4667,6 +4655,9 @@ $coverage->setData(array (
     ),
     60 => 
     array (
+    ),
+    61 => 
+    array (
       0 => 'LoaderTest::testSomeFeature',
       1 => 'LoaderTest::test1',
       2 => 'Metadata\\MetadataTest::test',
@@ -4677,14 +4668,14 @@ $coverage->setData(array (
       7 => 'RecursiveLoaderTest::test3',
       8 => 'RecursiveLoaderTest::test4',
     ),
-    62 => 
-    array (
-    ),
-    63 => 
+    64 => 
     array (
     ),
     65 => 
     array (
+    ),
+    67 => 
+    array (
       0 => 'LoaderTest::testSomeFeature',
       1 => 'LoaderTest::test1',
       2 => 'Metadata\\MetadataTest::test',
@@ -4694,32 +4685,6 @@ $coverage->setData(array (
       6 => 'RecursiveLoaderTest::test2',
       7 => 'RecursiveLoaderTest::test3',
       8 => 'RecursiveLoaderTest::test4',
-    ),
-    69 => 
-    array (
-      0 => 'LoaderTest::testSomeFeature',
-      1 => 'LoaderTest::test1',
-      2 => 'Metadata\\MetadataTest::test',
-      3 => 'Metadata\\MetadataTest::test1',
-      4 => 'Metadata\\MetadataTest::test2',
-      5 => 'RecursiveLoaderTest::testSomeFeature',
-      6 => 'RecursiveLoaderTest::test1',
-      7 => 'RecursiveLoaderTest::test2',
-      8 => 'RecursiveLoaderTest::test3',
-      9 => 'RecursiveLoaderTest::test4',
-    ),
-    70 => 
-    array (
-      0 => 'LoaderTest::testSomeFeature',
-      1 => 'LoaderTest::test1',
-      2 => 'Metadata\\MetadataTest::test',
-      3 => 'Metadata\\MetadataTest::test1',
-      4 => 'Metadata\\MetadataTest::test2',
-      5 => 'RecursiveLoaderTest::testSomeFeature',
-      6 => 'RecursiveLoaderTest::test1',
-      7 => 'RecursiveLoaderTest::test2',
-      8 => 'RecursiveLoaderTest::test3',
-      9 => 'RecursiveLoaderTest::test4',
     ),
     71 => 
     array (
@@ -4734,8 +4699,7 @@ $coverage->setData(array (
       8 => 'RecursiveLoaderTest::test3',
       9 => 'RecursiveLoaderTest::test4',
     ),
-    72 => NULL,
-    76 => 
+    72 => 
     array (
       0 => 'LoaderTest::testSomeFeature',
       1 => 'LoaderTest::test1',
@@ -4748,8 +4712,7 @@ $coverage->setData(array (
       8 => 'RecursiveLoaderTest::test3',
       9 => 'RecursiveLoaderTest::test4',
     ),
-    77 => NULL,
-    81 => 
+    73 => 
     array (
       0 => 'LoaderTest::testSomeFeature',
       1 => 'LoaderTest::test1',
@@ -4762,7 +4725,35 @@ $coverage->setData(array (
       8 => 'RecursiveLoaderTest::test3',
       9 => 'RecursiveLoaderTest::test4',
     ),
-    82 => NULL,
+    74 => NULL,
+    78 => 
+    array (
+      0 => 'LoaderTest::testSomeFeature',
+      1 => 'LoaderTest::test1',
+      2 => 'Metadata\\MetadataTest::test',
+      3 => 'Metadata\\MetadataTest::test1',
+      4 => 'Metadata\\MetadataTest::test2',
+      5 => 'RecursiveLoaderTest::testSomeFeature',
+      6 => 'RecursiveLoaderTest::test1',
+      7 => 'RecursiveLoaderTest::test2',
+      8 => 'RecursiveLoaderTest::test3',
+      9 => 'RecursiveLoaderTest::test4',
+    ),
+    79 => NULL,
+    83 => 
+    array (
+      0 => 'LoaderTest::testSomeFeature',
+      1 => 'LoaderTest::test1',
+      2 => 'Metadata\\MetadataTest::test',
+      3 => 'Metadata\\MetadataTest::test1',
+      4 => 'Metadata\\MetadataTest::test2',
+      5 => 'RecursiveLoaderTest::testSomeFeature',
+      6 => 'RecursiveLoaderTest::test1',
+      7 => 'RecursiveLoaderTest::test2',
+      8 => 'RecursiveLoaderTest::test3',
+      9 => 'RecursiveLoaderTest::test4',
+    ),
+    84 => NULL,
   ),
   '/home/george/www/data-structure/src/Validation/Loader.php' => 
   array (
@@ -5136,66 +5127,52 @@ $coverage->setData(array (
     139 => 
     array (
     ),
-    141 => 
+    142 => 
     array (
       0 => 'RecursiveLoaderTest::test3',
     ),
-    143 => 
+    145 => 
     array (
       0 => 'RecursiveLoaderTest::testSomeFeature',
       1 => 'RecursiveLoaderTest::test1',
       2 => 'RecursiveLoaderTest::test2',
       3 => 'RecursiveLoaderTest::test3',
     ),
-    144 => NULL,
-    161 => 
+    146 => NULL,
+    163 => 
     array (
       0 => 'RecursiveLoaderTest::testSomeFeature',
       1 => 'RecursiveLoaderTest::test1',
       2 => 'RecursiveLoaderTest::test2',
       3 => 'RecursiveLoaderTest::test3',
-    ),
-    162 => 
-    array (
     ),
     164 => 
     array (
-      0 => 'RecursiveLoaderTest::testSomeFeature',
-      1 => 'RecursiveLoaderTest::test1',
-      2 => 'RecursiveLoaderTest::test2',
-      3 => 'RecursiveLoaderTest::test3',
-    ),
-    165 => 
-    array (
-      0 => 'RecursiveLoaderTest::testSomeFeature',
-      1 => 'RecursiveLoaderTest::test1',
-      2 => 'RecursiveLoaderTest::test2',
-      3 => 'RecursiveLoaderTest::test3',
     ),
     166 => 
     array (
+      0 => 'RecursiveLoaderTest::testSomeFeature',
+      1 => 'RecursiveLoaderTest::test1',
+      2 => 'RecursiveLoaderTest::test2',
+      3 => 'RecursiveLoaderTest::test3',
     ),
     167 => 
     array (
+      0 => 'RecursiveLoaderTest::testSomeFeature',
+      1 => 'RecursiveLoaderTest::test1',
+      2 => 'RecursiveLoaderTest::test2',
+      3 => 'RecursiveLoaderTest::test3',
     ),
     168 => 
     array (
     ),
+    169 => 
+    array (
+    ),
     170 => 
     array (
-      0 => 'RecursiveLoaderTest::testSomeFeature',
-      1 => 'RecursiveLoaderTest::test1',
-      2 => 'RecursiveLoaderTest::test2',
-      3 => 'RecursiveLoaderTest::test3',
     ),
-    173 => 
-    array (
-      0 => 'RecursiveLoaderTest::testSomeFeature',
-      1 => 'RecursiveLoaderTest::test1',
-      2 => 'RecursiveLoaderTest::test2',
-      3 => 'RecursiveLoaderTest::test3',
-    ),
-    174 => 
+    172 => 
     array (
       0 => 'RecursiveLoaderTest::testSomeFeature',
       1 => 'RecursiveLoaderTest::test1',
@@ -5209,6 +5186,13 @@ $coverage->setData(array (
       2 => 'RecursiveLoaderTest::test2',
       3 => 'RecursiveLoaderTest::test3',
     ),
+    176 => 
+    array (
+      0 => 'RecursiveLoaderTest::testSomeFeature',
+      1 => 'RecursiveLoaderTest::test1',
+      2 => 'RecursiveLoaderTest::test2',
+      3 => 'RecursiveLoaderTest::test3',
+    ),
     177 => 
     array (
       0 => 'RecursiveLoaderTest::testSomeFeature',
@@ -5216,13 +5200,14 @@ $coverage->setData(array (
       2 => 'RecursiveLoaderTest::test2',
       3 => 'RecursiveLoaderTest::test3',
     ),
-    178 => NULL,
-    182 => 
+    179 => 
     array (
+      0 => 'RecursiveLoaderTest::testSomeFeature',
+      1 => 'RecursiveLoaderTest::test1',
+      2 => 'RecursiveLoaderTest::test2',
+      3 => 'RecursiveLoaderTest::test3',
     ),
-    183 => 
-    array (
-    ),
+    180 => NULL,
     184 => 
     array (
     ),
@@ -5232,7 +5217,13 @@ $coverage->setData(array (
     186 => 
     array (
     ),
-    188 => NULL,
+    187 => 
+    array (
+    ),
+    188 => 
+    array (
+    ),
+    190 => NULL,
   ),
   '/home/george/www/data-structure/src/Exception/LoadingNestedException.php' => 
   array (
