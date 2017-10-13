@@ -50,6 +50,11 @@ class PropertiesTransformer implements StructureTransformerInterface
         return $this;
     }
     
+    public function getTransformers()
+    {
+        return $this->transformers;
+    }
+    
     public function getTransformer(string $propertyName): ?TransformerInterface
     {
         return $this->transformers[$propertyName] ?? null;
