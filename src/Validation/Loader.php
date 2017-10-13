@@ -38,13 +38,7 @@ class Loader implements LoaderInterface
         if ($metadata->name !== $this->metadata->name) {
             return true;
         }
-        $metadata->defaultGroup = $this->metadata->defaultGroup;
-        $metadata->members = $this->metadata->members;
-        $metadata->properties = $this->metadata->properties;
-        $metadata->getters = $this->metadata->getters;
-        $metadata->groupSequence = $this->metadata->groupSequence;
-        $metadata->groupSequenceProvider = $this->metadata->groupSequenceProvider;
-        $metadata->traversalStrategy = $this->metadata->traversalStrategy;
+        $metadata->mergeConstraints($this->metadata);
         
         return true;
     }
