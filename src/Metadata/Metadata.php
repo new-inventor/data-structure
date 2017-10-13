@@ -132,16 +132,13 @@ class Metadata implements MetadataInterface
         return new $validatorClass($validator[$validatorName]);
     }
     
-    protected function createValidator(): ?RecursiveValidator
+    protected function createValidator(): RecursiveValidator
     {
         $this->initValidation();
         if (isset($this->configArray['properties'])) {
             foreach ($this->configArray['properties'] as $propertyName => $propertyMetadata) {
                 $this->prepareGetterValidators($propertyName, $propertyMetadata['validation']);
             }
-        }
-        if ($this->classValidationMetadata === null) {
-            return null;
         }
         $metadataFactory = new LazyLoadingMetadataFactory(
             new Loader($this->classValidationMetadata),
@@ -196,7 +193,7 @@ class Metadata implements MetadataInterface
     /**
      * @return ValidatorInterface
      */
-    public function getValidator(): ?ValidatorInterface
+    public function getValidator(): ValidatorInterface
     {
         if($this->classValidator === null) {
             $this->classValidator = $this->createValidator();

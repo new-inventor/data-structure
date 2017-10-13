@@ -16,7 +16,7 @@ interface MetadataInterface
     /**
      * @return ValidatorInterface
      */
-    public function getValidator(): ?ValidatorInterface;
+    public function getValidator(): ValidatorInterface;
     
     /**
      * @return string
