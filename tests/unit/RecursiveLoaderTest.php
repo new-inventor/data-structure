@@ -35,7 +35,7 @@ class RecursiveLoaderTest extends \Codeception\Test\Unit
             ],
         ];
         $factory = new Factory(__DIR__ . '/data', 'TestsDataStructure');
-        $loader = new RecursiveLoader($factory, Configuration::DEFAULT_GROUP_NAME, false);
+        $loader = new RecursiveLoader($factory, Configuration::DEFAULT_GROUP_NAME);
         $bag = new TestBag3();
         $loader->load($bag, $properties);
         $this->assertSame('6545', $bag->getProp1());
@@ -70,16 +70,34 @@ class RecursiveLoaderTest extends \Codeception\Test\Unit
             ],
         ];
         $factory = new Factory(__DIR__ . '/data', 'TestsDataStructure');
-        $loader = new RecursiveLoader($factory, Configuration::DEFAULT_GROUP_NAME, true);
+        $loader = new RecursiveLoader($factory, Configuration::DEFAULT_GROUP_NAME);
         $obj = new TestBag3();
         $errors = $loader->load($obj, $properties);
         
         $this->assertSame(
             [
-                'prop2' => ['TYPE_EXCEPTION' => "The type of the variable in the method NewInventor\\Transformers\\Transformer\\ToInt->validateInputTypes is incorrect.\nRequired type is: numeric \nType received: string",],
+                'prop2' => [
+                    'TYPE_EXCEPTION' => [
+                        'TO_INT' => 'Type of value invalid.',
+                    ],
+                ],
                 'prop4' => [
-                    'prop1' => ['TRANSFORMATION_EXCEPTION' => "Transformation failed: Transformer NewInventor\\Transformers\\Transformer\\InnerTransformer can not normalize value.\nType exception in element 1: \nThe type of the variable in the method NewInventor\\Transformers\\Transformer\\ToInt->validateInputTypes is incorrect.\nRequired type is: numeric \nType received: string",],
-                    'prop2' => ['TYPE_EXCEPTION' => "The type of the variable in the method NewInventor\\Transformers\\Transformer\\ToInt->validateInputTypes is incorrect.\nRequired type is: numeric \nType received: string",],
+                    'prop1' => [
+                        'TRANSFORMATION_CONTAINER_EXCEPTION' => [
+                            'INNER_TRANSFORMER' => [
+                                1 => [
+                                    'TYPE_EXCEPTION' => [
+                                        'TO_INT' => 'Type of value invalid.',
+                                    ],
+                                ],
+                            ],
+                        ],
+                    ],
+                    'prop2' => [
+                        'TYPE_EXCEPTION' => [
+                            'TO_INT' => 'Type of value invalid.',
+                        ],
+                    ],
                 ],
             ],
             $errors
@@ -107,7 +125,7 @@ class RecursiveLoaderTest extends \Codeception\Test\Unit
         ];
     
         $factory = new Factory(__DIR__ . '/data', 'TestsDataStructure');
-        $loader = new RecursiveLoader($factory, Configuration::DEFAULT_GROUP_NAME, false);
+        $loader = new RecursiveLoader($factory, Configuration::DEFAULT_GROUP_NAME);
         $obj = new TestBag5();
         $loader->load($obj, $properties);
         $this->assertCount(2, $obj->getProp4());
@@ -130,14 +148,16 @@ class RecursiveLoaderTest extends \Codeception\Test\Unit
         ];
     
         $factory = new Factory(__DIR__ . '/data', 'TestsDataStructure');
-        $loader = new RecursiveLoader($factory, Configuration::DEFAULT_GROUP_NAME, true);
+        $loader = new RecursiveLoader($factory, Configuration::DEFAULT_GROUP_NAME);
         $obj = new TestBag5();
         $errors = $loader->load($obj, $properties);
         $this->assertSame(
             [
                 'prop4' => [
                     1 => [
-                        'TYPE_EXCEPTION' => "The type of the variable in the method NewInventor\DataStructure\RecursiveLoader->getNestedException is incorrect.\nRequired types are: null, array \nType received: string",
+                        'TYPE_EXCEPTION' => [
+                            'RECURSIVE_LOADER' => 'Nested must be array or null',
+                        ],
                     ],
                 ],
             ],
@@ -153,7 +173,7 @@ class RecursiveLoaderTest extends \Codeception\Test\Unit
             'prop3' => true,
         ];
         $factory = new Factory(__DIR__ . '/data', 'TestsDataStructure');
-        $loader = new RecursiveLoader($factory, Configuration::DEFAULT_GROUP_NAME, false);
+        $loader = new RecursiveLoader($factory, Configuration::DEFAULT_GROUP_NAME);
         $obj = new TestBag5();
         $loader->load($obj, $properties);
         $this->assertNull($obj->getProp4());

@@ -22,7 +22,7 @@ class LoaderTest extends \Codeception\Test\Unit
     public function testSomeFeature()
     {
         $factory = new Factory(__DIR__ . '/data', 'TestsDataStructure');
-        $loader = new DataStructureLoader($factory, 'default', true);
+        $loader = new DataStructureLoader($factory, 'default');
         $bag = new \TestsDataStructure\TestBag4();
         $loader->load(
             $bag,
@@ -47,7 +47,7 @@ class LoaderTest extends \Codeception\Test\Unit
     public function test1()
     {
         $factory = new Factory(__DIR__ . '/data', 'TestsDataStructure');
-        $loader = new DataStructureLoader($factory, 'default', true);
+        $loader = new DataStructureLoader($factory, 'default');
         $bag = new \TestsDataStructure\TestBag4();
         $errors = $loader->load(
             $bag,
@@ -68,7 +68,7 @@ class LoaderTest extends \Codeception\Test\Unit
         );
         $this->assertSame(
             [
-                'prop2' => ['TYPE_EXCEPTION' => "The type of the variable in the method NewInventor\Transformers\Transformer\ToInt->validateInputTypes is incorrect.\nRequired type is: numeric \nType received: string"],
+                'prop2' => ['TYPE_EXCEPTION' => ['TO_INT' => 'Type of value invalid.']],
             ],
             $errors
         );

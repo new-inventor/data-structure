@@ -19,8 +19,6 @@ class Loader
 {
     /** @var array */
     protected $errors = [];
-    /** @var bool */
-    protected $mute;
     /** @var Factory */
     protected $metadataFactory;
     /** @var string */
@@ -31,16 +29,13 @@ class Loader
      *
      * @param Factory $metadataFactory
      * @param string  $group
-     * @param bool    $mute
      */
     public function __construct(
         Factory $metadataFactory,
-        string $group = Configuration::DEFAULT_GROUP_NAME,
-        bool $mute = false
+        string $group = Configuration::DEFAULT_GROUP_NAME
     ) {
         $this->metadataFactory = $metadataFactory;
         $this->group = $group;
-        $this->mute = $mute;
     }
     
     /**
@@ -62,7 +57,7 @@ class Loader
         $transformer = $this->metadataFactory
             ->getMetadata($objClass)
             ->getTransformer($this->group);
-        $transformedProperties = $transformer->transform($properties, $this->mute);
+        $transformedProperties = $transformer->transform($properties);
         foreach ($transformedProperties as $propertyName => $propertyValue) {
             $obj->set($propertyName, $propertyValue);
         }

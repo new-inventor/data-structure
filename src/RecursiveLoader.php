@@ -20,8 +20,6 @@ use Psr\Cache\InvalidArgumentException;
 
 class RecursiveLoader
 {
-    /** @var bool */
-    protected $mute = true;
     /** @var Factory */
     protected $metadataFactory;
     /** @var string */
@@ -32,16 +30,13 @@ class RecursiveLoader
      *
      * @param Factory $metadataFactory
      * @param string  $group
-     * @param bool    $mute
      */
     public function __construct(
         Factory $metadataFactory,
-        string $group = Configuration::DEFAULT_GROUP_NAME,
-        bool $mute = false
+        string $group = Configuration::DEFAULT_GROUP_NAME
     ) {
         $this->metadataFactory = $metadataFactory;
         $this->group = $group;
-        $this->mute = $mute;
     }
     
     /**
@@ -49,6 +44,7 @@ class RecursiveLoader
      * @param array                  $properties
      *
      * @return array Errors
+     * @throws \NewInventor\DataStructure\Exception\LoadingNestedException
      * @throws PropertyTransformationException
      * @throws PropertyInvalidTypeException
      * @throws InvalidArgumentException
@@ -63,7 +59,7 @@ class RecursiveLoader
         /** @var Metadata $metadata */
         $metadata = $this->metadataFactory->getMetadata($objClass);
         $transformer = $metadata->getTransformer($this->group);
-        $transformedProperties = $transformer->transform($properties, $this->mute);
+        $transformedProperties = $transformer->transform($properties);
         $errors = $transformer->getErrors();
         if (count($metadata->nested) !== 0) {
             $errors = array_merge($errors, $this->loadNested($metadata->nested, $transformedProperties));
@@ -130,19 +126,11 @@ class RecursiveLoader
         return $errors;
     }
     
-    protected function getNestedException($nested)
+    protected function getNestedException($nested): array
     {
-        try {
-            TypeChecker::check($nested)->tnull()->tarray()->fail();
-        } catch (TypeException $e) {
-            if (!$this->mute) {
-                throw $e;
-            }
-            
-            return ['TYPE_EXCEPTION' => $e->getMessage()];
-        }
-        
-        return [];
+        return TypeChecker::check($nested)->tnull()->tarray()->result() ?
+            [] :
+            ['TYPE_EXCEPTION' => ['RECURSIVE_LOADER' => 'Nested must be array or null']];
     }
     
     /**
@@ -150,6 +138,7 @@ class RecursiveLoader
      * @param $config
      *
      * @return mixed
+     * @throws \NewInventor\DataStructure\Exception\LoadingNestedException
      * @throws PropertyTransformationException
      * @throws PropertyInvalidTypeException
      * @throws TypeException
@@ -167,9 +156,9 @@ class RecursiveLoader
         if (isset($config['metadata'])) {
             $metadataConfig = $config['metadata'];
             $factory = $this->generateFactory($metadataConfig['factory'] ?? self::class, $metadataConfig);
-            $nestedConstructor = new self($factory, $this->group, $this->mute);
+            $nestedConstructor = new self($factory, $this->group);
         } else {
-            $nestedConstructor = new self($this->metadataFactory, $this->group, $this->mute);
+            $nestedConstructor = new self($this->metadataFactory, $this->group);
         }
         
         $nestedClass = $config['class'];

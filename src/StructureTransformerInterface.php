@@ -22,13 +22,12 @@ interface StructureTransformerInterface
     
     /**
      * @param array $properties
-     * @param bool  $mute
      *
      * @return array
      * @throws PropertyTransformationException
      * @throws PropertyInvalidTypeException
      */
-    public function transform(array $properties, bool $mute = false): array;
+    public function transform(array $properties): array;
     
     /**
      * @return array
