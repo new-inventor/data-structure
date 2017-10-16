@@ -205,7 +205,7 @@ class Metadata implements MetadataInterface
      *
      * @return StructureTransformerInterface
      */
-    public function getTransformer(string $group = Configuration::DEFAULT_GROUP_NAME): StructureTransformerInterface
+    public function getTransformer(string $group = Configuration::DEFAULT_GROUP_NAME): ?StructureTransformerInterface
     {
         return $this->transformers[$group];
     }

@@ -44,5 +44,5 @@ interface MetadataInterface
      * @return StructureTransformerInterface
      */
     public function getTransformer(string $group = Configuration::DEFAULT_GROUP_NAME
-    ): StructureTransformerInterface;
+    ): ?StructureTransformerInterface;
 }
