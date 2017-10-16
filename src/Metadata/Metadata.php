@@ -56,15 +56,13 @@ class Metadata implements MetadataInterface
     public function __construct(string $class, CacheInterface $validatorCacheDriver = null)
     {
         $this->validatorCacheDriver = $validatorCacheDriver;
-        if (class_exists($class)) {
-            $this->fullClassName = $class;
-            $lastDelimiterPos = strrpos($class, '\\');
-            if ($lastDelimiterPos === false) {
-                $lastDelimiterPos = null;
-            }
-            $this->className = substr($class, $lastDelimiterPos ? $lastDelimiterPos + 1 : 0);
-            $this->namespace = trim(substr($class, 0, $lastDelimiterPos), "\t\n\r\0\x0B\\/");
+        $this->fullClassName = $class;
+        $lastDelimiterPos = strrpos($class, '\\');
+        if ($lastDelimiterPos === false) {
+            $lastDelimiterPos = null;
         }
+        $this->className = substr($class, $lastDelimiterPos ? $lastDelimiterPos + 1 : 0);
+        $this->namespace = trim(substr($class, 0, $lastDelimiterPos), "\t\n\r\0\x0B\\/");
         $this->symfonyValidatorsNamespace = substr(All::class, 0, -3);
     }
     
