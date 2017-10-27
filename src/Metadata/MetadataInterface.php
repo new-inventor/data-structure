@@ -9,14 +9,14 @@ namespace NewInventor\DataStructure\Metadata;
 
 
 use NewInventor\DataStructure\StructureTransformerInterface;
-use Symfony\Component\Validator\Validator\ValidatorInterface;
+use Symfony\Component\Validator\Mapping\ClassMetadata;
 
 interface MetadataInterface
 {
     /**
-     * @return ValidatorInterface
+     * @return ClassMetadata
      */
-    public function getValidator(): ValidatorInterface;
+    public function getValidationMetadata(): ClassMetadata;
     
     /**
      * @return string

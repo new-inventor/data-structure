@@ -19,7 +19,13 @@ class Loader implements LoaderInterface
     /**
      * ValidatorLoader constructor.
      *
-     * @param ClassMetadata $metadata
+     * @param array  $properties
+     * @param array  $validationConfig
+     * @param array  $propertiesConfig
+     * @param string $className
+     *
+     * @internal param array $config
+     * @internal param ClassMetadata $metadata
      */
     public function __construct(ClassMetadata $metadata)
     {

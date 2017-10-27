@@ -13,7 +13,12 @@ use NewInventor\TypeChecker\Exception\TypeException;
 use NewInventor\TypeChecker\TypeChecker;
 use Psr\Cache\CacheItemPoolInterface;
 use Psr\Cache\InvalidArgumentException;
+use Symfony\Component\Translation\IdentityTranslator;
+use Symfony\Component\Validator\ConstraintValidatorFactory;
+use Symfony\Component\Validator\Context\ExecutionContextFactory;
 use Symfony\Component\Validator\Mapping\Cache\CacheInterface;
+use Symfony\Component\Validator\Mapping\Factory\LazyLoadingMetadataFactory;
+use Symfony\Component\Validator\Validator\RecursiveValidator;
 
 class Factory
 {
@@ -66,6 +71,7 @@ class Factory
      * @param $obj
      *
      * @return MetadataInterface
+     * @throws \Symfony\Component\Yaml\Exception\ParseException
      * @throws TypeException
      * @throws InvalidArgumentException
      * @throws \InvalidArgumentException
@@ -73,10 +79,7 @@ class Factory
     public function getMetadata($obj): MetadataInterface
     {
         TypeChecker::check($obj)->tstring()->types(DataStructureInterface::class)->fail();
-        $class = $obj;
-        if (is_object($obj)) {
-            $class = get_class($obj);
-        }
+        $class = is_object($obj) ? get_class($obj) : $obj;
         if ($this->metadataCache !== null) {
             $key = $this->getCacheKey($class);
             $item = $this->metadataCache->getItem($key);
@@ -93,6 +96,30 @@ class Factory
     }
     
     /**
+     * @param MetadataInterface $metadata
+     *
+     * @return RecursiveValidator
+     * @throws \Symfony\Component\Translation\Exception\InvalidArgumentException
+     */
+    public function getValidatorFromMetadata(MetadataInterface $metadata): RecursiveValidator
+    {
+        $loader = new \NewInventor\DataStructure\Validation\Loader($metadata->getValidationMetadata());
+        $metadataFactory = new LazyLoadingMetadataFactory($loader, $this->validationCache);
+        
+        $validatorFactory = new ConstraintValidatorFactory();
+        $translator = new IdentityTranslator();
+        $translator->setLocale('en');
+        
+        $contextFactory = new ExecutionContextFactory($translator, null);
+        
+        return new RecursiveValidator(
+            $contextFactory,
+            $metadataFactory,
+            $validatorFactory
+        );
+    }
+    
+    /**
      * @param string $class
      *
      * @return MetadataInterface
@@ -102,7 +129,7 @@ class Factory
     protected function constructMetadata(string $class): MetadataInterface
     {
         $config = new Configuration();
-        $metadata = new Metadata($class, $this->validationCache);
+        $metadata = new Metadata($class);
         $parser = new Parser($config);
         $loader = new Loader($this->basePath, $parser, $this->baseNamespace);
         $loader->loadMetadata($metadata);

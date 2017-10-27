@@ -15,7 +15,7 @@ use NewInventor\Transformers\Transformer\ToBool;
 use NewInventor\Transformers\Transformer\ToInt;
 use NewInventor\Transformers\Transformer\ToString;
 use Symfony\Component\Config\Definition\Exception\InvalidConfigurationException;
-use Symfony\Component\Validator\Validator\RecursiveValidator;
+use Symfony\Component\Validator\Mapping\ClassMetadata;
 use TestsDataStructure\TestBag;
 use TestsDataStructure\TestBag1;
 use TestsDataStructure\TestBag2;
@@ -78,11 +78,12 @@ class MetadataTest extends Unit
         $this->assertNull($transformers->getTransformer('prop7'));
         $this->assertNull($transformers->getTransformer('prop8'));
         $this->assertNull($transformers->getTransformer('prop9'));
-        $this->assertSame(RecursiveValidator::class, get_class($meta->getValidator()));
+        $this->assertSame(ClassMetadata::class, get_class($meta->getValidationMetadata()));
     
         $this->assertSame(
             [
                 'prop1' => null,
+                'prop0' => null,
                 'prop2' => null,
                 'prop3' => null,
                 'prop4' => null,
@@ -91,7 +92,6 @@ class MetadataTest extends Unit
                 'prop7' => 2222,
                 'prop8' => null,
                 'prop9' => null,
-                'prop0' => null,
             ],
             $meta->properties
         );
@@ -186,11 +186,12 @@ class MetadataTest extends Unit
         $this->assertNull($transformers->getTransformer('prop7'));
         $this->assertNull($transformers->getTransformer('prop8'));
         $this->assertNull($transformers->getTransformer('prop9'));
-        $this->assertSame(RecursiveValidator::class, get_class($meta->getValidator()));
+        $this->assertSame(ClassMetadata::class, get_class($meta->getValidationMetadata()));
         
         $this->assertSame(
             [
                 'prop1' => null,
+                'prop0' => null,
                 'prop2' => null,
                 'prop3' => null,
                 'prop4' => null,
@@ -199,7 +200,6 @@ class MetadataTest extends Unit
                 'prop7' => 2222,
                 'prop8' => null,
                 'prop9' => null,
-                'prop0' => null,
             ],
             $meta->properties
         );

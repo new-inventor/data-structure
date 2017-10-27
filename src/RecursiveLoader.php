@@ -44,6 +44,7 @@ class RecursiveLoader
      * @param array                  $properties
      *
      * @return array Errors
+     * @throws \Symfony\Component\Yaml\Exception\ParseException
      * @throws \NewInventor\DataStructure\Exception\LoadingNestedException
      * @throws PropertyTransformationException
      * @throws PropertyInvalidTypeException
@@ -59,6 +60,9 @@ class RecursiveLoader
         /** @var Metadata $metadata */
         $metadata = $this->metadataFactory->getMetadata($objClass);
         $transformer = $metadata->getTransformer($this->group);
+        if ($transformer === null) {
+            throw new \InvalidArgumentException("No transformers in group '{$this->group}' of class '{$objClass}'.");
+        }
         $transformedProperties = $transformer->transform($properties);
         $errors = $transformer->getErrors();
         if (count($metadata->nested) !== 0) {

@@ -43,6 +43,7 @@ class Loader
      * @param array                  $properties
      *
      * @return array Errors
+     * @throws \Symfony\Component\Yaml\Exception\ParseException
      * @throws PropertyTransformationException
      * @throws PropertyInvalidTypeException
      * @throws InvalidArgumentException
@@ -57,8 +58,11 @@ class Loader
         $transformer = $this->metadataFactory
             ->getMetadata($objClass)
             ->getTransformer($this->group);
-        $transformedProperties = $transformer->transform($properties);
-        foreach ($transformedProperties as $propertyName => $propertyValue) {
+        if ($transformer === null) {
+            throw new \InvalidArgumentException("No transformers in group '{$this->group}'.");
+        }
+        $properties = $transformer->transform($properties);
+        foreach ($properties as $propertyName => $propertyValue) {
             $obj->set($propertyName, $propertyValue);
         }
         
