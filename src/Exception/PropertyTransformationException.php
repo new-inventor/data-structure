@@ -10,16 +10,16 @@ namespace NewInventor\DataStructure\Exception;
 
 class PropertyTransformationException extends PropertyException
 {
-    protected $symbolCode = 'NORMALIZATION_EXCEPTION';
+    protected $symbolCode = 'TRANSFORMATION_EXCEPTION';
     
     /**
-     * PropertyException constructor.
+     * PropertyTransformationException constructor.
      *
      * @param string     $propertyName
      * @param \Throwable $previous
      */
     public function __construct(string $propertyName, \Throwable $previous = null)
     {
-        parent::__construct($propertyName, "Normalization of property '$propertyName' failed", $previous);
+        parent::__construct($propertyName, "Transformation of property '$propertyName' failed", $previous);
     }
 }
