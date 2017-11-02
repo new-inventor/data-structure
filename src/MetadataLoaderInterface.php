@@ -17,4 +17,14 @@ interface MetadataLoaderInterface
      * @throws \Symfony\Component\Yaml\Exception\ParseException
      */
     public function load($metadata): void;
+    
+    /**
+     * @return string
+     */
+    public function getPath(): string;
+    
+    /**
+     * @return string
+     */
+    public function getBaseNamespace(): string;
 }
