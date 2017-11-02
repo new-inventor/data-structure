@@ -5,17 +5,18 @@
  * Date: 12.10.17
  */
 
-namespace NewInventor\DataStructure;
+namespace NewInventor\DataStructure\Loader;
 
 
+use NewInventor\DataStructure\Configuration\Configuration;
+use NewInventor\DataStructure\DataStructureInterface;
 use NewInventor\DataStructure\Exception\PropertyInvalidTypeException;
 use NewInventor\DataStructure\Exception\PropertyTransformationException;
-use NewInventor\DataStructure\Metadata\Configuration;
 use NewInventor\DataStructure\Metadata\Factory;
 use NewInventor\TypeChecker\Exception\TypeException;
 use Psr\Cache\InvalidArgumentException;
 
-class Loader
+class ObjectLoader
 {
     /** @var array */
     protected $errors = [];
@@ -56,7 +57,7 @@ class Loader
     {
         $objClass = get_class($obj);
         $transformer = $this->metadataFactory
-            ->getMetadata($objClass)
+            ->getMetadataFor($objClass)
             ->getTransformer($this->group);
         if ($transformer === null) {
             throw new \InvalidArgumentException("No transformers in group '{$this->group}'.");

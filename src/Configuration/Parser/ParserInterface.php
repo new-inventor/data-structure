@@ -5,16 +5,16 @@
  * Date: 12.10.17
  */
 
-namespace NewInventor\DataStructure\Metadata;
+namespace NewInventor\DataStructure\Configuration\Parser;
 
 
 interface ParserInterface
 {
     /**
      * @param                   $file
-     * @param MetadataInterface $metadata
      *
+     * @return array
      * @throws \Symfony\Component\Yaml\Exception\ParseException
      */
-    public function parse($file, MetadataInterface $metadata): void;
+    public function parse($file): array;
 }

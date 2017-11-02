@@ -1,8 +1,10 @@
 <?php
 
-use NewInventor\DataStructure\Metadata\Configuration;
+use NewInventor\DataStructure\Configuration\Configuration;
+use NewInventor\DataStructure\Configuration\Parser\Yaml;
+use NewInventor\DataStructure\Loader\RecursiveObjectLoader;
 use NewInventor\DataStructure\Metadata\Factory;
-use NewInventor\DataStructure\RecursiveLoader;
+use NewInventor\DataStructure\Metadata\Loader;
 use TestsDataStructure\TestBag3;
 use TestsDataStructure\TestBag5;
 
@@ -34,8 +36,10 @@ class RecursiveLoaderTest extends \Codeception\Test\Unit
                 'prop3' => '1',
             ],
         ];
-        $factory = new Factory(__DIR__ . '/data', 'TestsDataStructure');
-        $loader = new RecursiveLoader($factory, Configuration::DEFAULT_GROUP_NAME);
+        $parser = new Yaml(new Configuration());
+        $loader = new Loader(__DIR__ . '/data', $parser, 'TestsDataStructure');
+        $factory = new Factory($loader);
+        $loader = new RecursiveObjectLoader($factory, Configuration::DEFAULT_GROUP_NAME);
         $bag = new TestBag3();
         $loader->load($bag, $properties);
         $this->assertSame('6545', $bag->getProp1());
@@ -69,8 +73,10 @@ class RecursiveLoaderTest extends \Codeception\Test\Unit
                 'prop3' => '1',
             ],
         ];
-        $factory = new Factory(__DIR__ . '/data', 'TestsDataStructure');
-        $loader = new RecursiveLoader($factory, Configuration::DEFAULT_GROUP_NAME);
+        $parser = new Yaml(new Configuration());
+        $loader = new Loader(__DIR__ . '/data', $parser, 'TestsDataStructure');
+        $factory = new Factory($loader);
+        $loader = new RecursiveObjectLoader($factory, Configuration::DEFAULT_GROUP_NAME);
         $obj = new TestBag3();
         $errors = $loader->load($obj, $properties);
         
@@ -124,8 +130,10 @@ class RecursiveLoaderTest extends \Codeception\Test\Unit
             ],
         ];
     
-        $factory = new Factory(__DIR__ . '/data', 'TestsDataStructure');
-        $loader = new RecursiveLoader($factory, Configuration::DEFAULT_GROUP_NAME);
+        $parser = new Yaml(new Configuration());
+        $loader = new Loader(__DIR__ . '/data', $parser, 'TestsDataStructure');
+        $factory = new Factory($loader);
+        $loader = new RecursiveObjectLoader($factory, Configuration::DEFAULT_GROUP_NAME);
         $obj = new TestBag5();
         $loader->load($obj, $properties);
         $this->assertCount(2, $obj->getProp4());
@@ -147,8 +155,10 @@ class RecursiveLoaderTest extends \Codeception\Test\Unit
             ],
         ];
     
-        $factory = new Factory(__DIR__ . '/data', 'TestsDataStructure');
-        $loader = new RecursiveLoader($factory, Configuration::DEFAULT_GROUP_NAME);
+        $parser = new Yaml(new Configuration());
+        $loader = new Loader(__DIR__ . '/data', $parser, 'TestsDataStructure');
+        $factory = new Factory($loader);
+        $loader = new RecursiveObjectLoader($factory, Configuration::DEFAULT_GROUP_NAME);
         $obj = new TestBag5();
         $errors = $loader->load($obj, $properties);
         $this->assertSame(
@@ -172,8 +182,10 @@ class RecursiveLoaderTest extends \Codeception\Test\Unit
             'prop2' => '123',
             'prop3' => true,
         ];
-        $factory = new Factory(__DIR__ . '/data', 'TestsDataStructure');
-        $loader = new RecursiveLoader($factory, Configuration::DEFAULT_GROUP_NAME);
+        $parser = new Yaml(new Configuration());
+        $loader = new Loader(__DIR__ . '/data', $parser, 'TestsDataStructure');
+        $factory = new Factory($loader);
+        $loader = new RecursiveObjectLoader($factory, Configuration::DEFAULT_GROUP_NAME);
         $obj = new TestBag5();
         $loader->load($obj, $properties);
         $this->assertNull($obj->getProp4());

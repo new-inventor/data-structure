@@ -1,8 +1,12 @@
 <?php
 namespace Validation;
 
+
+use NewInventor\DataStructure\Configuration\Configuration;
+use NewInventor\DataStructure\Configuration\Parser\Yaml;
 use NewInventor\DataStructure\Validation\Loader;
 use Symfony\Component\Validator\Mapping\ClassMetadata;
+use TestsDataStructure\TestBag;
 
 class LoaderTest extends \Codeception\Test\Unit
 {
@@ -22,16 +26,17 @@ class LoaderTest extends \Codeception\Test\Unit
     // tests
     public function testSomeFeature()
     {
-        $metadata = new ClassMetadata(Loader::class);
-        $loader = new Loader($metadata);
-        $metadata1 = new ClassMetadata(ClassMetadata::class);
+        $parser = new Yaml(new Configuration());
+        $loader = new Loader(dirname(__DIR__) . '/data', $parser, 'TestsDataStructure');
+        $metadata1 = new ClassMetadata(TestBag::class);
         $this->assertTrue($loader->loadClassMetadata($metadata1));
-        $this->assertSame('ClassMetadata', $metadata1->defaultGroup);
-        $this->assertSame($metadata->members, $metadata1->members);
-        $this->assertSame($metadata->properties, $metadata1->properties);
-        $this->assertSame($metadata->getters, $metadata1->getters);
-        $this->assertSame($metadata->groupSequence, $metadata1->groupSequence);
-        $this->assertSame($metadata->groupSequenceProvider, $metadata1->groupSequenceProvider);
-        $this->assertSame($metadata->traversalStrategy, $metadata1->traversalStrategy);
+        $this->assertSame('TestBag', $metadata1->defaultGroup);
+        $this->assertNotEmpty($metadata1->members);
+        $this->assertNotEmpty($metadata1->properties);
+        $this->assertNotEmpty($metadata1->getters);
+        $this->assertNotEmpty($metadata1->constraints);
+        $this->assertNotEmpty($metadata1->constraintsByGroup);
+        $this->assertEmpty($metadata1->groupSequence);
+        $this->assertEmpty($metadata1->groupSequenceProvider);
     }
 }

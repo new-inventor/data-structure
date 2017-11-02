@@ -5,20 +5,21 @@
  * Date: 09.10.17
  */
 
-namespace NewInventor\DataStructure;
+namespace NewInventor\DataStructure\Loader;
 
 
+use NewInventor\DataStructure\Configuration\Configuration;
+use NewInventor\DataStructure\DataStructureInterface;
 use NewInventor\DataStructure\Exception\LoadingNestedException;
 use NewInventor\DataStructure\Exception\PropertyInvalidTypeException;
 use NewInventor\DataStructure\Exception\PropertyTransformationException;
-use NewInventor\DataStructure\Metadata\Configuration;
 use NewInventor\DataStructure\Metadata\Factory;
 use NewInventor\DataStructure\Metadata\Metadata;
 use NewInventor\TypeChecker\Exception\TypeException;
 use NewInventor\TypeChecker\TypeChecker;
 use Psr\Cache\InvalidArgumentException;
 
-class RecursiveLoader
+class RecursiveObjectLoader
 {
     /** @var Factory */
     protected $metadataFactory;
@@ -58,7 +59,7 @@ class RecursiveLoader
     {
         $objClass = get_class($obj);
         /** @var Metadata $metadata */
-        $metadata = $this->metadataFactory->getMetadata($objClass);
+        $metadata = $this->metadataFactory->getMetadataFor($objClass);
         $transformer = $metadata->getTransformer($this->group);
         if ($transformer === null) {
             throw new \InvalidArgumentException("No transformers in group '{$this->group}' of class '{$objClass}'.");
@@ -80,6 +81,7 @@ class RecursiveLoader
      * @param array $properties
      *
      * @return array
+     * @throws \Symfony\Component\Yaml\Exception\ParseException
      * @throws LoadingNestedException
      * @throws PropertyTransformationException
      * @throws PropertyInvalidTypeException
@@ -142,6 +144,7 @@ class RecursiveLoader
      * @param $config
      *
      * @return mixed
+     * @throws \Symfony\Component\Yaml\Exception\ParseException
      * @throws \NewInventor\DataStructure\Exception\LoadingNestedException
      * @throws PropertyTransformationException
      * @throws PropertyInvalidTypeException
@@ -156,29 +159,12 @@ class RecursiveLoader
         if ($propertyValue === null) {
             return [null, []];
         }
-        $nestedConstructor = null;
-        if (isset($config['metadata'])) {
-            $metadataConfig = $config['metadata'];
-            $factory = $this->generateFactory($metadataConfig['factory'] ?? self::class, $metadataConfig);
-            $nestedConstructor = new self($factory, $this->group);
-        } else {
-            $nestedConstructor = new self($this->metadataFactory, $this->group);
-        }
+        $nestedConstructor = new self($this->metadataFactory, $this->group);
         
         $nestedClass = $config['class'];
         $obj = new $nestedClass();
         $errors = $nestedConstructor->load($obj, $propertyValue);
         
         return [$obj, $errors];
-    }
-    
-    protected function generateFactory(string $factoryClass, array $metadataConfig)
-    {
-        return new $factoryClass(
-            $metadataConfig['path'],
-            $metadataConfig['baseNamespace'],
-            $this->metadataFactory->getMetadataCache(),
-            $this->metadataFactory->getValidationCache()
-        );
     }
 }

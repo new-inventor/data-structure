@@ -1,7 +1,10 @@
 <?php
 
+use NewInventor\DataStructure\Configuration\Configuration;
+use NewInventor\DataStructure\Configuration\Parser\Yaml;
 use NewInventor\DataStructure\Loader as DataStructureLoader;
 use NewInventor\DataStructure\Metadata\Factory;
+use NewInventor\DataStructure\Metadata\Loader;
 
 class LoaderTest extends \Codeception\Test\Unit
 {
@@ -21,8 +24,10 @@ class LoaderTest extends \Codeception\Test\Unit
     // tests
     public function testSomeFeature()
     {
-        $factory = new Factory(__DIR__ . '/data', 'TestsDataStructure');
-        $loader = new DataStructureLoader($factory, 'default');
+        $parser = new Yaml(new Configuration());
+        $loader = new Loader(__DIR__ . '/data', $parser, 'TestsDataStructure');
+        $factory = new Factory($loader);
+        $loader = new DataStructureLoader\ObjectLoader($factory, 'default');
         $bag = new \TestsDataStructure\TestBag4();
         $loader->load(
             $bag,
@@ -46,8 +51,10 @@ class LoaderTest extends \Codeception\Test\Unit
     // tests
     public function test1()
     {
-        $factory = new Factory(__DIR__ . '/data', 'TestsDataStructure');
-        $loader = new DataStructureLoader($factory, 'default');
+        $parser = new Yaml(new Configuration());
+        $loader = new Loader(__DIR__ . '/data', $parser, 'TestsDataStructure');
+        $factory = new Factory($loader);
+        $loader = new DataStructureLoader\ObjectLoader($factory, 'default');
         $bag = new \TestsDataStructure\TestBag4();
         $errors = $loader->load(
             $bag,

@@ -2,10 +2,10 @@
 namespace Metadata;
 
 use Codeception\Test\Unit;
-use NewInventor\DataStructure\Metadata\Configuration;
+use NewInventor\DataStructure\Configuration\Configuration;
+use NewInventor\DataStructure\Configuration\Parser\Yaml;
 use NewInventor\DataStructure\Metadata\Loader;
 use NewInventor\DataStructure\Metadata\Metadata;
-use NewInventor\DataStructure\Metadata\Parser;
 use NewInventor\Transformers\Transformer\ArrayToCsvString;
 use NewInventor\Transformers\Transformer\BoolToMixed;
 use NewInventor\Transformers\Transformer\ChainTransformer;
@@ -14,8 +14,8 @@ use NewInventor\Transformers\Transformer\ToArray;
 use NewInventor\Transformers\Transformer\ToBool;
 use NewInventor\Transformers\Transformer\ToInt;
 use NewInventor\Transformers\Transformer\ToString;
+use NewInventor\Transformers\TransformerInterface;
 use Symfony\Component\Config\Definition\Exception\InvalidConfigurationException;
-use Symfony\Component\Validator\Mapping\ClassMetadata;
 use TestsDataStructure\TestBag;
 use TestsDataStructure\TestBag1;
 use TestsDataStructure\TestBag2;
@@ -39,9 +39,9 @@ class MetadataTest extends Unit
     public function test()
     {
         $meta = new Metadata(TestBag::class);
-        $parser = new Parser(new Configuration());
+        $parser = new Yaml(new Configuration());
         $loader = new Loader(dirname(__DIR__) . '/data', $parser, 'TestsDataStructure');
-        $loader->loadMetadata($meta);
+        $loader->load($meta);
         $this->assertSame('TestsDataStructure', $meta->getNamespace());
         $this->assertSame('TestBag', $meta->getClassName());
         $this->assertSame('TestsDataStructure\TestBag', $meta->getFullClassName());
@@ -78,12 +78,10 @@ class MetadataTest extends Unit
         $this->assertNull($transformers->getTransformer('prop7'));
         $this->assertNull($transformers->getTransformer('prop8'));
         $this->assertNull($transformers->getTransformer('prop9'));
-        $this->assertSame(ClassMetadata::class, get_class($meta->getValidationMetadata()));
     
         $this->assertSame(
             [
                 'prop1' => null,
-                'prop0' => null,
                 'prop2' => null,
                 'prop3' => null,
                 'prop4' => null,
@@ -108,10 +106,11 @@ class MetadataTest extends Unit
         ];
     
         $metadata = new Metadata(TestBag::class);
-        $loader->loadMetadata($metadata);
+        $loader->load($metadata);
         $transformer = $metadata->getTransformer();
         $metadata1 = new Metadata(TestBag1::class);
-        $loader->loadMetadata($metadata1);
+        $loader->load($metadata1);
+        /** @var TransformerInterface $transformer1 */
         $transformer1 = $metadata1->getTransformer();
         $params = $transformer->transform($params, true);
         $params['prop9'] = $transformer1->transform($params['prop9'], true);
@@ -139,17 +138,17 @@ class MetadataTest extends Unit
     {
         $this->expectException(InvalidConfigurationException::class);
         $meta = new Metadata(TestBag2Bad::class);
-        $parser = new Parser(new Configuration());
+        $parser = new Yaml(new Configuration());
         $loader = new Loader(dirname(__DIR__) . '/data', $parser, 'TestsDataStructure');
-        $loader->loadMetadata($meta);
+        $loader->load($meta);
     }
     
     public function test2()
     {
         $meta = new Metadata(TestBag2::class);
-        $parser = new Parser(new Configuration());
+        $parser = new Yaml(new Configuration());
         $loader = new Loader(dirname(__DIR__) . '/data', $parser, 'TestsDataStructure');
-        $loader->loadMetadata($meta);
+        $loader->load($meta);
         $this->assertSame('TestsDataStructure', $meta->getNamespace());
         $this->assertSame('TestBag2', $meta->getClassName());
         $this->assertSame('TestsDataStructure\TestBag2', $meta->getFullClassName());
@@ -186,12 +185,10 @@ class MetadataTest extends Unit
         $this->assertNull($transformers->getTransformer('prop7'));
         $this->assertNull($transformers->getTransformer('prop8'));
         $this->assertNull($transformers->getTransformer('prop9'));
-        $this->assertSame(ClassMetadata::class, get_class($meta->getValidationMetadata()));
         
         $this->assertSame(
             [
                 'prop1' => null,
-                'prop0' => null,
                 'prop2' => null,
                 'prop3' => null,
                 'prop4' => null,
