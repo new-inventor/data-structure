@@ -8,8 +8,9 @@
 namespace NewInventor\DataStructure\Metadata;
 
 
+use NewInventor\DataStructure\Configuration\Configuration;
 use NewInventor\DataStructure\StructureTransformerInterface;
-use Symfony\Component\Validator\Mapping\ClassMetadata;
+use NewInventor\TypeChecker\TypeChecker;
 
 class Metadata implements MetadataInterface
 {
@@ -25,18 +26,18 @@ class Metadata implements MetadataInterface
     public $transformers = [];
     /** @var array[] */
     public $nested = [];
-    /** @var array */
-    public $configArray = [];
-    /** @var ClassMetadata */
-    public $validationMetadata;
     
     /**
      * Metadata constructor.
      *
-     * @param string              $class
+     * @param $obj
+     *
+     * @throws \NewInventor\TypeChecker\Exception\TypeException
      */
-    public function __construct(string $class)
+    public function __construct($obj)
     {
+        TypeChecker::check($obj)->tstring()->tobject()->fail();
+        $class = is_object($obj) ? get_class($obj) : $obj;
         $this->fullClassName = $class;
         $lastDelimiterPos = strrpos($class, '\\');
         if ($lastDelimiterPos === false) {
@@ -44,7 +45,6 @@ class Metadata implements MetadataInterface
         }
         $this->className = substr($class, $lastDelimiterPos ? $lastDelimiterPos + 1 : 0);
         $this->namespace = trim(substr($class, 0, $lastDelimiterPos), "\t\n\r\0\x0B\\/");
-        $this->validationMetadata = new ClassMetadata($class);
     }
     
     /**
@@ -69,22 +69,6 @@ class Metadata implements MetadataInterface
     public function getNamespace(): string
     {
         return $this->namespace;
-    }
-    
-    /**
-     * @return array
-     */
-    public function getConfigArray(): array
-    {
-        return $this->configArray;
-    }
-    
-    /**
-     * @return ClassMetadata
-     */
-    public function getValidationMetadata(): ClassMetadata
-    {
-        return $this->validationMetadata;
     }
     
     /**

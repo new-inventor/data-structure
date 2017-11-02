@@ -8,16 +8,11 @@
 namespace NewInventor\DataStructure\Metadata;
 
 
+use NewInventor\DataStructure\Configuration\Configuration;
 use NewInventor\DataStructure\StructureTransformerInterface;
-use Symfony\Component\Validator\Mapping\ClassMetadata;
 
 interface MetadataInterface
 {
-    /**
-     * @return ClassMetadata
-     */
-    public function getValidationMetadata(): ClassMetadata;
-    
     /**
      * @return string
      */
@@ -32,11 +27,6 @@ interface MetadataInterface
      * @return string
      */
     public function getNamespace(): string;
-    
-    /**
-     * @return array
-     */
-    public function getConfigArray(): array;
     
     /**
      * @param string $group

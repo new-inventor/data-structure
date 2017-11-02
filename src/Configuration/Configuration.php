@@ -5,7 +5,7 @@
  * Date: 08.10.17
  */
 
-namespace NewInventor\DataStructure\Metadata;
+namespace NewInventor\DataStructure\Configuration;
 
 
 use NewInventor\Transformers\TransformerContainerInterface;
@@ -106,13 +106,6 @@ class Configuration implements ConfigurationInterface
             )
             ->end()
             ->children()
-            ->arrayNode('metadata')
-            ->children()
-            ->scalarNode('path')->isRequired()->end()
-            ->scalarNode('baseNamespace')->defaultValue('')->end()
-            ->scalarNode('factory')->defaultNull()->end()
-            ->end()
-            ->end()
             ->scalarNode('class')->isRequired()->end()
             ->booleanNode('array')->defaultFalse()->end()
             ->end();
