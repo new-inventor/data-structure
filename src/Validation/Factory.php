@@ -9,10 +9,10 @@ namespace NewInventor\DataStructure\Validation;
 
 
 use NewInventor\DataStructure\MetadataLoaderInterface;
-use Psr\SimpleCache\CacheInterface;
 use Symfony\Component\Translation\IdentityTranslator;
 use Symfony\Component\Validator\ConstraintValidatorFactory;
 use Symfony\Component\Validator\Context\ExecutionContextFactory;
+use Symfony\Component\Validator\Mapping\Cache\CacheInterface;
 use Symfony\Component\Validator\Mapping\Factory\LazyLoadingMetadataFactory;
 use Symfony\Component\Validator\Validator\RecursiveValidator;
 
