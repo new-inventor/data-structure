@@ -14,9 +14,9 @@ use Psr\Cache\CacheItemPoolInterface;
 class Factory
 {
     /** @var CacheItemPoolInterface */
-    protected $metadataCache;
+    protected $cache;
     /** @var MetadataLoaderInterface */
-    private $loader;
+    protected $loader;
     
     /**
      * Factory constructor.
@@ -28,7 +28,7 @@ class Factory
         MetadataLoaderInterface $loader,
         CacheItemPoolInterface $metadataCache = null
     ) {
-        $this->metadataCache = $metadataCache;
+        $this->cache = $metadataCache;
         $this->loader = $loader;
     }
     
@@ -44,19 +44,25 @@ class Factory
     public function getMetadataFor($obj): MetadataInterface
     {
         $class = is_object($obj) ? get_class($obj) : $obj;
-        $metadata = new Metadata($class);
-        
-        if ($this->metadataCache !== null) {
+    
+        if ($this->cache !== null) {
             $key = $this->getCacheKey($class);
-            $item = $this->metadataCache->getItem($key);
+            $item = $this->cache->getItem($key);
             if (!$item->isHit()) {
-                $this->loader->load($metadata);
+                $metadata = $this->constructMetadata($class);
                 $item->set($metadata);
-                $this->metadataCache->save($item);
+                $this->cache->save($item);
             }
             
             return $item->get();
         }
+    
+        return $this->constructMetadata($class);
+    }
+    
+    protected function constructMetadata($class)
+    {
+        $metadata = new Metadata($class);
         $this->loader->load($metadata);
         
         return $metadata;

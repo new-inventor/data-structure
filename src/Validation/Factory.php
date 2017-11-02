@@ -19,7 +19,7 @@ use Symfony\Component\Validator\Validator\RecursiveValidator;
 class Factory
 {
     /** @var CacheInterface */
-    protected $validationCache;
+    protected $cache;
     protected $loader;
     
     /**
@@ -32,7 +32,7 @@ class Factory
         MetadataLoaderInterface $loader,
         CacheInterface $validationCache = null
     ) {
-        $this->validationCache = $validationCache;
+        $this->cache = $validationCache;
         $this->loader = $loader;
     }
     
@@ -46,7 +46,7 @@ class Factory
      */
     public function getValidator(): RecursiveValidator
     {
-        $metadataFactory = new LazyLoadingMetadataFactory($this->loader, $this->validationCache);
+        $metadataFactory = new LazyLoadingMetadataFactory($this->loader, $this->cache);
         
         $validatorFactory = new ConstraintValidatorFactory();
         $translator = new IdentityTranslator();
