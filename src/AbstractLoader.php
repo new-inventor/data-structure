@@ -41,6 +41,22 @@ abstract class AbstractLoader implements MetadataLoaderInterface
     }
     
     /**
+     * @return string
+     */
+    public function getPath(): string
+    {
+        return $this->path;
+    }
+    
+    /**
+     * @return string
+     */
+    public function getBaseNamespace(): string
+    {
+        return $this->baseNamespace;
+    }
+    
+    /**
      * @param $metadata
      *
      * @throws \InvalidArgumentException
