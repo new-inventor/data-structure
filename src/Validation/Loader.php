@@ -10,6 +10,7 @@ namespace NewInventor\DataStructure\Validation;
 
 use NewInventor\DataStructure\AbstractLoader;
 use NewInventor\DataStructure\Configuration\Parser\ParserInterface;
+use NewInventor\DataStructure\Exception\MetadataFileNotFoundException;
 use NewInventor\Transformers\Transformer\StringToCamelCase;
 use Symfony\Component\Validator\Constraint;
 use Symfony\Component\Validator\Constraints\All;
@@ -49,7 +50,11 @@ class Loader extends AbstractLoader implements LoaderInterface
      */
     public function loadClassMetadata(ClassMetadata $metadata): bool
     {
-        $this->load($metadata);
+        try {
+            $this->load($metadata);
+        } catch (MetadataFileNotFoundException $e) {
+            return false;
+        }
         
         return true;
     }

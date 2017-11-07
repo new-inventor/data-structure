@@ -9,6 +9,7 @@ namespace NewInventor\DataStructure;
 
 
 use NewInventor\DataStructure\Configuration\Parser\ParserInterface;
+use NewInventor\DataStructure\Exception\MetadataFileNotFoundException;
 use NewInventor\DataStructure\Helper\ObjectHelper;
 
 abstract class AbstractLoader implements MetadataLoaderInterface
@@ -59,8 +60,8 @@ abstract class AbstractLoader implements MetadataLoaderInterface
     /**
      * @param $metadata
      *
-     * @throws \InvalidArgumentException
      * @throws \Symfony\Component\Yaml\Exception\ParseException
+     * @throws \NewInventor\DataStructure\Exception\MetadataFileNotFoundException
      */
     public function load($metadata): void
     {
@@ -71,9 +72,7 @@ abstract class AbstractLoader implements MetadataLoaderInterface
                 $array = $this->parser->parse($path);
                 $this->loadData($metadata, $array);
             } else {
-                throw new \InvalidArgumentException(
-                    "Path '$path' for class '{$metadataClassName}' does not exists."
-                );
+                throw new MetadataFileNotFoundException($path, $metadataClassName);
             }
         } else if ($this->isReadableFile($this->path)) {
             $array = $this->parser->parse($this->path);
