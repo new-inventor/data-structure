@@ -38,12 +38,12 @@ class Metadata implements MetadataInterface
     {
         TypeChecker::check($obj)->tstring()->tobject()->fail();
         $class = is_object($obj) ? get_class($obj) : $obj;
-        $this->fullClassName = $class;
+        $this->fullClassName = trim($class, "\t\n\r\0\x0B\\/");
         $lastDelimiterPos = strrpos($class, '\\');
         if ($lastDelimiterPos === false) {
             $lastDelimiterPos = null;
         }
-        $this->className = substr($class, $lastDelimiterPos ? $lastDelimiterPos + 1 : 0);
+        $this->className = trim(substr($class, $lastDelimiterPos ? $lastDelimiterPos + 1 : 0), "\t\n\r\0\x0B\\/");
         $this->namespace = trim(substr($class, 0, $lastDelimiterPos), "\t\n\r\0\x0B\\/");
     }
     
