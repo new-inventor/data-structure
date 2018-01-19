@@ -78,6 +78,10 @@ class Metadata implements MetadataInterface
      */
     public function getTransformer(string $group = Configuration::DEFAULT_GROUP_NAME): ?StructureTransformerInterface
     {
-        return $this->transformers[$group];
+        if (array_key_exists($group, $this->transformers) && !empty($this->transformers[$group])) {
+            return $this->transformers[$group];
+        }
+    
+        return null;
     }
 }
